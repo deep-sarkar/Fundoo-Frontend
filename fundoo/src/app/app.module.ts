@@ -8,6 +8,7 @@ import { ComponentsComponent } from './components/components.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
