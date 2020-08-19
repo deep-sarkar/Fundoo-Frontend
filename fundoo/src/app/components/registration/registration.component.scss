@@ -1,0 +1,129 @@
+@mixin responsive {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+.main-container {
+    height: auto;
+    width: 40%;
+    border:0.5px solid rgb(202, 202, 202);
+    border-radius: 3px;
+    margin: 1% auto;
+    padding: 2%;
+    font-size: 2em;
+}
+.logo{
+    // border: 1px solid red;
+    height: 8%;
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    color: #4285f4;
+}
+header {
+    // border: 1px solid red;
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    &>:first-child{
+        font-size: 1.1em;
+    }
+    &>:last-child{
+        font-size: 0.8em;
+    }
+}
+.registration-form{
+    height: 80%;
+    // border: 1px solid red;
+}
+.wrapper {
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    display: flex;
+    // border: 1px solid blue;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+    color: #202124;
+    margin: 2% 0;
+    font-size: 2em;
+    .mat-form-field {
+        font-size: 0.35em;
+    }
+    &>li:nth-child(3),
+    li:nth-child(4){
+        width: 80%;
+        .mat-form-field  {
+            width:98%;
+        }
+    }  
+    &>li:nth-child(1),
+    li:nth-child(2),
+    li:nth-child(5),
+    li:nth-child(6){
+        width: 50%;
+        .mat-form-field {
+            width: 80%;
+        }
+    }
+    &>li:nth-child(7),
+    li:nth-child(8){
+        width: 43%;
+        margin-top: 4%;
+        display: flex;
+        justify-content: center;
+    }  
+    #sign-in {
+        background-color: white;
+        a{
+        color: #4285f4;
+        }
+        &:hover{
+            background-color: #b6cdf1;
+        }
+    }
+    button{
+        height: 60px;
+        width: 50%;
+        border:none;
+        border-radius: 3px;
+        a {
+            text-decoration: none;
+            font-size: 2em;
+        }
+    }
+    #register {
+        background-color: #4285f4;
+        a {
+            color: white;
+        }
+        &:hover{
+            background-color: #015ef3;
+        }
+    }
+}
+@media only screen and (max-width:800px){
+    .main-container{
+        @include responsive()
+    }
+    .registration-form .wrapper{
+        @include responsive();
+        justify-items: center;
+
+        >li{
+            width: 100%;
+            .mat-form-field{
+                width:100%;
+                }
+        }
+    }
+}

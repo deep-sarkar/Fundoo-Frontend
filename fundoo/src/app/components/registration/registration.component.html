@@ -1,0 +1,59 @@
+<div class="main-container">
+    <div class="logo">
+        <p>Fundoo</p>
+    </div>
+    <header>
+        <p>Create your Fundoo Account</p>
+        <p>to continue to fundoo</p>
+    </header>
+    <form class="registration-form">
+        <ul class="wrapper">
+            <li>
+                <mat-form-field appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input matInput placeholder="first name" [formControl]="firstName">
+                </mat-form-field>
+            </li>
+            <li>
+                <mat-form-field appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput placeholder="last name" [formControl]="lastName">
+                </mat-form-field>
+            </li>
+            <li>
+                <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input matInput placeholder="username" [formControl]="username">
+                </mat-form-field>
+            </li>
+            <li>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="email" [formControl]="email">
+                </mat-form-field>
+            </li>
+            <li>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="password" [formControl]="password">
+                </mat-form-field>
+            </li>
+            <li>
+                <mat-form-field appearance="outline">
+                    <mat-label>Confirm</mat-label>
+                    <input matInput placeholder="confirm" [formControl]="confirm">
+                </mat-form-field>
+            </li>
+            <li>
+                <button mat-button id="sign-in">
+                    <a href="">Sign in insted</a>
+                </button>
+            </li>
+            <li>
+                <button mat-button id="register" type="submit">
+                    <a href="">Register</a>
+                </button>
+            </li>
+        </ul>
+    </form>
+</div>
