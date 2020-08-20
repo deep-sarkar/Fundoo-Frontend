@@ -12,12 +12,14 @@
                 <mat-form-field appearance="outline">
                     <mat-label>Username</mat-label>
                     <input matInput placeholder="username" [formControl]="username">
+                    <mat-error *ngIf="username.invalid" >{{ usernameErrorMsg() }}</mat-error>
                 </mat-form-field>
             </li>
             <li>
                 <mat-form-field appearance="outline">
                     <mat-label>Password</mat-label>
-                    <input matInput placeholder="password" [formControl]="password">
+                    <input matInput placeholder="password" [formControl]="password" type="password">
+                    <mat-error *ngIf="password.invalid" >{{ passwordErrorMsg() }}</mat-error>
                 </mat-form-field>
             </li>
             <li>
