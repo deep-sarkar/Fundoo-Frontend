@@ -1,1 +1,38 @@
-<p>login works!</p>
+<div class="main-container">
+    <div class="logo">
+        <p>Fundoo</p>
+    </div>
+    <header>
+        <p>Sign in</p>
+        <p>to continue to fundoo</p>
+    </header>
+    <div class="login-div">
+        <ul class="wrapper">
+            <li>
+                <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input matInput placeholder="username" [formControl]="username">
+                </mat-form-field>
+            </li>
+            <li>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="password" [formControl]="password">
+                </mat-form-field>
+            </li>
+            <li>
+                <a href="">Forgot password?</a>
+            </li>
+            <li>
+                <button mat-button id="register">
+                    <a href="">Create account</a>
+                </button>
+            </li>
+            <li>
+                <button mat-button type="submit" id="login">
+                    Login
+                </button>
+            </li>
+        </ul>
+    </div>
+</div>

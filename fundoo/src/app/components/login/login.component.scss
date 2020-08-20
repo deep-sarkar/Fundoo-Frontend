@@ -1,0 +1,126 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+@mixin responsive {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.main-container {
+    height: auto;
+    width: 35%;
+    border:0.5px solid rgb(202, 202, 202);
+    border-radius: 3px;
+    margin: 2% auto;
+    padding: 2%;
+}
+.logo{
+    // border: 1px solid red;
+    height: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7em;
+    color: #1a73e8;
+}
+header {
+    // border: 1px solid red;
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    p{
+        padding: 1%;
+    }
+    &>:first-child{
+        font-size: 1.5em;
+    }
+    &>:last-child{
+        font-size: 1.1em;
+    }
+}
+.wrapper {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 2%;
+    li{    
+        text-align: center;
+        color: #1a73e8;
+        .mat-form-field {
+            width: 100%;
+            font-size: 90%;
+        }
+        a{
+            color: #1a73e8;
+        }
+    }
+    &>li:nth-child(1),
+    li:nth-child(2),
+    li:nth-child(3){
+        width: 100%;
+    }
+    &>li:nth-child(3) {
+        text-align: left;
+        position: relative;
+        top: -2%;
+        a{
+            text-decoration: none;
+            font-size: 0.9em;
+            position: absolute;
+            top: -14px;
+        }
+    }
+    &>li:nth-child(4){
+        align-self: flex-start;
+        margin-top:9% ;
+        a{
+            text-decoration: none;
+        }
+    }
+    &>li:nth-child(5){
+        align-self: flex-end;
+        position: relative;
+        top: -6vh;
+        background-color: #1a73e8;
+        border-radius: 3px;
+        color: white;
+    }
+    button{
+        border-radius: 3px;
+        }
+}
+
+@media only screen and (max-width:700px){
+    .main-container{
+        @include responsive();
+        height:auto;
+    }
+    .logo, header{
+        @include responsive();
+        align-items: flex-start;
+    }
+    .login-div .wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2em;
+        &>li:nth-child(4){
+            align-self: center;
+            position: relative;
+            top: -3vh;
+        }
+        &>li:nth-child(5){
+            align-self: center;
+            position: relative;
+            top: -1vh;
+        }
+    }
+}
