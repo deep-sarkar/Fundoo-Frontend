@@ -90,16 +90,14 @@ export class RegistrationComponent implements OnInit {
         password:this.password.value,
         confirm_password:this.confirm_password.value
       }
-      console.log(this.userData)
+      // console.log(this.userData)
       this.register.registerNewUser(this.userData).subscribe(
         (response) =>{
-          if(response){
           alert(response['msg'])
-        }else{
-          console.log("error")
-        }
         },
-        
+        error =>{
+          console.log("error",error)
+        }
       )
     }
   }
