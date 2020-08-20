@@ -8,6 +8,6 @@ export class LoginService {
 
   constructor(private http: HttpClient ) { }
   userLogin(data){
-    return this.http.post("http://localhost:8000/accounts/login/", data)
+    return this.http.post("http://127.0.0.1:8000/accounts/login/", data)
   }
 }
