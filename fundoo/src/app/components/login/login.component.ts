@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { error } from 'console';
+import { LoginService } from 'src/app/services/accountServices/login.service';
 
 @Component({
   selector: 'app-login',
@@ -7,8 +9,6 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  constructor() { }
 
   username = new FormControl('',[
     Validators.required,
@@ -29,6 +29,27 @@ export class LoginComponent implements OnInit {
     return this.password.hasError('required')?"enter password":
     this.password.hasError('pattern')?"min. 8 digit alphanumeric only":"";
   }
+
+  data:object;
+
+  constructor(private loginService:LoginService) { }
+
+  loginUser(){
+    this.data = {
+      username:this.username.value,
+      password:this.password.value
+    }
+    this.loginService.userLogin(this.data).subscribe(
+      response=> {
+          alert(response['msg'])
+      },
+      error =>{
+        console.log("error",error)
+      }
+    )
+  }
+
+
   ngOnInit() {
   }
 
