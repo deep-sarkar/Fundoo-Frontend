@@ -84,40 +84,28 @@ header {
     }  
     #sign-in {
         background-color: white;
-        a{
-        color: #4285f4;
-        }
-        &:hover{
-            background-color: #b6cdf1;
-        }
+        color: #015ef3;
+        width: 60%;
     }
     button{
-        height: 50px;
-        // width: 50%;
+        height: 45px;
         border:none;
         border-radius: 3px;
-        a {
-            text-decoration: none;
-            // font-size: 2em;
-        }
     }
     #register {
         background-color: #4285f4;
-        a {
-            color: white;
-        }
-        &:hover{
-            background-color: #015ef3;
-        }
+        color: white;
     }
 }
 @media only screen and (max-width:800px){
     .main-container{
-        @include responsive()
+        @include responsive();
     }
+    
     .registration-form .wrapper{
         @include responsive();
         justify-items: center;
+        
 
         >li{
             width: 100%;
