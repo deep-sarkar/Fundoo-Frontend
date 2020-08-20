@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginComponent } from './components/login/login.component';
 import { RouterModule, Routes } from '@angular/router';
+import { RegisterService } from './services/accountServices/register.service';
 
 const fundooRoutes: Routes=[
   {path:"register", component:RegistrationComponent},
@@ -35,9 +36,9 @@ const fundooRoutes: Routes=[
     ReactiveFormsModule,
     FormsModule,
     MatButtonModule,
-    RouterModule.forRoot(fundooRoutes)
+    RouterModule.forRoot(fundooRoutes),
   ],
-  providers: [],
+  providers: [RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
