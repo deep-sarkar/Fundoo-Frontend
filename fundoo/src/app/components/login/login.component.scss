@@ -81,9 +81,6 @@ header {
     &>li:nth-child(4){
         align-self: flex-start;
         margin-top:9% ;
-        a{
-            text-decoration: none;
-        }
     }
     &>li:nth-child(5){
         align-self: flex-end;
@@ -95,7 +92,7 @@ header {
     }
     button{
         border-radius: 3px;
-        }
+    }
 }
 
 @media only screen and (max-width:700px){
@@ -111,7 +108,6 @@ header {
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 1.2em;
         &>li:nth-child(4){
             align-self: center;
             position: relative;
