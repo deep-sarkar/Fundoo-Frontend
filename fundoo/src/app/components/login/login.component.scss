@@ -99,6 +99,7 @@ header {
     .main-container{
         @include responsive();
         height:auto;
+        font-size: 1.5em;
     }
     .logo, header{
         @include responsive();
@@ -108,15 +109,18 @@ header {
         display: flex;
         justify-content: center;
         align-items: center;
+        li button {
+            font-size: .6em;
+        }
         &>li:nth-child(4){
             align-self: center;
             position: relative;
-            top: -3vh;
+            top: -2vh;
         }
         &>li:nth-child(5){
             align-self: center;
             position: relative;
-            top: -1vh;
+            top: .5vh;
         }
     }
 }
