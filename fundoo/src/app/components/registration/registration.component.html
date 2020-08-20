@@ -12,36 +12,42 @@
                 <mat-form-field appearance="outline">
                     <mat-label>First Name</mat-label>
                     <input matInput placeholder="first name" [formControl]="first_name">
+                    <mat-error *ngIf="first_name.invalid" >{{ firstNameErrorMsg() }}</mat-error>
                 </mat-form-field>
             </li>
             <li>
                 <mat-form-field appearance="outline">
                     <mat-label>Last Name</mat-label>
                     <input matInput placeholder="last name" [formControl]="last_name">
+                    <mat-error *ngIf="last_name.invalid" >{{ lastNameErrorMsg() }}</mat-error>
                 </mat-form-field>
             </li>
             <li>
                 <mat-form-field appearance="outline">
                     <mat-label>Username</mat-label>
-                    <input matInput placeholder="username" [formControl]="username" required>
+                    <input matInput placeholder="username" [formControl]="username">
+                    <mat-error *ngIf="username.invalid" >{{ usernameErrorMsg() }}</mat-error>
                 </mat-form-field>
             </li>
             <li>
                 <mat-form-field appearance="outline">
                     <mat-label>Email</mat-label>
-                    <input matInput placeholder="email" [formControl]="email" required>
+                    <input matInput placeholder="email" [formControl]="email">
+                    <mat-error *ngIf="email.invalid" >{{ emailErrorMsg() }}</mat-error>
                 </mat-form-field>
             </li>
             <li>
                 <mat-form-field appearance="outline">
                     <mat-label>Password</mat-label>
-                    <input matInput placeholder="password" [formControl]="password" type="password" required>
+                    <input matInput placeholder="password" [formControl]="password" type="password">
+                    <mat-error *ngIf="password.invalid" >{{ passwordErrorMsg() }}</mat-error>
                 </mat-form-field>
             </li>
             <li>
                 <mat-form-field appearance="outline">
                     <mat-label>Confirm</mat-label>
-                    <input matInput placeholder="confirm" [formControl]="confirm_password" type="password" required>
+                    <input matInput placeholder="confirm" [formControl]="confirm_password" type="password">
+                    <mat-error *ngIf="confirm_password.invalid" >{{ confirm_passwordErrorMsg() }}</mat-error>
                 </mat-form-field>
             </li>
             <li>
@@ -50,7 +56,7 @@
                 </button>
             </li>
             <li>
-                <button mat-button id="register" type="submit">
+                <button mat-button id="register" type="submit" (click)="passwordMatchError()">
                     Register
                 </button>
             </li>
