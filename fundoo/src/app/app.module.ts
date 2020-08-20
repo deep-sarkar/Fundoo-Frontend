@@ -11,6 +11,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginComponent } from './components/login/login.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const fundooRoutes: Routes=[
+  {path:"register", component:RegistrationComponent},
+  {path:"login", component:LoginComponent}
+]
+
 
 @NgModule({
   declarations: [
@@ -27,7 +34,8 @@ import { LoginComponent } from './components/login/login.component';
     MatFormFieldModule,
     ReactiveFormsModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule.forRoot(fundooRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
