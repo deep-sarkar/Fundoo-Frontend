@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { RegisterService } from 'src/app/services/accountServices/register.service';
 
 @Component({
   selector: 'app-registration',
@@ -42,7 +43,8 @@ export class RegistrationComponent implements OnInit {
   [
     Validators.required
   ]);
-
+  userData:object;
+  
   firstNameErrorMsg(){
     return this.first_name.hasError('required')?"enter first name":
     this.first_name.hasError('pattern')?"atlest 3 charecters & alphabet only":"";
@@ -73,13 +75,34 @@ export class RegistrationComponent implements OnInit {
     return this.password.hasError('required')?"please confirm password":""
   }
 
-  passwordMatchError(){
+  constructor(private register: RegisterService) { }
+
+  registerNewUser(){
     if (this.password.value != this.confirm_password.value){
       alert("Password didn't matched ")
     }
+    else{
+      this.userData = {
+        first_name:this.first_name.value,
+        last_name:this.last_name.value,
+        username:this.username.value,
+        email:this.email.value,
+        password:this.password.value,
+        confirm_password:this.confirm_password.value
+      }
+      console.log(this.userData)
+      this.register.registerNewUser(this.userData).subscribe(
+        (response) =>{
+          if(response){
+          alert(response['msg'])
+        }else{
+          console.log("error")
+        }
+        },
+        
+      )
+    }
   }
-
-  constructor() { }
 
   ngOnInit() {
   }
