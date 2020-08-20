@@ -11,37 +11,37 @@
             <li>
                 <mat-form-field appearance="outline">
                     <mat-label>First Name</mat-label>
-                    <input matInput placeholder="first name" [formControl]="firstName">
+                    <input matInput placeholder="first name" [formControl]="first_name">
                 </mat-form-field>
             </li>
             <li>
                 <mat-form-field appearance="outline">
                     <mat-label>Last Name</mat-label>
-                    <input matInput placeholder="last name" [formControl]="lastName">
+                    <input matInput placeholder="last name" [formControl]="last_name">
                 </mat-form-field>
             </li>
             <li>
                 <mat-form-field appearance="outline">
                     <mat-label>Username</mat-label>
-                    <input matInput placeholder="username" [formControl]="username">
+                    <input matInput placeholder="username" [formControl]="username" required>
                 </mat-form-field>
             </li>
             <li>
                 <mat-form-field appearance="outline">
                     <mat-label>Email</mat-label>
-                    <input matInput placeholder="email" [formControl]="email">
+                    <input matInput placeholder="email" [formControl]="email" required>
                 </mat-form-field>
             </li>
             <li>
                 <mat-form-field appearance="outline">
                     <mat-label>Password</mat-label>
-                    <input matInput placeholder="password" [formControl]="password">
+                    <input matInput placeholder="password" [formControl]="password" type="password" required>
                 </mat-form-field>
             </li>
             <li>
                 <mat-form-field appearance="outline">
                     <mat-label>Confirm</mat-label>
-                    <input matInput placeholder="confirm" [formControl]="confirm">
+                    <input matInput placeholder="confirm" [formControl]="confirm_password" type="password" required>
                 </mat-form-field>
             </li>
             <li>

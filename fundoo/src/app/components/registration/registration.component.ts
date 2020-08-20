@@ -9,13 +9,12 @@ import { FormControl } from '@angular/forms';
 export class RegistrationComponent implements OnInit {
 
   constructor() { }
-  name = new FormControl('');
-  firstName = new FormControl('');
-  lastName = new FormControl('');
+  first_name = new FormControl('');
+  last_name = new FormControl('');
   username = new FormControl('');
   email = new FormControl('');
   password = new FormControl('');
-  confirm = new FormControl('');
+  confirm_password = new FormControl('');
 
 
   ngOnInit() {
