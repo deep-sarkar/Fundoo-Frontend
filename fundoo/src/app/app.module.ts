@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { LoginComponent } from './components/login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterService } from './services/accountServices/register.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const fundooRoutes: Routes=[
   {path:"register", component:RegistrationComponent},
@@ -37,6 +38,7 @@ const fundooRoutes: Routes=[
     FormsModule,
     MatButtonModule,
     RouterModule.forRoot(fundooRoutes),
+    HttpClientModule
   ],
   providers: [RegisterService],
   bootstrap: [AppComponent]
