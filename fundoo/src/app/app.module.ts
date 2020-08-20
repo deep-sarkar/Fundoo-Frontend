@@ -14,6 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterService } from './services/accountServices/register.service';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginService } from './services/accountServices/login.service';
 
 const fundooRoutes: Routes=[
   {path:"register", component:RegistrationComponent},
@@ -40,7 +41,10 @@ const fundooRoutes: Routes=[
     RouterModule.forRoot(fundooRoutes),
     HttpClientModule
   ],
-  providers: [RegisterService],
+  providers: [
+    RegisterService,
+    LoginService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
