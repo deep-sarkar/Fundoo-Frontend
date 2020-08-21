@@ -18,6 +18,8 @@ import { LoginService } from './services/accountServices/login.service';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { MatCardModule } from '@angular/material';
 import { ForgotPasswordService } from './services/accountServices/forgot-password.service';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { ValidateFormFieldService } from './services/validationService/validate-form-field.service';
 
 const fundooRoutes: Routes=[
   {path:"register", component:RegistrationComponent},
@@ -32,7 +34,8 @@ const fundooRoutes: Routes=[
     ComponentsComponent,
     RegistrationComponent,
     LoginComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ const fundooRoutes: Routes=[
     RegisterService,
     LoginService,
     ForgotPasswordService,
+    ValidateFormFieldService
   ],
   bootstrap: [AppComponent]
 })
