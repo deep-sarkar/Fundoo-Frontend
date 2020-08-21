@@ -30,6 +30,14 @@ export class ChangePasswordComponent implements OnInit {
     return this._validationService.confirm_passwordErrorMsg(this.confirm_password)
   }
 
+  onSubmit(){
+    if(this.password.value!== this.confirm_password.value){
+      alert("Password didn't matched")
+    }else{
+      
+    }
+  }
+
   ngOnInit() {
   }
 
