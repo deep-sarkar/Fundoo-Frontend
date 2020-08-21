@@ -111,12 +111,17 @@ header {
         li button {
             font-size: .6em;
         }
+        &>li:nth-child(3){
+            font-size: 0.7em;
+        }
         &>li:nth-child(4){
+            font-size: 1.2em;
             align-self: center;
             position: relative;
             top: -2vh;
         }
         &>li:nth-child(5){
+            font-size: 1.2em;
             align-self: center;
             position: relative;
             top: .5vh;
