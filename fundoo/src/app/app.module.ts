@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './services/accountServices/login.service';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { MatCardModule } from '@angular/material';
+import { ForgotPasswordService } from './services/accountServices/forgot-password.service';
 
 const fundooRoutes: Routes=[
   {path:"register", component:RegistrationComponent},
@@ -49,6 +50,7 @@ const fundooRoutes: Routes=[
   providers: [
     RegisterService,
     LoginService,
+    ForgotPasswordService,
   ],
   bootstrap: [AppComponent]
 })
