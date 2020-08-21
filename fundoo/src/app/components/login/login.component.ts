@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { error } from 'console';
 import { LoginService } from 'src/app/services/accountServices/login.service';
+import { ValidateFormFieldService } from 'src/app/services/validationService/validate-form-field.service';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,9 @@ import { LoginService } from 'src/app/services/accountServices/login.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
+  constructor(private loginService:LoginService, 
+    private _validationService:ValidateFormFieldService) { }
 
   username = new FormControl('',[
     Validators.required,
@@ -21,18 +25,16 @@ export class LoginComponent implements OnInit {
   ])
 
   usernameErrorMsg(){
-    return this.username.hasError('required')?"enter username":
-    this.username.hasError('pattern')?"username must have atlest 4 digit, alphabet and numbers accepted only":"";
+    return this._validationService.usernameErrorMsg(this.username)
   }
 
   passwordErrorMsg(){
-    return this.password.hasError('required')?"enter password":
-    this.password.hasError('pattern')?"min. 8 digit alphanumeric only":"";
+    return this._validationService.passwordErrorMsg(this.password)
   }
 
   data:object;
 
-  constructor(private loginService:LoginService) { }
+
 
   loginUser(){
     this.data = {
