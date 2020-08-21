@@ -24,7 +24,8 @@ import { ValidateFormFieldService } from './services/validationService/validate-
 const fundooRoutes: Routes=[
   {path:"register", component:RegistrationComponent},
   {path:"login", component:LoginComponent},
-  {path:"forgot", component:ForgotPasswordComponent}
+  {path:"forgot", component:ForgotPasswordComponent},
+  {path:"changePassword", component:ChangePasswordComponent}
 ]
 
 
