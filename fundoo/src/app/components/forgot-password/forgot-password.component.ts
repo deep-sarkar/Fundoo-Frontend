@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { error } from 'console';
 import { ForgotPasswordService } from 'src/app/services/accountServices/forgot-password.service';
 import { RegisterService } from 'src/app/services/accountServices/register.service';
+import { ValidateFormFieldService } from 'src/app/services/validationService/validate-form-field.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -10,6 +11,9 @@ import { RegisterService } from 'src/app/services/accountServices/register.servi
   styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent implements OnInit {
+
+  constructor(private sendmail:ForgotPasswordService,
+    private _validationService:ValidateFormFieldService) { }
 
   email = new FormControl("",[
     Validators.required,
@@ -19,11 +23,8 @@ export class ForgotPasswordComponent implements OnInit {
   recoveryMail:object;
 
   emailErrorMsg(){
-    return this.email.hasError('required')?"Please enter email for recovery.":
-      this.email.hasError('email')?"enter valid email.":"please check your email after submit"
+    return this._validationService.emailErrorMsg(this.email)
   }
-
-  constructor(private sendmail:ForgotPasswordService) { }
 
   sendMail(){
     this.recoveryMail = {email:this.email.value};
