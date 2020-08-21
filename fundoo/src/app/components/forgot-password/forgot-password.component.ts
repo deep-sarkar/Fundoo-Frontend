@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { error } from 'console';
-import { ForgotPasswordService } from 'src/app/services/accountServices/forgot-password.service';
-import { RegisterService } from 'src/app/services/accountServices/register.service';
+import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
 import { ValidateFormFieldService } from 'src/app/services/validationService/validate-form-field.service';
 
 @Component({
@@ -12,8 +10,10 @@ import { ValidateFormFieldService } from 'src/app/services/validationService/val
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  constructor(private sendmail:ForgotPasswordService,
-    private _validationService:ValidateFormFieldService) { }
+  constructor(
+    private _httpService:AccountHttpService,
+    private _validationService:ValidateFormFieldService
+    ) { }
 
   email = new FormControl("",[
     Validators.required,
@@ -28,7 +28,8 @@ export class ForgotPasswordComponent implements OnInit {
 
   sendMail(){
     this.recoveryMail = {email:this.email.value};
-    return this.sendmail.sendRecoveryMail(this.recoveryMail).subscribe(
+    return this._httpService.sendRecoveryMail(this.recoveryMail)
+    .subscribe(
       response => {
         console.log(response);
         alert(response['msg']);

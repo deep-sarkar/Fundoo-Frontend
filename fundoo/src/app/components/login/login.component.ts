@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { error } from 'console';
-import { LoginService } from 'src/app/services/accountServices/login.service';
+import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
 import { ValidateFormFieldService } from 'src/app/services/validationService/validate-form-field.service';
 
 @Component({
@@ -11,8 +11,10 @@ import { ValidateFormFieldService } from 'src/app/services/validationService/val
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService:LoginService, 
-    private _validationService:ValidateFormFieldService) { }
+  constructor(
+    private _httpService:AccountHttpService, 
+    private _validationService:ValidateFormFieldService
+    ) { }
 
   username = new FormControl('',[
     Validators.required,
@@ -41,7 +43,8 @@ export class LoginComponent implements OnInit {
       username:this.username.value,
       password:this.password.value
     }
-    this.loginService.userLogin(this.data).subscribe(
+    this._httpService.userLogin(this.data)
+    .subscribe(
       response=> {
           alert(response['msg'])
       },

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
 import { ValidateFormFieldService } from 'src/app/services/validationService/validate-form-field.service';
 
 @Component({
@@ -9,7 +10,12 @@ import { ValidateFormFieldService } from 'src/app/services/validationService/val
 })
 export class ChangePasswordComponent implements OnInit {
 
-  constructor(private _validationService:ValidateFormFieldService) { }
+  constructor(
+    private _validationService:ValidateFormFieldService,
+    private _httpService:AccountHttpService
+    ) { }
+
+    data:object;
 
   password = new FormControl('',
   [
@@ -34,7 +40,21 @@ export class ChangePasswordComponent implements OnInit {
     if(this.password.value!== this.confirm_password.value){
       alert("Password didn't matched")
     }else{
-      
+      this.data = {
+        password:this.password.value,
+        confirm_password:this.confirm_password.value
+      }
+      console.log(this.data)
+      this._httpService.changePassword(this.data)
+      .subscribe(
+        response => {
+          console.log(response)
+          alert(response['msg'])
+        },
+        error=>{
+          console.log("error",error)
+        }
+      )
     }
   }
 

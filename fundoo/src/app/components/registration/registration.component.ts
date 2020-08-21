@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { RegisterService } from 'src/app/services/accountServices/register.service';
+import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
 import { ValidateFormFieldService } from 'src/app/services/validationService/validate-form-field.service';
 
 @Component({
@@ -46,7 +46,10 @@ export class RegistrationComponent implements OnInit {
   ]);
   userData:object;
   
-  constructor(private register: RegisterService, private _validationService:ValidateFormFieldService) { }
+  constructor(
+    private _httpServivr:AccountHttpService, 
+    private _validationService:ValidateFormFieldService
+    ) { }
 
   firstNameErrorMsg(){
     return this._validationService.firstNameErrorMsg(this.first_name)
@@ -86,7 +89,8 @@ export class RegistrationComponent implements OnInit {
         confirm_password:this.confirm_password.value
       }
       // console.log(this.userData)
-      this.register.registerNewUser(this.userData).subscribe(
+      this._httpServivr.registerNewUser(this.userData)
+      .subscribe(
         (response) =>{
           alert(response['msg'])
         },
