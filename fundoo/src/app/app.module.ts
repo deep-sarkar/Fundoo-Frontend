@@ -12,14 +12,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginComponent } from './components/login/login.component';
 import { RouterModule, Routes } from '@angular/router';
-import { RegisterService } from './services/accountServices/register.service';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginService } from './services/accountServices/login.service';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { MatCardModule } from '@angular/material';
-import { ForgotPasswordService } from './services/accountServices/forgot-password.service';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { ValidateFormFieldService } from './services/validationService/validate-form-field.service';
+import { AccountHttpService } from './services/accountServices/account-http.service';
 
 const fundooRoutes: Routes=[
   {path:"register", component:RegistrationComponent},
@@ -52,9 +50,7 @@ const fundooRoutes: Routes=[
     MatCardModule
   ],
   providers: [
-    RegisterService,
-    LoginService,
-    ForgotPasswordService,
+    AccountHttpService,
     ValidateFormFieldService
   ],
   bootstrap: [AppComponent]
