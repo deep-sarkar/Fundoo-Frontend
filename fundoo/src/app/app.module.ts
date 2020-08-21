@@ -15,10 +15,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterService } from './services/accountServices/register.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './services/accountServices/login.service';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { MatCardModule } from '@angular/material';
 
 const fundooRoutes: Routes=[
   {path:"register", component:RegistrationComponent},
-  {path:"login", component:LoginComponent}
+  {path:"login", component:LoginComponent},
+  {path:"forgot", component:ForgotPasswordComponent}
 ]
 
 
@@ -27,7 +30,8 @@ const fundooRoutes: Routes=[
     AppComponent,
     ComponentsComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,8 @@ const fundooRoutes: Routes=[
     FormsModule,
     MatButtonModule,
     RouterModule.forRoot(fundooRoutes),
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule
   ],
   providers: [
     RegisterService,
