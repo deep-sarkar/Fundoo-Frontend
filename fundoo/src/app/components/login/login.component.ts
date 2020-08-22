@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { error } from 'console';
 import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
 import { ValidateFormFieldService } from 'src/app/services/validationService/validate-form-field.service';
 
@@ -46,7 +45,10 @@ export class LoginComponent implements OnInit {
     this._httpService.userLogin(this.data)
     .subscribe(
       response=> {
-          alert(response['msg'])
+          alert(response['msg']);
+          localStorage.setItem('token',response['token'])
+          let token = localStorage.getItem('token')
+          console.log(token)
       },
       error =>{
         console.log("error",error)
