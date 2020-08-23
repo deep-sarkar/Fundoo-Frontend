@@ -6,6 +6,8 @@
 
 .mat-toolbar{
     background-color: #202124 ;
+    display: flex;
+    justify-content: space-between;
     .mat-icon {
         color: #e8eaed;
         font-size: 1.7em;
