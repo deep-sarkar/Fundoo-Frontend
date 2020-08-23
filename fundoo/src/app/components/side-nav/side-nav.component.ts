@@ -1,3 +1,4 @@
+import { tokenName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,6 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class SideNavComponent implements OnInit {
 
   constructor() { }
+
+  logout(){
+    localStorage.removeItem('token')
+    let token=localStorage.getItem('token')
+    console.log('token',token)
+    console.log("success")
+  }
 
   ngOnInit() {
   }
