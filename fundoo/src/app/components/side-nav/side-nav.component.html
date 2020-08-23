@@ -1,0 +1,21 @@
+<div class="main-container">
+    <mat-toolbar>
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <mat-sidenav-container>
+        <mat-sidenav 
+        #sidenav mode="push" 
+        [fixedInViewport]="true"
+        fixedTopGap="64.4">
+            <button mat-button >Notes</button>
+            <button mat-button >Reminder</button>
+            <button mat-button >Label</button>
+            <button mat-button >Pin</button>
+            <button mat-button >Archives</button>
+            <button mat-button >Trash</button>
+        </mat-sidenav>
+    </mat-sidenav-container>
+</div>
