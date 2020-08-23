@@ -27,6 +27,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 // services
 import { ValidateFormFieldService } from './services/validationService/validate-form-field.service';
 import { AccountHttpService } from './services/accountServices/account-http.service';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 
 const fundooRoutes: Routes=[
@@ -35,7 +36,8 @@ const fundooRoutes: Routes=[
   {path:"forgot", component:ForgotPasswordComponent},
   {path:"changePassword", component:ChangePasswordComponent},
   {path:"", component:SideNavComponent},
-  {path:"activate/:surl", component:ActivateAccountComponent}
+  {path:"activate/:surl", component:ActivateAccountComponent},
+  {path:"resetPassword/:surl", component:ResetPasswordComponent}
 ]
 
 
@@ -48,7 +50,8 @@ const fundooRoutes: Routes=[
     ForgotPasswordComponent,
     ChangePasswordComponent,
     SideNavComponent,
-    ActivateAccountComponent
+    ActivateAccountComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
