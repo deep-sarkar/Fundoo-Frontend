@@ -40,4 +40,9 @@ export class AccountHttpService {
     const headers = new HttpHeaders().set('content-type', 'application/json');
     return this._http.post(this.baseUrl + "register/", userData)
   }
+
+  activateAccount(surl){
+    const headers = new HttpHeaders().set('content-type', 'application/json');
+    return this._http.get(this.baseUrl + "activate/"+surl)
+  }
 }
