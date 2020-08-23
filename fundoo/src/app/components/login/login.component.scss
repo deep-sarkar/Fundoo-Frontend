@@ -102,7 +102,7 @@ header {
     }
     .logo, header{
         @include responsive();
-        align-items: flex-start;
+        // align-items: flex-start;
     }
     .login-div .wrapper{
         display: flex;
