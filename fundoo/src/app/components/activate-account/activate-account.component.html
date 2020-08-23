@@ -1,0 +1,10 @@
+<div class="main-div">
+    <mat-card *ngIf="userStatus">
+        <p>Thank you for registering with us.</p>
+        <p>Your account is <span>ACTIVE</span> now.</p>
+    </mat-card>
+    <mat-card *ngIf="!userStatus">
+        <p style="color: red;">Something is wrong!!!</p>
+        <p>Your account is <span style="color: red;">NOT ACTIVE</span> yet.</p>
+    </mat-card>
+</div>
