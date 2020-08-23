@@ -13,6 +13,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { LoginComponent } from './components/login/login.component';
+import { ActivateAccountComponent } from './components/activate-account/activate-account.component';
 // Material
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -21,6 +22,8 @@ import { MatCardModule } from '@angular/material';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 // services
 import { ValidateFormFieldService } from './services/validationService/validate-form-field.service';
 import { AccountHttpService } from './services/accountServices/account-http.service';
@@ -31,7 +34,8 @@ const fundooRoutes: Routes=[
   {path:"login", component:LoginComponent},
   {path:"forgot", component:ForgotPasswordComponent},
   {path:"changePassword", component:ChangePasswordComponent},
-  {path:"", component:SideNavComponent}
+  {path:"", component:SideNavComponent},
+  {path:"activate/:surl", component:ActivateAccountComponent}
 ]
 
 
@@ -43,7 +47,8 @@ const fundooRoutes: Routes=[
     LoginComponent,
     ForgotPasswordComponent,
     ChangePasswordComponent,
-    SideNavComponent
+    SideNavComponent,
+    ActivateAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +64,9 @@ const fundooRoutes: Routes=[
     MatCardModule,
     MatSidenavModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSnackBarModule
+  
   ],
   providers: [
     AccountHttpService,
