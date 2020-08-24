@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
 import { ValidateFormFieldService } from 'src/app/services/validationService/validate-form-field.service';
 
@@ -12,7 +13,8 @@ export class ForgotPasswordComponent implements OnInit {
 
   constructor(
     private _httpService:AccountHttpService,
-    private _validationService:ValidateFormFieldService
+    private _validationService:ValidateFormFieldService,
+    private _snakeBar:MatSnackBar
     ) { }
 
   email = new FormControl("",[
@@ -32,7 +34,7 @@ export class ForgotPasswordComponent implements OnInit {
     .subscribe(
       response => {
         console.log(response);
-        alert(response['msg']);
+        this._snakeBar.open(response['msg'],'exit',{duration:5000})
       },
       error =>{
         console.log("error",error)
