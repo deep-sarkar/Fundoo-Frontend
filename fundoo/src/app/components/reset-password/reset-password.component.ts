@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
-import { error } from 'console';
 import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
 import { ValidateFormFieldService } from 'src/app/services/validationService/validate-form-field.service';
 
