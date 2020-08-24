@@ -56,7 +56,9 @@
                 </button>
             </li>
             <li>
-                <button mat-button id="register" type="submit" (click)="registerNewUser()">
+                <button mat-button id="register" type="submit" (click)="registerNewUser()" 
+                [disabled]="!(first_name.valid && last_name.valid && username.valid &&
+                 email.valid && password.valid && confirm_password.valid)">
                     Register
                 </button>
             </li>

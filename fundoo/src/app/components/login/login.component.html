@@ -31,7 +31,8 @@
                 </button>
             </li>
             <li>
-                <button mat-button type="submit" id="login" (click)="loginUser()">
+                <button mat-button type="submit" id="login" (click)="loginUser()"
+                [disabled]="!(username.valid && password.valid)">
                     Login
                 </button>
             </li>
