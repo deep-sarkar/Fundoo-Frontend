@@ -29,6 +29,7 @@ import { ValidateFormFieldService } from './services/validationService/validate-
 import { AccountHttpService } from './services/accountServices/account-http.service';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { UtilityService } from './services/utilityService/utility.service';
+import { GenericService } from './services/genericService/generic.service';
 
 
 const fundooRoutes: Routes=[
@@ -75,7 +76,8 @@ const fundooRoutes: Routes=[
   providers: [
     AccountHttpService,
     ValidateFormFieldService,
-    UtilityService
+    UtilityService,
+    GenericService
   ],
   bootstrap: [AppComponent]
 })
