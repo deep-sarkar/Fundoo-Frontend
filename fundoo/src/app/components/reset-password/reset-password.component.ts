@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
+import { UtilityService } from 'src/app/services/utilityService/utility.service';
 import { ValidateFormFieldService } from 'src/app/services/validationService/validate-form-field.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class ResetPasswordComponent implements OnInit {
   constructor( 
     private _httpService:AccountHttpService,
     private _route:ActivatedRoute,
-    private _snakeBar:MatSnackBar,
+    private _snackBar:UtilityService,
     private _validationService:ValidateFormFieldService,
     ) { }
 
@@ -69,7 +69,11 @@ export class ResetPasswordComponent implements OnInit {
     this._httpService.resetPassword(this.surl, this.data)
     .subscribe(
       response =>{
-        this._snakeBar.open(response['msg'],'exit',{duration:5000})
+        if(response['code']===200){
+          this._snackBar.snackBarMessage('Password changed !!!')
+        }else{
+          this._snackBar.snackBarMessage(response['msg'])
+        }
       },
       error=>{
         console.log("error",error)

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
 import { ActivatedRoute } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { UtilityService } from 'src/app/services/utilityService/utility.service';
 
 @Component({
   selector: 'app-activate-account',
@@ -13,7 +13,7 @@ export class ActivateAccountComponent implements OnInit {
   constructor( 
     private _httpService:AccountHttpService,
     private _route:ActivatedRoute,
-    private _snakeBar:MatSnackBar
+    private _snackBar:UtilityService
     ) { }
 
     surl:string;
@@ -28,9 +28,9 @@ export class ActivateAccountComponent implements OnInit {
         response =>{
           if(response['code'] === 200){
             this.userStatus = true
+          }else{
+            this._snackBar.snackBarMessage(response['msg'])
           }
-          this._snakeBar.open(response['msg'],"exit",{duration:4000})
-          
         },
         error =>{
           console.log("error", error)

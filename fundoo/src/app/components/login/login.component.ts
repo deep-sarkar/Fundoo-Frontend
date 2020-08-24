@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
 import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
+import { UtilityService } from 'src/app/services/utilityService/utility.service';
 import { ValidateFormFieldService } from 'src/app/services/validationService/validate-form-field.service';
 
 @Component({
@@ -11,10 +11,12 @@ import { ValidateFormFieldService } from 'src/app/services/validationService/val
 })
 export class LoginComponent implements OnInit {
 
+  data:object;
+
   constructor(
     private _httpService:AccountHttpService, 
     private _validationService:ValidateFormFieldService,
-    private _snakeBar:MatSnackBar
+    private _snackBar:UtilityService
     ) { }
 
   username = new FormControl('',[
@@ -35,10 +37,6 @@ export class LoginComponent implements OnInit {
     return this._validationService.passwordErrorMsg(this.password)
   }
 
-  data:object;
-
-
-
   loginUser(){
     this.data = {
       username:this.username.value,
@@ -47,8 +45,12 @@ export class LoginComponent implements OnInit {
     this._httpService.userLogin(this.data)
     .subscribe(
       response=> {
-          this._snakeBar.open(response['msg'],'exit',{duration:5000})
+        if(response['code']===200){
+          this._snackBar.snackBarMessage("Hello , "+this.username.value)
           localStorage.setItem('token',response['token'])
+        }else{
+          this._snackBar.snackBarMessage(response['msg'])
+        }  
       },
       error =>{
         console.log("error",error)
