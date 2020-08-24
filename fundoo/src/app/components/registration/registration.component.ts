@@ -10,6 +10,11 @@ import { ValidateFormFieldService } from 'src/app/services/validationService/val
 })
 export class RegistrationComponent implements OnInit {
 
+  constructor(
+    private _httpServivr:AccountHttpService, 
+    private _validationService:ValidateFormFieldService
+    ) { }
+    
   first_name = new FormControl('',
   [
     Validators.required,
@@ -46,10 +51,6 @@ export class RegistrationComponent implements OnInit {
   ]);
   userData:object;
   
-  constructor(
-    private _httpServivr:AccountHttpService, 
-    private _validationService:ValidateFormFieldService
-    ) { }
 
   firstNameErrorMsg(){
     return this._validationService.firstNameErrorMsg(this.first_name)
