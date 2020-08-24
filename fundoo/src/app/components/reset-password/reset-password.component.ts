@@ -66,7 +66,7 @@ export class ResetPasswordComponent implements OnInit {
     }
     console.log(this.data)
     console.log(this.surl)
-    this._httpService.resetPassword(this.surl, this.data)
+    this._httpService.resetPassword(this.data)
     .subscribe(
       response =>{
         if(response['code']===200){
