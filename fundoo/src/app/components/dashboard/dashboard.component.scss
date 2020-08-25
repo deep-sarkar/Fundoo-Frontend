@@ -4,13 +4,14 @@
     box-sizing: border-box;
 }
 
-$backgroundColor :#e8eaed;
+$backgroundColor :#ffffff;
 $textColor :#202124;
 
 .mat-toolbar{
     background-color: $backgroundColor ;
     display: flex;
     justify-content: space-between;
+    border: 1px solid #e0dddd;
     .mat-icon {
         color: $textColor;
         font-size: 1.7em;
@@ -30,6 +31,9 @@ $textColor :#202124;
     }
 }
 @media only screen and (max-width:800px){
+    .mat-toolbar{
+        height: 64px;
+    }
     .mat-sidenav-container{
         .mat-sidenav{
             width: 80%;
