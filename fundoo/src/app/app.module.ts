@@ -54,7 +54,12 @@ const fundooRoutes: Routes=[
   {path:"changePassword", component:ChangePasswordComponent},
   {path:"activate/:surl", component:ActivateAccountComponent},
   {path:"resetPassword/:surl", component:ResetPasswordComponent},
-  {path:"", component:DashboardComponent},
+  {
+    path:"", component:DashboardComponent,
+    children:[
+      {path:"create", component:CreateNoteComponent}
+  ]
+  },
 ]
 
 
