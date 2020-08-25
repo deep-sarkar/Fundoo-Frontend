@@ -1,0 +1,94 @@
+$backgroundColor :#e8eaed;
+$textColor :#202124;
+
+@mixin columeFlex {
+    display: flex;
+    flex-direction: column;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;;
+}
+
+.outer-div{
+    @include columeFlex();
+    width: 45%;
+    margin: 2% auto;
+    background-color: inherit ;
+    .card{
+        margin: 1%;
+        padding: 2%;
+        box-shadow: 1px 1px 5px gray;
+        .card-title{
+            margin: 1% 0%;
+            #title{
+                width: 100%;
+                height: 2rem;
+                font-size: 1.1rem;
+                border: none;
+                padding: 0 1%;
+            }
+            #title:focus{
+                outline: transparent;
+            }
+        }
+        textarea{
+            padding: 1%;
+            width: 100%;  
+            border: transparent;
+            letter-spacing: .015em;
+            font-family: Roboto,Arial,sans-serif;
+            color: $textColor;
+        }
+        textarea:focus{
+            outline: transparent;
+        }
+        textarea::-webkit-scrollbar {
+            width: 5px;
+        }
+          
+        /* Track */
+        textarea::-webkit-scrollbar-track {
+          border-radius: 5px;
+        }
+
+        /* Track hover */
+        textarea::-webkit-scrollbar-track:hover {
+          box-shadow: inset 0px 0px 5px rgb(211, 211, 211);
+        }
+           
+        /* Handle */
+        textarea::-webkit-scrollbar-thumb {
+          background: rgb(206, 206, 206); 
+            border-radius: 5px;
+        }
+          
+        /* Handle on hover */
+        textarea::-webkit-scrollbar-thumb:hover {
+          background: #888;
+        }
+        .action{
+            display: flex;
+            padding: 2%;
+            border: 1px solid green;
+            button{
+                background-color: inherit;
+                border: none;
+                align-self: flex-end;
+            }
+            button:focus{
+                outline: transparent;
+            }
+        }
+    }
+        
+}
+@media only screen and (max-width:400px){
+    .outer-div{
+        width: 90%;
+        margin: auto;
+    }
+}

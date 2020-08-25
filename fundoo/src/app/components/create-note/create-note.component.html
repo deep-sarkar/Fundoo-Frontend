@@ -1,0 +1,16 @@
+<div class="outer-div">
+    <mat-card class="card" *ngIf="!cardOpen" (click)=" cardOpenClose()">
+        <mat-card-title class="card-title">
+            <input type="text" placeholder="Title" id="title" autocomplete="off">
+        </mat-card-title>
+    </mat-card>
+    <mat-card class="card" *ngIf="cardOpen">
+        <mat-card-title class="card-title">
+            <input type="text" placeholder="Title" id="title" autocomplete="off">
+        </mat-card-title>
+        <textarea cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="25" placeholder="Take a note..."></textarea>
+        <mat-card-actions class="action">
+            <button (click)="cardOpenClose()">close</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
