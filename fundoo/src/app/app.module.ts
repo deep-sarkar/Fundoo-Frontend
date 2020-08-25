@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TextFieldModule } from '@angular/cdk/text-field';
 // Component
 import { AppComponent } from './app.component';
 import { ComponentsComponent } from './components/components.component';
@@ -14,6 +15,9 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { LoginComponent } from './components/login/login.component';
 import { ActivateAccountComponent } from './components/activate-account/activate-account.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { CreateNoteComponent } from './components/create-note/create-note.component';
+
 // Material
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -27,7 +31,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 // services
 import { ValidateFormFieldService } from './services/validationService/validate-form-field.service';
 import { AccountHttpService } from './services/accountServices/account-http.service';
-import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { UtilityService } from './services/utilityService/utility.service';
 import { GenericService } from './services/genericService/generic.service';
 
@@ -37,9 +40,10 @@ const fundooRoutes: Routes=[
   {path:"login", component:LoginComponent},
   {path:"forgot", component:ForgotPasswordComponent},
   {path:"changePassword", component:ChangePasswordComponent},
-  {path:"", component:SideNavComponent},
+  {path:"nav", component:SideNavComponent},
   {path:"activate/:surl", component:ActivateAccountComponent},
-  {path:"resetPassword/:surl", component:ResetPasswordComponent}
+  {path:"resetPassword/:surl", component:ResetPasswordComponent},
+  {path:"", component:CreateNoteComponent}
 ]
 
 
@@ -53,7 +57,8 @@ const fundooRoutes: Routes=[
     ChangePasswordComponent,
     SideNavComponent,
     ActivateAccountComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    CreateNoteComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +75,8 @@ const fundooRoutes: Routes=[
     MatSidenavModule,
     MatIconModule,
     MatToolbarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    TextFieldModule
   
   ],
   providers: [
