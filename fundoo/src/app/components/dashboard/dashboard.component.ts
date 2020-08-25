@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _router:Router) { }
 
   logout(){
     localStorage.removeItem('token')
@@ -16,7 +17,12 @@ export class DashboardComponent implements OnInit {
     console.log("success")
   }
 
+  createNote(){
+    this._router.navigate(['create'])
+  }
+
   ngOnInit() {
+    this.createNote()
   }
 
 }
