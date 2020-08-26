@@ -12,7 +12,7 @@ import { ValidateFormFieldService } from 'src/app/services/validationService/val
 export class RegistrationComponent implements OnInit {
 
   constructor(
-    private _httpServivr:AccountHttpService, 
+    private _httpServis:AccountHttpService, 
     private _validationService:ValidateFormFieldService,
     private _snackBar:UtilityService
     ) { }
@@ -92,7 +92,7 @@ export class RegistrationComponent implements OnInit {
         confirm_password:this.confirm_password.value
       }
       // console.log(this.userData)
-      this._httpServivr.registerNewUser(this.userData)
+      this._httpServis.registerNewUser(this.userData)
       .subscribe(
         (response) =>{
           if(response['code']===201){
