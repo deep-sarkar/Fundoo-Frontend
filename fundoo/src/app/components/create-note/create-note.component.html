@@ -6,9 +6,9 @@
     </mat-card>
     <mat-card class="card" *ngIf="cardOpen">
         <mat-card-title class="card-title">
-            <input type="text" placeholder="Title" id="title" autocomplete="off">
+            <input type="text" [formControl]="title" placeholder="Title" id="title" autocomplete="off">
         </mat-card-title>
-        <textarea cdkTextareaAutosize cdkAutosizeMinRows="3" cdkAutosizeMaxRows="25" placeholder="Take a note..."></textarea>
+        <textarea [formControl]="noteBody" cdkTextareaAutosize cdkAutosizeMinRows="3" cdkAutosizeMaxRows="25" placeholder="Take a note..."></textarea>
         <mat-card-actions class="action">
             <app-icon-reminder class="icon-component"></app-icon-reminder>
             <app-icon-collaborator class="icon-component"></app-icon-collaborator>
@@ -20,3 +20,4 @@
         </mat-card-actions>
     </mat-card>
 </div>
+<app-display-note></app-display-note>
