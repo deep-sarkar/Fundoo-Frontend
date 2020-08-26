@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  accountUrl:"http://127.0.0.1:8000/accounts/"
+  accountUrl:"http://127.0.0.1:8000/accounts/",
+  notesUrl:"http://127.0.0.1:8000/notes/",
 };
 
 /*
