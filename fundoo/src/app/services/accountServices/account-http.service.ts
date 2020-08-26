@@ -11,6 +11,7 @@ export class AccountHttpService {
   constructor(private _http:GenericService) { }
   
   baseUrl = environment.accountUrl
+  noteUrl = environment.notesUrl
 
   token = localStorage.getItem('token')
 
@@ -65,6 +66,15 @@ export class AccountHttpService {
       {"Content-Type": "application/json"}
     )
     return this._http.postService(this.baseUrl+"reset_paassword/" , user_data, {headers:headers})
+  }
+  
+  getNotes(){
+    console.log("token",this.token)
+    let headers = new HttpHeaders(
+      {"Content-Type": "application/json",
+      "Authorization": "JWT "+this.token})
+    
+    return this._http.getService(this.noteUrl + "create/", {headers:headers})
   }
 
 }
