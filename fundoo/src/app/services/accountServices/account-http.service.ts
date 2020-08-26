@@ -77,4 +77,11 @@ export class AccountHttpService {
     return this._http.getService(this.noteUrl + "create/", {headers:headers})
   }
 
+  createNotes(noteData:object){
+    let headers = new HttpHeaders(
+      {"Content-Type": "application/json",
+      "Authorization": "JWT "+this.token})
+    
+    return this._http.postService(this.noteUrl + "create/", noteData,{headers:headers})
+  }
 }
