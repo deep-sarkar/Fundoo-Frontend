@@ -15,13 +15,14 @@ $textColor :#202124;
 
 .outer-div{
     @include columeFlex();
-    width: 45%;
-    margin: 2% auto;
+    width: 44%;
+    margin: 3% auto;
     background-color: inherit ;
     .card{
         margin: 0%;
-        padding: 0%;
+        padding: 0.5%;
         box-shadow: 1px 1px 5px gray;
+        border-radius: 9px;
         .card-title{
             margin: 0.7% 0.5%;
             #title{
