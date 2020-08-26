@@ -1,0 +1,16 @@
+<div class="main-container">
+    <div class="inner-container" *ngFor="let note of allNotes">
+        <mat-card class="card">
+            <mat-card-title class="card-title">
+                {{ note.title }}
+            </mat-card-title>
+            <mat-card-content class="card-content">
+                {{ note.note }}
+            </mat-card-content>
+            <mat-card-footer class="card-footer">
+                <span *ngIf="note.reminder">{{ note.reminder }}</span>
+                <span *ngFor="let labels of note.label">{{ labels }}</span>
+            </mat-card-footer>
+        </mat-card>
+    </div>
+</div>
