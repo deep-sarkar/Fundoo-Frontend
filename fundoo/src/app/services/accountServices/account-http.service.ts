@@ -1,5 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { GenericService } from '../genericService/generic.service';
 
@@ -15,7 +16,7 @@ export class AccountHttpService {
 
   token = localStorage.getItem('token')
 
-  changePassword(data:object){
+  changePassword(data:object): Observable<any>{
     console.log("token",this.token)
     let headers = new HttpHeaders(
       {"Content-Type": "application/json",
@@ -24,7 +25,7 @@ export class AccountHttpService {
     return this._http.postService(this.baseUrl + "change_password/", data, {headers:headers})
   }
 
-  sendRecoveryMail(email:object){
+  sendRecoveryMail(email:object): Observable<any>{
     let headers = new HttpHeaders(
       {"Content-Type": "application/json"}
       )
@@ -32,7 +33,7 @@ export class AccountHttpService {
     return this._http.postService(this.baseUrl + "forgot_password/",email,{headers:headers})
   }
 
-  userLogin(data:object){
+  userLogin(data:object): Observable<any>{
     let headers = new HttpHeaders(
       {"Content-Type": "application/json"}
       )
@@ -40,36 +41,35 @@ export class AccountHttpService {
     return this._http.postService(this.baseUrl + "login/", data, {headers:headers})
   }
 
-  registerNewUser(userData:object){
+  registerNewUser(userData:object): Observable<any>{
     let headers = new HttpHeaders(
       {"Content-Type": "application/json"}
       )
     return this._http.postService(this.baseUrl + "register/", userData,{headers:headers})
   }
 
-  activateAccount(surl:string){
+  activateAccount(surl:string): Observable<any>{
     let headers = new HttpHeaders(
       {"Content-Type": "application/json"}
       )
     return this._http.getService(this.baseUrl + "activate/" + surl, {headers:headers})
   }
 
-  checkUserExistance(surl:string){
+  checkUserExistance(surl:string): Observable<any>{
     let headers = new HttpHeaders(
       {"Content-Type": "application/json"}
     )
     return this._http.getService(this.baseUrl+"check_user/" + surl, {headers:headers})
   }
 
-  resetPassword(user_data:object){
+  resetPassword(user_data:object): Observable<any>{
     let headers = new HttpHeaders(
       {"Content-Type": "application/json"}
     )
     return this._http.postService(this.baseUrl+"reset_paassword/" , user_data, {headers:headers})
   }
   
-  getNotes(){
-    console.log("token",this.token)
+  getNotes(): Observable<any>{
     let headers = new HttpHeaders(
       {"Content-Type": "application/json",
       "Authorization": "JWT "+this.token})
@@ -77,7 +77,7 @@ export class AccountHttpService {
     return this._http.getService(this.noteUrl + "create/", {headers:headers})
   }
 
-  createNotes(noteData:object){
+  createNotes(noteData:object): Observable<any>{
     let headers = new HttpHeaders(
       {"Content-Type": "application/json",
       "Authorization": "JWT "+this.token})
