@@ -43,6 +43,7 @@ import { ActivateAccountComponent } from './components/activate-account/activate
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { CreateNoteComponent } from './components/create-note/create-note.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DisplayNoteComponent } from './components/display-note/display-note.component';
 
 
 
@@ -57,7 +58,7 @@ const fundooRoutes: Routes=[
   {
     path:"", component:DashboardComponent,
     children:[
-      {path:"create", component:CreateNoteComponent}
+      {path:"create", component:CreateNoteComponent},
   ]
   },
 ]
@@ -81,7 +82,8 @@ const fundooRoutes: Routes=[
     IconPinComponent,
     IconReminderComponent,
     IconCollaboratorComponent,
-    DashboardComponent
+    DashboardComponent,
+    DisplayNoteComponent
   ],
   imports: [
     BrowserModule,
