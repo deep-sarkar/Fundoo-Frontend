@@ -1,6 +1,6 @@
 <div class="main-container">
     <div class="inner-container" *ngFor="let note of allNotes">
-        <mat-card class="card">
+        <mat-card class="card" [ngStyle]="{'background': note.color}">
             <mat-card-title class="card-title">
                 {{ note.title }}
             </mat-card-title>
