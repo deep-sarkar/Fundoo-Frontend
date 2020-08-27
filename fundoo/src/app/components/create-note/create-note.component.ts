@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
 import { UtilityService } from 'src/app/services/utilityService/utility.service';
@@ -19,7 +19,14 @@ export class CreateNoteComponent implements OnInit {
   noteData:object;
   title = new FormControl('');
   noteBody = new FormControl('');
+
+  @Output() trigger = new EventEmitter();
   
+  newNoteTrigger(){
+    this.trigger.emit("New Note Created")
+    console.log("emitted")
+  }
+
   create(){
     if(this.title.value && this.noteBody.value){
       this.noteData = {
@@ -33,6 +40,7 @@ export class CreateNoteComponent implements OnInit {
             this._snackBar.snackBarMessage("New note created !!!")
             this.title= new FormControl('')
             this.noteBody = new FormControl('')
+            this.newNoteTrigger()
           }else{
             this._snackBar.snackBarMessage(response['msg'])
           }
