@@ -7,10 +7,19 @@
             <mat-card-content class="card-content">
                 {{ note.note }}
             </mat-card-content>
-            <mat-card-footer class="card-footer">
+            <mat-card-actions class="action">
                 <span *ngIf="note.reminder">{{ note.reminder }}</span>
                 <span *ngFor="let labels of note.label">{{ labels }}</span>
+            </mat-card-actions>
+            <mat-card-footer class="card-footer">
+                <app-icon-reminder class="icon-component"></app-icon-reminder>
+                <app-icon-collaborator class="icon-component"></app-icon-collaborator>
+                <app-icon-palette class="icon-component"></app-icon-palette>
+                <app-icon-insert-photo class="icon-component"></app-icon-insert-photo>
+                <app-icon-archive class="icon-component"></app-icon-archive>
             </mat-card-footer>
+            
         </mat-card>
+        
     </div>
 </div>
