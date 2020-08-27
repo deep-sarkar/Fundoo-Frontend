@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-display-note',
@@ -8,27 +7,11 @@ import { AccountHttpService } from 'src/app/services/accountServices/account-htt
 })
 export class DisplayNoteComponent implements OnInit {
 
-  constructor(private _httpService:AccountHttpService) { }
+  constructor( ) { }
 
-  allNotes:object[];
-
-  getAllNotes(){
-    this._httpService.getNotes().subscribe(
-      response =>{
-        if (response['code']==200){
-          this.allNotes = response['data']
-          console.log(this.allNotes)
-        }
-      },
-      error =>{
-        console.log('error',error)
-      }
-    )
-  }
-
+  @Input() allNotes:object[];
 
   ngOnInit() {
-    this.getAllNotes()
   }
 
 }
