@@ -11,10 +11,12 @@ export class AccountHttpService {
 
   constructor(private _http:GenericService) { }
   
+  // urls
   baseUrl = environment.accountUrl
   noteUrl = environment.notesUrl
-
+  // token
   token = localStorage.getItem('token')
+
 
   changePassword(data:object): Observable<any>{
     console.log("token",this.token)
