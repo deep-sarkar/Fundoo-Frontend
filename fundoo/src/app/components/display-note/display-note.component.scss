@@ -15,8 +15,8 @@
 
 .main-container{
     width: 90%;
-    margin: 3% auto;
-    padding: 3%;
+    margin: 0% auto;
+    padding: 0% 3%;
     display: grid;
     grid-template-columns:repeat(4,21%);
     grid-gap: 1.2%;
@@ -77,4 +77,11 @@
         visibility: hidden;
     }
 }
+}
+@media only screen and (max-width:500px){
+    .main-container{
+        display: grid;
+        grid-template-columns:100%;
+        grid-gap: .2%;
+    }
 }
