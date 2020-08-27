@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TextFieldModule } from '@angular/cdk/text-field';
@@ -44,24 +44,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { CreateNoteComponent } from './components/create-note/create-note.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DisplayNoteComponent } from './components/display-note/display-note.component';
-
-
-
-
-const fundooRoutes: Routes=[
-  {path:"register", component:RegistrationComponent},
-  {path:"login", component:LoginComponent},
-  {path:"forgot", component:ForgotPasswordComponent},
-  {path:"changePassword", component:ChangePasswordComponent},
-  {path:"activate/:surl", component:ActivateAccountComponent},
-  {path:"resetPassword/:surl", component:ResetPasswordComponent},
-  {
-    path:"", component:DashboardComponent,
-    children:[
-      {path:"create", component:CreateNoteComponent},
-  ]
-  },
-]
+import { NotesComponent } from './components/notes/notes.component';
 
 
 @NgModule({
@@ -83,7 +66,8 @@ const fundooRoutes: Routes=[
     IconReminderComponent,
     IconCollaboratorComponent,
     DashboardComponent,
-    DisplayNoteComponent
+    DisplayNoteComponent,
+    NotesComponent
   ],
   imports: [
     BrowserModule,
@@ -94,7 +78,6 @@ const fundooRoutes: Routes=[
     ReactiveFormsModule,
     FormsModule,
     MatButtonModule,
-    RouterModule.forRoot(fundooRoutes),
     HttpClientModule,
     MatCardModule,
     MatSidenavModule,
