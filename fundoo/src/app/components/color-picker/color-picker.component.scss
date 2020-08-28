@@ -1,0 +1,54 @@
+.color-content  {
+    padding: 0px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(3,1fr);
+    grid-gap: 3%;
+    .color-button{
+        border: none;
+        height: 23px;
+        width: 23px;
+        border-radius: 50%;
+        &:focus{
+            outline:transparent;
+        }
+    }
+    #button1{
+        background-color: #ffffff;
+        border: 0.5px dotted rgb(102, 102, 102);
+    }    
+    #button2{
+        background-color: #d4daa0;
+    }    
+    #button3{
+        background-color: #82b7e2;
+    }    
+    #button4{
+        background-color: #a585b4;
+    }    
+    #button5{
+        background-color: #70cf78;
+    }    
+    #button6{
+        background-color: #d9adeb;
+    }    
+    #button7{
+        background-color: #bd9b9b;
+    }    
+    #button8{
+        background-color: #d17878;
+    }    
+    #button9{
+        background-color: #df82c3;
+    }    
+    #button10{
+        background-color: #72ddeb;
+    }    
+    #button11{
+        background-color: #83ad67;
+    }    
+    #button12{
+        background-color: #948888;
+    }    
+}
+
