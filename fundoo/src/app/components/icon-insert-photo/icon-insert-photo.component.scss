@@ -4,11 +4,15 @@ button{
     display: flex;
     align-items: center;
     justify-content: center;
+    #upload{
+        display: none;
+    }
     i {
         font-size: 1.4em;
         color:gray;
         margin: auto;
     }
+
     
 }
 button:hover{

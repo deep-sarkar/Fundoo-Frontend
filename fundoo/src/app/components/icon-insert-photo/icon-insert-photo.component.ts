@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-icon-insert-photo',
@@ -9,7 +9,19 @@ export class IconInsertPhotoComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  @Output() sendImage = new EventEmitter()
+  imageFile: File=null;
+  formData:object;
+  imageUrl;
+
+
+  uploadImage($event){
+    this.imageFile = <File>$event.target.files[0]
+   
+    console.log("url",this.imageUrl)
+    this.sendImage.emit(this.imageFile)
   }
 
+  ngOnInit() {
+  }
 }

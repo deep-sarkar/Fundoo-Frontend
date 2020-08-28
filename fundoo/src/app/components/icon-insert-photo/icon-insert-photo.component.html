@@ -1,3 +1,4 @@
-<button mat-icon-button>
+<button mat-icon-button (click)="fileInput.click()">
     <i class="material-icons-outlined">insert_photo</i>
+    <input #fileInput type="file" id="upload" (change)='uploadImage($event)' accept="image/*">
 </button>
