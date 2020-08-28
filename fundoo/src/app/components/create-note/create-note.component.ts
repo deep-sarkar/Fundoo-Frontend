@@ -24,7 +24,6 @@ export class CreateNoteComponent implements OnInit {
   
   newNoteTrigger(){
     this.trigger.emit("New Note Created")
-    console.log("emitted")
   }
 
   create(){
@@ -38,8 +37,10 @@ export class CreateNoteComponent implements OnInit {
         response => {
           if (response['code'] == 201){
             this._snackBar.snackBarMessage("New note created !!!")
+            //field value set to empty
             this.title= new FormControl('')
             this.noteBody = new FormControl('')
+            //trigger fired(event)
             this.newNoteTrigger()
           }else{
             this._snackBar.snackBarMessage(response['msg'])
