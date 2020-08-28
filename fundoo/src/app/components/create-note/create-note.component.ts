@@ -19,6 +19,7 @@ export class CreateNoteComponent implements OnInit {
   noteData:object;
   title = new FormControl('');
   noteBody = new FormControl('');
+  archive:boolean;
 
   @Output() trigger = new EventEmitter();
   
@@ -30,7 +31,8 @@ export class CreateNoteComponent implements OnInit {
     if(this.title.value && this.noteBody.value){
       this.noteData = {
         title:this.title.value,
-        note:this.noteBody.value
+        note:this.noteBody.value,
+        archives:this.archive
       }
       this._httpService.createNotes(this.noteData)
       .subscribe(
@@ -50,10 +52,12 @@ export class CreateNoteComponent implements OnInit {
             console.log("error",error)
         }
       )
+    }else{
+      this._snackBar.snackBarMessage("Title and note required !!!")
     }
   }
   
-
+  //card open close handeling function
   cardOpenClose(){
     if(this.cardOpen==false){
       this.cardOpen=true
@@ -63,6 +67,11 @@ export class CreateNoteComponent implements OnInit {
     }
   }
 
+  //this function will set archive value to true if user pressed archive icon
+  getArchive($event){
+    this.archive=$event;
+    this.create()
+  }
   
 
   ngOnInit() {
