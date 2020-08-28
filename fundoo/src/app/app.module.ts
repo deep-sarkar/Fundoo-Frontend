@@ -16,6 +16,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 // services
 import { ValidateFormFieldService } from './services/validationService/validate-form-field.service';
@@ -45,6 +46,7 @@ import { CreateNoteComponent } from './components/create-note/create-note.compon
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DisplayNoteComponent } from './components/display-note/display-note.component';
 import { NotesComponent } from './components/notes/notes.component';
+import { ColorPickerComponent } from './components/color-picker/color-picker.component';
 
 
 @NgModule({
@@ -67,7 +69,8 @@ import { NotesComponent } from './components/notes/notes.component';
     IconCollaboratorComponent,
     DashboardComponent,
     DisplayNoteComponent,
-    NotesComponent
+    NotesComponent,
+    ColorPickerComponent
   ],
   imports: [
     BrowserModule,
@@ -84,8 +87,12 @@ import { NotesComponent } from './components/notes/notes.component';
     MatIconModule,
     MatToolbarModule,
     MatSnackBarModule,
-    TextFieldModule
-  
+    TextFieldModule,
+    MatDialogModule,
+    
+  ],
+  entryComponents:[
+    ColorPickerComponent
   ],
   providers: [
     AccountHttpService,
