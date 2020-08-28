@@ -8,13 +8,14 @@
         <mat-card-title class="card-title">
             <input type="text" [formControl]="title" placeholder="Title" id="title" autocomplete="off">
         </mat-card-title>
+        <img *ngIf="imgUrl != undefined" [src]="imgUrl" width="100%" alt="">
         <textarea [formControl]="noteBody" cdkTextareaAutosize cdkAutosizeMinRows="3" cdkAutosizeMaxRows="25" placeholder="Take a note..."></textarea>
         <mat-card-actions class="action">
             <app-icon-reminder class="icon-component"></app-icon-reminder>
             <app-icon-collaborator class="icon-component"></app-icon-collaborator>
             <app-icon-palette class="icon-component"></app-icon-palette>
-            <app-icon-insert-photo class="icon-component"></app-icon-insert-photo>
-            <app-icon-archive class="icon-component" (archive)="getArchive($event)"></app-icon-archive>
+            <app-icon-insert-photo class="icon-component" (sendImage)="setImage($event)"></app-icon-insert-photo>
+            <app-icon-archive class="icon-component" (archive)="setArchive($event)"></app-icon-archive>
             <app-icon-label class="icon-component"></app-icon-label>
             <button (click)="cardOpenClose()">Close</button>
         </mat-card-actions>
