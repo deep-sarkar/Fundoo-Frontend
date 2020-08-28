@@ -4,16 +4,16 @@
             <input type="text" placeholder="Take a note.." id="title" autocomplete="off">
         </mat-card-title>
     </mat-card>
-    <mat-card class="card" *ngIf="cardOpen">
+    <mat-card class="card" *ngIf="cardOpen" [ngStyle]="{'background-color':color}">
         <mat-card-title class="card-title">
-            <input type="text" [formControl]="title" placeholder="Title" id="title" autocomplete="off">
+            <input type="text" [ngStyle]="{'background-color':color}" [formControl]="title" placeholder="Title" id="title" autocomplete="off">
         </mat-card-title>
-        <img *ngIf="imgUrl != undefined" [src]="imgUrl" width="100%" alt="">
-        <textarea [formControl]="noteBody" cdkTextareaAutosize cdkAutosizeMinRows="3" cdkAutosizeMaxRows="25" placeholder="Take a note..."></textarea>
+        <img *ngIf="imgUrl != undefined" [ngStyle]="{'background-color':color}" [src]="imgUrl" width="100%" alt="">
+        <textarea [formControl]="noteBody" [ngStyle]="{'background-color':color}" cdkTextareaAutosize cdkAutosizeMinRows="3" cdkAutosizeMaxRows="25" placeholder="Take a note..."></textarea>
         <mat-card-actions class="action">
             <app-icon-reminder class="icon-component"></app-icon-reminder>
             <app-icon-collaborator class="icon-component"></app-icon-collaborator>
-            <app-icon-palette class="icon-component"></app-icon-palette>
+            <app-icon-palette class="icon-component" (color)="setColor($event)"></app-icon-palette>
             <app-icon-insert-photo class="icon-component" (sendImage)="setImage($event)"></app-icon-insert-photo>
             <app-icon-archive class="icon-component" (archive)="setArchive($event)"></app-icon-archive>
             <app-icon-label class="icon-component"></app-icon-label>

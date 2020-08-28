@@ -28,6 +28,7 @@ export class CreateNoteComponent implements OnInit {
   imageData:File=null;
   imgUrl:string;
   formData = new FormData()
+  color:string='#ffffff';
 
 
   create(){
@@ -35,6 +36,8 @@ export class CreateNoteComponent implements OnInit {
       this.noteData = {
         title:this.title.value,
         note:this.noteBody.value,
+        archives:this.archive,
+        color:this.color
       }
       this._httpService.createNotes(this.noteData)
       .subscribe(
@@ -48,6 +51,9 @@ export class CreateNoteComponent implements OnInit {
             //field value set to empty
             this.title= new FormControl('')
             this.noteBody = new FormControl('')
+            this.archive = false
+            this.color = '#ffffff'
+            this.imgUrl= null;
             //trigger fired(event)
             this.newNoteTrigger()
           }else{
@@ -58,8 +64,6 @@ export class CreateNoteComponent implements OnInit {
             console.log("error",error)
         }
       )
-    }else{
-      this._snackBar.snackBarMessage("Title and note required !!!")
     }
   }
   
@@ -92,6 +96,11 @@ export class CreateNoteComponent implements OnInit {
       this.imgUrl = res.target.result
     }
     console.log($event)
+  }
+  //set background color
+  setColor($event){
+    console.log("catched", $event)
+    this.color = $event
   }
 
   ngOnInit() {
