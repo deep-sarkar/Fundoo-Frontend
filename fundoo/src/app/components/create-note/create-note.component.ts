@@ -15,7 +15,7 @@ export class CreateNoteComponent implements OnInit {
 
   constructor(
     private _httpService:AccountHttpService,
-    private _snackBar:UtilityService
+    private _utility:UtilityService
   ) { }
 
   
@@ -43,8 +43,13 @@ export class CreateNoteComponent implements OnInit {
         color:this.color,
         pin:this.pin,
       }
-      if(this.reminder != null){
-        this.noteData['reminder']=this.reminder
+      if (this.reminder != null){
+        if(this._utility.validateReminder(this.reminder)){
+          this.noteData['reminder'] = this.reminder
+        }else{
+          this._utility.snackBarMessage("Enter upcoming time for reminder !!!");
+          return
+        }
       }
       // console.log('create fn',this.noteData)
       this._httpService.createNotes(this.noteData)
@@ -52,9 +57,9 @@ export class CreateNoteComponent implements OnInit {
         response => {
           if (response['code'] == 201){
             if(this.archive){
-              this._snackBar.snackBarMessage("New note added to archive !!!")
+              this._utility.snackBarMessage("New note added to archive !!!")
             }else{
-              this._snackBar.snackBarMessage("New note created !!!")
+              this._utility.snackBarMessage("New note created !!!");
             }
             //field value set to empty
             this.title= new FormControl('');
@@ -67,7 +72,7 @@ export class CreateNoteComponent implements OnInit {
             //trigger fired(event)
             this.newNoteTrigger()
           }else{
-            this._snackBar.snackBarMessage(response['msg'])
+            this._utility.snackBarMessage(response['msg'])
           }
         },
         error =>{
@@ -96,6 +101,9 @@ export class CreateNoteComponent implements OnInit {
     this.archive=$event;
     this.create()
   }
+
+
+
   //set image and display in note
   setImage($event){
     // console.log("occoured")
@@ -107,21 +115,30 @@ export class CreateNoteComponent implements OnInit {
     }
     console.log($event)
   }
+
+
+
   //set background color
   setColor($event){
     // console.log("catched", $event)
     this.color = $event
   }
 
+
   setPin($event){
     // console.log("ok",$event)
     this.pin = $event
   }
+
+
+
+
   setReminder($event){
     console.log('reminder',$event)
     this.reminder=$event
     console.log(this.reminder)
   }
+ 
 
   ngOnInit() {
   }
