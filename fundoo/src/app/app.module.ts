@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TextFieldModule } from '@angular/cdk/text-field';
+import { AmazingTimePickerModule } from 'amazing-time-picker';
 
 // Material
 import { MatInputModule } from '@angular/material/input';
@@ -17,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
 
 // services
 import { ValidateFormFieldService } from './services/validationService/validate-form-field.service';
@@ -47,6 +49,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DisplayNoteComponent } from './components/display-note/display-note.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { ColorPickerComponent } from './components/color-picker/color-picker.component';
+import { SingleNoteComponent } from './components/single-note/single-note.component';
 
 
 @NgModule({
@@ -70,7 +73,8 @@ import { ColorPickerComponent } from './components/color-picker/color-picker.com
     DashboardComponent,
     DisplayNoteComponent,
     NotesComponent,
-    ColorPickerComponent
+    ColorPickerComponent,
+    SingleNoteComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,10 +93,12 @@ import { ColorPickerComponent } from './components/color-picker/color-picker.com
     MatSnackBarModule,
     TextFieldModule,
     MatDialogModule,
-    
+    MatMenuModule,
+    AmazingTimePickerModule
   ],
   entryComponents:[
-    ColorPickerComponent
+    ColorPickerComponent,
+    SingleNoteComponent
   ],
   providers: [
     AccountHttpService,
