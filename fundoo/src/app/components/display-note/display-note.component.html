@@ -11,8 +11,14 @@
                 {{ note.note }}
             </mat-card-content>
             <mat-card-actions class="action">
-                <span *ngIf="note.reminder">{{ note.reminder }}</span>
-                <span *ngFor="let labels of note.label">{{ labels }}</span>
+                <mat-chip-list class="chip-list">
+                    <mat-chip class="chip" *ngIf="note.reminder"> {{ note.reminder }} </mat-chip>
+                </mat-chip-list>
+                <mat-chip-list class="chip-list">
+                    <mat-chip class="chip" *ngFor="let labels of note.label">{{ labels }}</mat-chip>
+                </mat-chip-list>
+                <!-- <span *ngIf="note.reminder">{{ note.reminder }}</span>
+                <span *ngFor="let labels of note.label">{{ labels }}</span> -->
             </mat-card-actions>
             <mat-card-footer class="card-footer">
                 <app-icon-reminder class="icon-component"></app-icon-reminder>

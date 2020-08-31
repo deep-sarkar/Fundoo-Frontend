@@ -67,16 +67,14 @@
         flex-wrap: wrap;
         justify-content: flex-start;
         text-align: center;
-        span{
-           margin: 1%;
-           font-size: .8em;
-           color: #3c4043;
-           background-color: rgb(240, 240, 240);
-           padding: 0% 3%;
-           
-        //    width: 15px;
-           height: 15px;
-           border-radius: 10px 10px 10px 10px;
+        .chip-list{
+            padding: 1%;
+            font-size: 0.7em;
+        }
+        .chip{
+           min-height: 19px;
+           font-size: 1em;
+           padding: 0 7px;
         }
     }
     .card-footer{
@@ -92,5 +90,8 @@
         display: grid;
         grid-template-columns:100%;
         grid-gap: .2%;
+        .inner-container{
+            margin: 2%;
+        }
     }
 }
