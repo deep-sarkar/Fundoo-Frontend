@@ -121,7 +121,7 @@ export class CreateNoteComponent implements OnInit {
     reader.onload=(res:any)=>{
       this.imgUrl = res.target.result
     }
-    console.log($event)
+    // console.log($event)
   }
 
 
@@ -144,7 +144,7 @@ export class CreateNoteComponent implements OnInit {
   setReminder($event){
     console.log('reminder',$event)
     this.reminder=$event
-    console.log(this.reminder)
+    // console.log(this.reminder)
   }
  
 

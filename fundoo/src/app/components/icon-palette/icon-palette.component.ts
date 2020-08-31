@@ -15,7 +15,7 @@ export class IconPaletteComponent implements OnInit {
   ngOnInit() {
   }
   pickColor(clr:string){
-    console.log(clr)
+    // console.log(clr)
     this.color.emit(clr)
   }
 }

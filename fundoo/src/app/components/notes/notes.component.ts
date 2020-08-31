@@ -28,7 +28,7 @@ export class NotesComponent implements OnInit {
   }
 
   reciveTrigger($event){
-    console.log("recived",$event)
+    // console.log("recived",$event)
     this.getAllNotes()
   }
 
