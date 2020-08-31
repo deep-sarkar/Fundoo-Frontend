@@ -5,11 +5,16 @@
         </mat-card-title>
     </mat-card>
     <mat-card class="card" *ngIf="cardOpen" [ngStyle]="{'background-color':color}">
-        <mat-card-title class="card-title">
-            <input type="text" [ngStyle]="{'background-color':color}" [formControl]="title" placeholder="Title" id="title" autocomplete="off">
-        </mat-card-title>
+        <div id="pin-div">
+            <mat-card-title class="card-title">
+                <input type="text" [ngStyle]="{'background-color':color}" [formControl]="title" placeholder="Title"
+                    id="title" autocomplete="off">
+            </mat-card-title>
+            <app-icon-pin id="pin-icon" (pin)="setPin($event)"></app-icon-pin>
+        </div>
         <img *ngIf="imgUrl != undefined" [ngStyle]="{'background-color':color}" [src]="imgUrl" width="100%" alt="">
-        <textarea [formControl]="noteBody" [ngStyle]="{'background-color':color}" cdkTextareaAutosize cdkAutosizeMinRows="3" cdkAutosizeMaxRows="25" placeholder="Take a note..."></textarea>
+        <textarea [formControl]="noteBody" [ngStyle]="{'background-color':color}" cdkTextareaAutosize
+            cdkAutosizeMinRows="3" cdkAutosizeMaxRows="25" placeholder="Take a note..."></textarea>
         <mat-card-actions class="action">
             <app-icon-reminder class="icon-component"></app-icon-reminder>
             <app-icon-collaborator class="icon-component"></app-icon-collaborator>

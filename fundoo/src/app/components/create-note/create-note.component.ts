@@ -29,6 +29,8 @@ export class CreateNoteComponent implements OnInit {
   imgUrl:string;
   formData = new FormData()
   color:string='#ffffff';
+  label:string[];
+  pin:boolean = false;
 
 
   create(){
@@ -37,8 +39,10 @@ export class CreateNoteComponent implements OnInit {
         title:this.title.value,
         note:this.noteBody.value,
         archives:this.archive,
-        color:this.color
+        color:this.color,
+        pin:this.pin
       }
+      console.log('create fn',this.noteData)
       this._httpService.createNotes(this.noteData)
       .subscribe(
         response => {
@@ -54,6 +58,7 @@ export class CreateNoteComponent implements OnInit {
             this.archive = false
             this.color = '#ffffff'
             this.imgUrl= null;
+            this.pin = false
             //trigger fired(event)
             this.newNoteTrigger()
           }else{
@@ -88,7 +93,7 @@ export class CreateNoteComponent implements OnInit {
   }
   //set image and display in note
   setImage($event){
-    console.log("occoured")
+    // console.log("occoured")
     this.imageData = $event
     var reader = new FileReader();
     reader.readAsDataURL(this.imageData)
@@ -99,8 +104,13 @@ export class CreateNoteComponent implements OnInit {
   }
   //set background color
   setColor($event){
-    console.log("catched", $event)
+    // console.log("catched", $event)
     this.color = $event
+  }
+
+  setPin($event){
+    // console.log("ok",$event)
+    this.pin = $event
   }
 
   ngOnInit() {
