@@ -48,6 +48,7 @@ export class CreateNoteComponent implements OnInit {
           this.noteData['reminder'] = this.reminder
         }else{
           this._utility.snackBarMessage("Enter upcoming time for reminder !!!");
+          this.reminder = null;
           return
         }
       }
@@ -82,10 +83,17 @@ export class CreateNoteComponent implements OnInit {
     }
   }
   
+
+
+
   //emmithed when new note saved
   newNoteTrigger(){
     this.trigger.emit("New Note Created")
   }
+
+
+
+
   //card open close handeling function
   cardOpenClose(){
     if(this.cardOpen==false){
