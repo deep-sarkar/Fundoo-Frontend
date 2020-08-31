@@ -50,17 +50,15 @@ $textColor :#202124;
             color: $textColor;
         }
         .additional-info{
-            span{
-                margin: 1%;
-                font-size: .9em;
-                color: #3c4043;
-                background-color: rgb(240, 240, 240);
-                padding: 0% 2%;
-                
-             //    width: 15px;
-                height: 15px;
-                border-radius: 10px 10px 10px 10px;
-             }
+            .chip-list{
+                padding: 1%;
+                font-size: 0.7em;
+            }
+            .chip{
+               min-height: 19px;
+               font-size: 1em;
+               padding: 0 7px;
+            }
         }
         textarea:focus{
             outline: transparent;

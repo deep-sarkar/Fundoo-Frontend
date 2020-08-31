@@ -16,7 +16,13 @@
         <textarea [formControl]="noteBody" [ngStyle]="{'background-color':color}" cdkTextareaAutosize
             cdkAutosizeMinRows="3" cdkAutosizeMaxRows="25" placeholder="Take a note..."></textarea>
         <div class="additional-info">
-            <span *ngIf="reminder != null">{{ reminder }}</span>
+            <mat-chip-list class="chip-list" *ngIf="reminder != null">
+                <mat-chip class="chip">
+                    {{ reminder }}
+                    <!-- <i class="material-icons">close</i> -->
+                </mat-chip>
+            </mat-chip-list>
+            <!-- <span *ngIf="reminder != null">{{ reminder }}</span> -->
         </div>
         <mat-card-actions class="action">
             <app-icon-reminder class="icon-component" (reminder)="setReminder($event)"></app-icon-reminder>
