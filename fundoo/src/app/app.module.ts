@@ -19,6 +19,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatChipsModule } from '@angular/material/chips';
 
 // services
 import { ValidateFormFieldService } from './services/validationService/validate-form-field.service';
@@ -92,7 +93,8 @@ import { SingleNoteComponent } from './components/single-note/single-note.compon
     TextFieldModule,
     MatDialogModule,
     MatMenuModule,
-    AmazingTimePickerModule
+    AmazingTimePickerModule,
+    MatChipsModule
   ],
   entryComponents:[
     SingleNoteComponent
