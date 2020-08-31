@@ -15,6 +15,9 @@
         <img *ngIf="imgUrl != undefined" [ngStyle]="{'background-color':color}" [src]="imgUrl" width="100%" alt="">
         <textarea [formControl]="noteBody" [ngStyle]="{'background-color':color}" cdkTextareaAutosize
             cdkAutosizeMinRows="3" cdkAutosizeMaxRows="25" placeholder="Take a note..."></textarea>
+        <div class="additional-info">
+            <span *ngIf="reminder != null">{{ reminder }}</span>
+        </div>
         <mat-card-actions class="action">
             <app-icon-reminder class="icon-component" (reminder)="setReminder($event)"></app-icon-reminder>
             <app-icon-collaborator class="icon-component"></app-icon-collaborator>

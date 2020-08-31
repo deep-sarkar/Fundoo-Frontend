@@ -1,3 +1,23 @@
-<button mat-icon-button (click)="openDialogue($event)">
+<button mat-icon-button [matMenuTriggerFor]="menu">
     <i class="material-icons-outlined">palette</i>
 </button>
+<mat-menu  #menu="matMenu" yPosition="above">
+   <div  class="items">
+    <div class="box" id="color-1" (click)="pickColor('#ffffff')"></div>
+    <div class="box" id="color-2" (click)="pickColor('#bfcdf6')"></div>
+    <div class="box" id="color-3" (click)="pickColor('#facdbb')"></div>
+    <div class="box" id="color-4" (click)="pickColor('#f2b2f8')"></div>
+   </div>
+   <div  class="items">
+    <div class="box" id="color-5" (click)="pickColor('#a4dff3')"></div>
+    <div class="box" id="color-6" (click)="pickColor('#c8ffbe')"></div>
+    <div class="box" id="color-7" (click)="pickColor('#fdffdb')"></div>
+    <div class="box" id="color-8" (click)="pickColor('#f0dde0')"></div>
+   </div>
+   <div  class="items">
+    <div class="box" id="color-9" (click)="pickColor('#91bde0')"></div>
+    <div class="box" id="color-10" (click)="pickColor('#c0b8c8')"></div>
+    <div class="box" id="color-11" (click)="pickColor('#d3c5ff')"></div>
+    <div class="box" id="color-12" (click)="pickColor('#b4bbff')"></div>
+   </div>
+</mat-menu>

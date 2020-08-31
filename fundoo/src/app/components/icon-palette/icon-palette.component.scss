@@ -18,3 +18,54 @@ button:hover{
         opacity: .71;
     }
 }
+
+.items{
+    padding: 1%;
+    height: auto;
+    width: auto;
+    display: flex;
+    align-items: center;
+    .box{
+        width: 26px;
+        height: 26px;
+        margin: 1px;
+        border-radius: 50%;
+    } 
+    #color-1{
+        background-color: #ffffff;
+        border: 1px dotted black;
+    }
+    #color-2{
+        background-color: #bfcdf6;
+    }
+    #color-3{
+        background-color: #facdbb;
+    }
+    #color-4{
+        background-color: #f2b2f8;
+    }
+    #color-5{
+        background-color: #a4dff3;
+    }
+    #color-6{
+        background-color: #c8ffbe;
+    }
+    #color-7{
+        background-color: #fdffdb;
+    }
+    #color-8{
+        background-color: #f0dde0;
+    }
+    #color-9{
+        background-color: #91bde0;
+    }
+    #color-10{
+        background-color: #c0b8c8;
+    }
+    #color-11{
+        background-color: #d3c5ff;
+    }
+    #color-12{
+        background-color: #b4bbff;
+    }
+}

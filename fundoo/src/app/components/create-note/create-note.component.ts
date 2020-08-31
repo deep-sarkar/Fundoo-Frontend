@@ -42,9 +42,11 @@ export class CreateNoteComponent implements OnInit {
         archives:this.archive,
         color:this.color,
         pin:this.pin,
-        reminder:this.reminder
       }
-      console.log('create fn',this.noteData)
+      if(this.reminder != null){
+        this.noteData['reminder']=this.reminder
+      }
+      // console.log('create fn',this.noteData)
       this._httpService.createNotes(this.noteData)
       .subscribe(
         response => {
