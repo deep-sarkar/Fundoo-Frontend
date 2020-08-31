@@ -1,3 +1,7 @@
-<button mat-icon-button>
+<button mat-icon-button [matMenuTriggerFor]="menu" (click)="open()">
     <i class="material-icons-outlined">add_alert</i>
 </button>
+
+<mat-menu #menu="matMenu" >
+    <input atp-time-picker value={{selectedTime}}>
+</mat-menu>
