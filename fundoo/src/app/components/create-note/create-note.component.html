@@ -16,7 +16,7 @@
         <textarea [formControl]="noteBody" [ngStyle]="{'background-color':color}" cdkTextareaAutosize
             cdkAutosizeMinRows="3" cdkAutosizeMaxRows="25" placeholder="Take a note..."></textarea>
         <mat-card-actions class="action">
-            <app-icon-reminder class="icon-component"></app-icon-reminder>
+            <app-icon-reminder class="icon-component" (reminder)="setReminder($event)"></app-icon-reminder>
             <app-icon-collaborator class="icon-component"></app-icon-collaborator>
             <app-icon-palette class="icon-component" (color)="setColor($event)"></app-icon-palette>
             <app-icon-insert-photo class="icon-component" (sendImage)="setImage($event)"></app-icon-insert-photo>

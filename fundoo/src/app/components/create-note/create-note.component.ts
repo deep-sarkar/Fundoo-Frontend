@@ -31,6 +31,7 @@ export class CreateNoteComponent implements OnInit {
   color:string='#ffffff';
   label:string[];
   pin:boolean = false;
+  reminder:string = null;
 
 
   create(){
@@ -40,7 +41,8 @@ export class CreateNoteComponent implements OnInit {
         note:this.noteBody.value,
         archives:this.archive,
         color:this.color,
-        pin:this.pin
+        pin:this.pin,
+        reminder:this.reminder
       }
       console.log('create fn',this.noteData)
       this._httpService.createNotes(this.noteData)
@@ -53,12 +55,13 @@ export class CreateNoteComponent implements OnInit {
               this._snackBar.snackBarMessage("New note created !!!")
             }
             //field value set to empty
-            this.title= new FormControl('')
-            this.noteBody = new FormControl('')
-            this.archive = false
-            this.color = '#ffffff'
+            this.title= new FormControl('');
+            this.noteBody = new FormControl('');
+            this.archive = false;
+            this.color = '#ffffff';
             this.imgUrl= null;
-            this.pin = false
+            this.pin = false;
+            this.reminder= null;
             //trigger fired(event)
             this.newNoteTrigger()
           }else{
@@ -111,6 +114,11 @@ export class CreateNoteComponent implements OnInit {
   setPin($event){
     // console.log("ok",$event)
     this.pin = $event
+  }
+  setReminder($event){
+    console.log('reminder',$event)
+    this.reminder=$event
+    console.log(this.reminder)
   }
 
   ngOnInit() {
