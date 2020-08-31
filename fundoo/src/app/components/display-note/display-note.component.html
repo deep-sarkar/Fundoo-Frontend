@@ -1,10 +1,13 @@
 <div class="main-container">
     <div class="inner-container" *ngFor="let note of allNotes">
         <mat-card class="card" [ngStyle]="{'background': note.color}">
-            <mat-card-title class="card-title">
-                {{ note.title }}
-            </mat-card-title>
-            <mat-card-content class="card-content">
+            <div id="pin-div">
+                <mat-card-title class="card-title" (click)="openDialogue(note.id)">
+                    {{ note.title }}
+                </mat-card-title> 
+                <app-icon-pin id="pin-icon" *ngIf="note.pin?getPin(note.pin):getPin(note.pin)" [isPin]="isPin"></app-icon-pin>
+            </div>
+            <mat-card-content class="card-content" (click)="openDialogue(note.id)">
                 {{ note.note }}
             </mat-card-content>
             <mat-card-actions class="action">
@@ -18,8 +21,8 @@
                 <app-icon-insert-photo class="icon-component"></app-icon-insert-photo>
                 <app-icon-archive class="icon-component"></app-icon-archive>
             </mat-card-footer>
-            
+
         </mat-card>
-        
+
     </div>
 </div>
