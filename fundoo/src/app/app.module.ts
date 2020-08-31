@@ -48,7 +48,6 @@ import { CreateNoteComponent } from './components/create-note/create-note.compon
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DisplayNoteComponent } from './components/display-note/display-note.component';
 import { NotesComponent } from './components/notes/notes.component';
-import { ColorPickerComponent } from './components/color-picker/color-picker.component';
 import { SingleNoteComponent } from './components/single-note/single-note.component';
 
 
@@ -73,7 +72,6 @@ import { SingleNoteComponent } from './components/single-note/single-note.compon
     DashboardComponent,
     DisplayNoteComponent,
     NotesComponent,
-    ColorPickerComponent,
     SingleNoteComponent,
   ],
   imports: [
@@ -97,7 +95,6 @@ import { SingleNoteComponent } from './components/single-note/single-note.compon
     AmazingTimePickerModule
   ],
   entryComponents:[
-    ColorPickerComponent,
     SingleNoteComponent
   ],
   providers: [
