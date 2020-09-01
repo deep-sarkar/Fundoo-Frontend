@@ -12,26 +12,27 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 
 
 const routes: Routes = [
-  {path:"register", component:RegistrationComponent},
-    {path:"login", component:LoginComponent},
-    {path:"forgot", component:ForgotPasswordComponent},
-    {path:"changePassword", component:ChangePasswordComponent},
-    {path:"activate/:surl", component:ActivateAccountComponent},
-    {path:"resetPassword/:surl", component:ResetPasswordComponent},
-    {
-      path:"", component:DashboardComponent,
-      children:[
-        {path:"", component:NotesComponent,
-        children:[
-          {path:"create", component:CreateNoteComponent}
+  { path: "register", component: RegistrationComponent },
+  { path: "login", component: LoginComponent },
+  { path: "forgot", component: ForgotPasswordComponent },
+  { path: "changePassword", component: ChangePasswordComponent },
+  { path: "activate/:surl", component: ActivateAccountComponent },
+  { path: "resetPassword/:surl", component: ResetPasswordComponent },
+  {
+    path: "", component: DashboardComponent,
+    children: [
+      {
+        path: "", component: NotesComponent,
+        children: [
+          { path: "create", component: CreateNoteComponent }
         ]
       },
     ]
-    },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
