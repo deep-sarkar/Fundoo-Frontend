@@ -16,4 +16,7 @@ export class GenericService {
     return this._httpClint.post(url, data, header)
   }
 
+  putService(url:string, data:any, header:object){
+    return this._httpClint.put(url,data,header)
+  }
 }
