@@ -115,6 +115,12 @@ export class DisplayNoteComponent implements OnInit {
     }
   }
 
+  pinNote($event){
+    setTimeout(() => {
+      this.singleNote["pin"]= $event
+      this.updateNote()
+    }, 1000);
+  }
 
   ngOnInit() {
   }
