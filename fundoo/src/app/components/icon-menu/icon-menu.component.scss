@@ -1,0 +1,39 @@
+button{
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    i {
+        font-size: 1.2em;
+        color:gray;
+        margin: auto;
+    }
+    
+}
+.btn{
+    width: 1.7em;
+    height: 1.7em;
+}
+button:hover{
+    background-color: #e8eaed;
+    i{
+        color: #202124;
+        opacity: .71;
+    }
+}
+
+.menu-items{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 1% 0;
+    span{
+        color: gray;
+    }
+    &:hover{
+        background-color:rgb(240, 240, 240);
+        cursor: pointer;
+    }
+}
