@@ -50,6 +50,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DisplayNoteComponent } from './components/display-note/display-note.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { SingleNoteComponent } from './components/single-note/single-note.component';
+import { IconTrashComponent } from './components/icon-trash/icon-trash.component';
+import { IconMenuComponent } from './components/icon-menu/icon-menu.component';
 
 
 @NgModule({
@@ -74,6 +76,8 @@ import { SingleNoteComponent } from './components/single-note/single-note.compon
     DisplayNoteComponent,
     NotesComponent,
     SingleNoteComponent,
+    IconTrashComponent,
+    IconMenuComponent,
   ],
   imports: [
     BrowserModule,
