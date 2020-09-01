@@ -24,6 +24,7 @@ export class DisplayNoteComponent implements OnInit {
   reminder:string=null;
   id:number;
   singleNote:object;
+  // color:string="#ffffff"
 
 
   getPin(pin:boolean){
@@ -31,19 +32,23 @@ export class DisplayNoteComponent implements OnInit {
     return true
   }
 
-  getId(noteId:number){
-    console.log(noteId)
-    this.id=noteId
+  getNote(id:number){
     this._accountService.getSingleNote(this.id)
     .subscribe(
       response =>{
         this.singleNote=response["data"]
-        // console.log(this.singleNote)
+        console.log("get",this.singleNote)
       },
       error =>{
         console.log("error",error)
       }
     )
+  }
+
+  getId(noteId:number){
+    // console.log(noteId)
+    this.id=noteId
+    this.getNote(this.id)
   }
 
   updateNote(){
@@ -75,6 +80,14 @@ export class DisplayNoteComponent implements OnInit {
     }
   }
 
+  setColor($event){
+    console.log($event)
+    if($event){
+      this.singleNote['color']=$event
+      this.updateNote()
+    }
+  }
+
   updateTrigger(){
     this.update.emit(true)
     // console.log("Emmitted")
@@ -88,6 +101,7 @@ export class DisplayNoteComponent implements OnInit {
       panelClass: 'dialog-content'
     })
   }
+
 
 
   ngOnInit() {
