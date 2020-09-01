@@ -12,6 +12,7 @@ export class NotesComponent implements OnInit {
 
   allNotes:object;
   trigger:any;
+  update:any;
 
   getAllNotes(){
     this._httpService.getNotes()
@@ -29,6 +30,11 @@ export class NotesComponent implements OnInit {
 
   reciveTrigger($event){
     // console.log("recived",$event)
+    this.getAllNotes()
+  }
+
+  getUpdatedNote($event){
+    // console.log("updated")
     this.getAllNotes()
   }
 
