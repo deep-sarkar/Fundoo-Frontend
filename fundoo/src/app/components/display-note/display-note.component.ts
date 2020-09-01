@@ -23,7 +23,7 @@ export class DisplayNoteComponent implements OnInit {
   isPin:boolean=false;
   reminder:string=null;
   id:number;
-  singleNote:object={reminder:null};
+  singleNote:object;
 
 
   getPin(pin:boolean){
@@ -46,13 +46,9 @@ export class DisplayNoteComponent implements OnInit {
     )
   }
 
-  setReminder($event){
-    console.log($event)
-    let validation=this._utility.validateReminder($event)
-    if (validation){
-      this.singleNote['reminder']=$event
-      // console.log(this.singleNote)
-      this._accountService.updateSingleNote(this.id,this.singleNote)
+  updateNote(){
+    console.log(this.singleNote)
+    this._accountService.updateSingleNote(this.id,this.singleNote)
       .subscribe(
         response =>{
           if(response['code']==202){
@@ -66,8 +62,17 @@ export class DisplayNoteComponent implements OnInit {
             console.log("error",error)
         }
       )
-    }
+  }
 
+  setReminder($event){
+    console.log($event)
+    let validation=this._utility.validateReminder($event)
+    if (validation){
+      this.singleNote['reminder']=$event
+      this.updateNote()
+    }else{
+      this._utility.snackBarMessage("Enter upcoming time to set reminder.")
+    }
   }
 
   updateTrigger(){
