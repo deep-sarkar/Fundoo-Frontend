@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { Observable } from 'rxjs';
 import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
 import { UtilityService } from 'src/app/services/utilityService/utility.service';
 import { NotesComponent } from '../notes/notes.component';
@@ -24,7 +25,6 @@ export class DisplayNoteComponent implements OnInit {
   reminder:string=null;
   id:number;
   singleNote:object;
-  // color:string="#ffffff"
 
 
   getPin(pin:boolean){
@@ -33,7 +33,7 @@ export class DisplayNoteComponent implements OnInit {
   }
 
   getNote(id:number){
-    this._accountService.getSingleNote(this.id)
+    this._accountService.getSingleNote(id)
     .subscribe(
       response =>{
         this.singleNote=response["data"]
@@ -52,7 +52,10 @@ export class DisplayNoteComponent implements OnInit {
   }
 
   updateNote(){
-    console.log(this.singleNote)
+    // console.log(this.singleNote)
+    if(this.singleNote['reminder'] == null){
+      delete this.singleNote["reminder"]
+    }
     this._accountService.updateSingleNote(this.id,this.singleNote)
       .subscribe(
         response =>{
@@ -102,6 +105,15 @@ export class DisplayNoteComponent implements OnInit {
     })
   }
 
+  archiveNote($event){
+    if($event){
+      setTimeout(() => {
+        this.singleNote["archives"]= $event
+        this.updateNote()
+      }, 1000);
+      
+    }
+  }
 
 
   ngOnInit() {
