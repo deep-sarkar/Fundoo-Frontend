@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { Observable } from 'rxjs';
 import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
 import { UtilityService } from 'src/app/services/utilityService/utility.service';
 import { NotesComponent } from '../notes/notes.component';
@@ -100,8 +99,10 @@ export class DisplayNoteComponent implements OnInit {
     console.log(id)
     this._dialogue.open(SingleNoteComponent,{
       width:'50%',
-      height:"90%",
-      panelClass: 'dialog-content'
+      height:'auto',
+      maxHeight:'90%',
+      panelClass: 'dialog-content',
+      position:{top:'3%'},
     })
   }
 
