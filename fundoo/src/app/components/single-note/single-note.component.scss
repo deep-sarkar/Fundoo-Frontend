@@ -1,0 +1,132 @@
+$backgroundColor :#e8eaed;
+$textColor :#202124;
+
+@mixin columeFlex {
+    display: flex;
+    flex-direction: column;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;;
+}
+
+.dialog-content{
+    overflow: hidden;
+    max-height: 100%;
+}
+.card{
+    @include columeFlex();
+    margin:0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    .card-title{
+        margin: 0.7% 0.5%;
+        display: flex;
+        justify-content: space-between;
+        // border: 1px solid red;
+        align-items: center;
+        position: sticky;
+        top: 0%;
+        right: 0%;
+        #title{
+            width: 90%;
+            height: 2rem;
+            font-size: 1.1rem;
+            border: none;
+            padding: 0 1%;
+        }
+        #title:focus{
+            outline: transparent;
+        }
+    }
+    textarea{
+        // border: 1px solid rebeccapurple;
+        padding: 1%;
+        width: 99%;  
+        margin: auto;
+        border: transparent;
+        letter-spacing: .015em;
+        font-family: Roboto,Arial,sans-serif;
+        color: $textColor;
+        }
+    textarea:focus{
+        outline: transparent;
+    }
+         textarea::-webkit-scrollbar {
+            width: 5px;
+        }
+          
+        /* Track */
+        textarea::-webkit-scrollbar-track {
+          border-radius: 5px;
+        }
+
+        /* Track hover */
+        textarea::-webkit-scrollbar-track:hover {
+          box-shadow: inset 0px 0px 5px rgb(211, 211, 211);
+        }
+           
+        /* Handle */
+        textarea::-webkit-scrollbar-thumb {
+          background: rgb(206, 206, 206); 
+            border-radius: 5px;
+        }
+          
+        /* Handle on hover */
+        textarea::-webkit-scrollbar-thumb:hover {
+          background: #888;
+        }
+    .additional-info{
+        .chip-list{
+            padding: 1%;
+            font-size: 0.7em;
+        }
+        .chip{
+           min-height: 19px;
+           font-size: 1em;
+           padding: 0 7px;
+        }
+    }
+    .action{
+        margin: 0;
+        display: flex;
+        align-items: center;
+        padding: 1% 0;
+        justify-content: space-evenly;
+        position: sticky;
+        top: 0%;
+        right: 0%;
+        
+        button{
+            height: 30px;
+            width: 10%;
+            background-color: inherit;
+            border: none;
+            margin: auto 2% auto auto;
+            color: #202124;
+        }
+        button:focus{
+            outline: transparent;
+        }
+        button:hover{
+            background-color: #e8eaed;
+        }
+        .icon-component{
+            margin: auto 2%;
+        }
+        .icon-component:first-child{
+            margin-left: 0;
+        }
+    }
+}
+// @media only screen and (max-width:500px){
+//     .dialog-content{
+//         width: 100%;
+//     }
+// }
+
+   

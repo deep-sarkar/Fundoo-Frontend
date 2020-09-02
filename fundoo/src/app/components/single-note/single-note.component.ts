@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-single-note',
@@ -8,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class SingleNoteComponent implements OnInit {
 
   constructor() { }
+
+  title = new FormControl()
+  noteBody = new FormControl()
 
   ngOnInit() {
   }
