@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Inject } from '@angular/core';
+import { UtilityService } from 'src/app/services/utilityService/utility.service';
 
 @Component({
   selector: 'app-single-note',
@@ -12,7 +13,8 @@ export class SingleNoteComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data:any ,
-    private _dialogRef:MatDialogRef<SingleNoteComponent>
+    private _dialogRef:MatDialogRef<SingleNoteComponent>,
+    private _utility:UtilityService
     ) { }
   
   //to store single note
@@ -33,9 +35,6 @@ export class SingleNoteComponent implements OnInit {
 
   noteTitle = new FormControl()
   noteBody = new FormControl()
-  
-  
-
 
   editDone(){
     let updatedNote:object = {
@@ -53,7 +52,6 @@ export class SingleNoteComponent implements OnInit {
     user:this.user
     }
     this._dialogRef.close(updatedNote)
-    
   }
   ngOnInit() {
     this.singleNote = this.data.note
@@ -72,6 +70,42 @@ export class SingleNoteComponent implements OnInit {
     // console.log(this.note)
     this.noteTitle = new FormControl(this.title)
     this.noteBody = new FormControl(this.note)
+  }
+
+  setReminder($event){
+    // console.log($event)
+    let validation=this._utility.validateReminder($event)
+    if (validation){
+      this.reminder=$event
+    }else{
+      this._utility.snackBarMessage("Enter upcoming time to set reminder.")
+    }
+  }
+
+  setColor($event){
+    // console.log($event)
+    if($event){
+      this.color=$event
+    }
+  }
+
+  archiveNote($event){
+    // console.log($event)
+    if($event){
+        this.archives= $event
+        this.editDone()      
+    }
+  }
+
+  pinNote($event){
+    this.pin=$event
+    // console.log("pin",$event)
+  }
+
+  trashNote($event){
+    // console.log("trash",$event)
+    this.trash = $event
+    this.editDone()   
   }
 
 }

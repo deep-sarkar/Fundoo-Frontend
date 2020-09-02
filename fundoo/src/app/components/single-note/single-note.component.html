@@ -3,7 +3,7 @@
         <mat-card-title class="card-title">
             <input type="text" [ngStyle]="{'background-color':color}" [formControl]="noteTitle" placeholder="Title"
                 id="title" autocomplete="off">
-                <app-icon-pin id="pin-icon"></app-icon-pin>
+                <app-icon-pin id="pin-icon" (pin)="pinNote($event)" [isPin]="pin"></app-icon-pin>
         </mat-card-title>
         <img *ngIf="imgUrl != undefined" [ngStyle]="{'background-color':color}" [src]="imgUrl" width="100%" alt="">
         <textarea [formControl]="noteBody" [ngStyle]="{'background-color':color}" cdkTextareaAutosize
@@ -16,13 +16,13 @@
             </mat-chip-list>
         </div>
         <mat-card-actions class="action">
-            <app-icon-reminder class="icon-component"></app-icon-reminder>
+            <app-icon-reminder class="icon-component" (reminder)="setReminder($event)"></app-icon-reminder>
             <app-icon-collaborator class="icon-component"></app-icon-collaborator>
-            <app-icon-palette class="icon-component"></app-icon-palette>
+            <app-icon-palette class="icon-component" (color)="setColor($event)"></app-icon-palette>
             <app-icon-insert-photo class="icon-component"></app-icon-insert-photo>
-            <app-icon-archive class="icon-component"></app-icon-archive>
+            <app-icon-archive class="icon-component" (archive)="archiveNote($event)"></app-icon-archive>
             <app-icon-label class="icon-component"></app-icon-label>
-            <app-icon-trash class="icon-component"></app-icon-trash>
+            <app-icon-trash class="icon-component" (trash)="trashNote($event)"></app-icon-trash>
             <button (click)="editDone()">Close</button>
         </mat-card-actions>
     </mat-card>
