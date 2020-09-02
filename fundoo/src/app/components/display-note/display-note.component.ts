@@ -46,7 +46,7 @@ export class DisplayNoteComponent implements OnInit {
   getId(noteId:number){
     // console.log(noteId)
     this.id=noteId
-    // this.getNote(this.id)
+    this.getNote(this.id)
   }
 
   updateNote(){
@@ -95,34 +95,7 @@ export class DisplayNoteComponent implements OnInit {
     // console.log("Emmitted")
   }
 
-  openDialogue(noteId:number){
-    this.getNote(noteId)
-    this.id=noteId
-    // console.log(this.singleNote)
-    setTimeout(() => {
-      let ref = this._dialogue.open(SingleNoteComponent,{
-        width:'50%',
-        height:'auto',
-        maxHeight:'90%',
-        panelClass: 'dialog-content',
-        position:{top:'3%'},
-        data:{
-          "note":this.singleNote
-        }
-      });
-      ref.afterClosed()
-      .subscribe(
-        result =>{
-          // console.log("result",result)
-          this.singleNote=result
-          this.updateNote()
-        }
-      )
-    }, 1000);
-  }
-
   archiveNote($event, noteId:number){
-    if($event){
       this.id = noteId
       console.log("id",noteId, $event)
         this._accountService.getSingleNote(noteId)
@@ -136,7 +109,6 @@ export class DisplayNoteComponent implements OnInit {
             console.log("error",error)
           }
         )
-    }
   }
 
   pinNote($event,noteId){
@@ -154,6 +126,49 @@ export class DisplayNoteComponent implements OnInit {
           }
         )
   }
+
+  openDialogue(noteId:number){
+    this.getNote(noteId)
+    this.id=noteId
+    // console.log(this.singleNote)
+    this.id = noteId
+      console.log("id",noteId)
+        this._accountService.getSingleNote(noteId)
+        .subscribe(
+          response =>{
+            let ref = this._dialogue.open(SingleNoteComponent,{
+              width:'50%',
+              height:'auto',
+              maxHeight:'90%',
+              panelClass: 'dialog-content',
+              position:{top:'3%'},
+              data:{
+                "note":this.singleNote
+              }
+            });
+            ref.afterClosed()
+            .subscribe(
+              result =>{
+                // console.log("result",result)
+                this.singleNote=result
+                if(this.singleNote['reminder']){
+                    let validation=this._utility.validateReminder(this.singleNote['reminder'])
+                    if(validation){
+                    this.reminder=this.singleNote['reminder']
+                }
+                }
+                this.updateNote()
+              }
+            )
+          },
+          error =>{
+            console.log("error",error)
+          }
+        )
+   
+      
+  }
+
 
   ngOnInit() {
   }
