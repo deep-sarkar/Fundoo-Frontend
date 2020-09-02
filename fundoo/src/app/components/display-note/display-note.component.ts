@@ -36,7 +36,7 @@ export class DisplayNoteComponent implements OnInit {
     .subscribe(
       response =>{
         this.singleNote=response["data"]
-        console.log("get",this.singleNote)
+        // console.log("get",this.singleNote)
       },
       error =>{
         console.log("error",error)
@@ -72,7 +72,7 @@ export class DisplayNoteComponent implements OnInit {
   }
 
   setReminder($event){
-    console.log($event)
+    // console.log($event)
     let validation=this._utility.validateReminder($event)
     if (validation){
       this.singleNote['reminder']=$event
@@ -83,7 +83,7 @@ export class DisplayNoteComponent implements OnInit {
   }
 
   setColor($event){
-    console.log($event)
+    // console.log($event)
     if($event){
       this.singleNote['color']=$event
       this.updateNote()
@@ -96,14 +96,26 @@ export class DisplayNoteComponent implements OnInit {
   }
 
   openDialogue(id:number){
-    console.log(id)
-    this._dialogue.open(SingleNoteComponent,{
-      width:'50%',
-      height:'auto',
-      maxHeight:'90%',
-      panelClass: 'dialog-content',
-      position:{top:'3%'},
-    })
+    this.getNote(id)
+    // console.log(this.singleNote)
+    setTimeout(() => {
+      let ref = this._dialogue.open(SingleNoteComponent,{
+        width:'50%',
+        height:'auto',
+        maxHeight:'90%',
+        panelClass: 'dialog-content',
+        position:{top:'3%'},
+        data:{
+          "note":this.singleNote
+        }
+      });
+      ref.afterClosed()
+      .subscribe(
+        result =>{
+          console.log("result",result)
+        }
+      )
+    }, 1000);
   }
 
   archiveNote($event){
