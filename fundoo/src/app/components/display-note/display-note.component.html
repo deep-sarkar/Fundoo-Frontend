@@ -6,7 +6,7 @@
                     {{ note.title }}
                 </mat-card-title> 
                 <app-icon-pin id="pin-icon" *ngIf="note.pin?getPin(note.pin):getPin(note.pin)" [isPin]="isPin" 
-                (click)="getId(note.id)" (pin)="pinNote($event)"></app-icon-pin>
+                 (pin)="pinNote($event,note.id)"></app-icon-pin>
             </div>
             <mat-card-content class="card-content" (click)="openDialogue(note.id)">
                 {{ note.note }}

@@ -139,9 +139,20 @@ export class DisplayNoteComponent implements OnInit {
     }
   }
 
-  pinNote($event){
-      this.singleNote["pin"]= $event
-      this.updateNote()
+  pinNote($event,noteId){
+      this.id = noteId
+      console.log("id",noteId, $event)
+        this._accountService.getSingleNote(noteId)
+        .subscribe(
+          response =>{
+            this.singleNote=response["data"]
+            this.singleNote["pin"]= $event
+            this.updateNote()
+          },
+          error =>{
+            console.log("error",error)
+          }
+        )
   }
 
   ngOnInit() {
