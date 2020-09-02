@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
 import { UtilityService } from 'src/app/services/utilityService/utility.service';
-import { NotesComponent } from '../notes/notes.component';
 import { SingleNoteComponent } from '../single-note/single-note.component';
 
 @Component({
@@ -47,12 +46,12 @@ export class DisplayNoteComponent implements OnInit {
   getId(noteId:number){
     // console.log(noteId)
     this.id=noteId
-    this.getNote(this.id)
+    // this.getNote(this.id)
   }
 
   updateNote(){
     // console.log(this.singleNote)
-    if(this.singleNote['reminder'] == null){
+    if(this.reminder == null){
       delete this.singleNote["reminder"]
     }
     this._accountService.updateSingleNote(this.id,this.singleNote)
@@ -76,6 +75,7 @@ export class DisplayNoteComponent implements OnInit {
     let validation=this._utility.validateReminder($event)
     if (validation){
       this.singleNote['reminder']=$event
+      this.reminder = $event
       this.updateNote()
     }else{
       this._utility.snackBarMessage("Enter upcoming time to set reminder.")
@@ -95,8 +95,9 @@ export class DisplayNoteComponent implements OnInit {
     // console.log("Emmitted")
   }
 
-  openDialogue(id:number){
-    this.getNote(id)
+  openDialogue(noteId:number){
+    this.getNote(noteId)
+    this.id=noteId
     // console.log(this.singleNote)
     setTimeout(() => {
       let ref = this._dialogue.open(SingleNoteComponent,{
@@ -112,27 +113,35 @@ export class DisplayNoteComponent implements OnInit {
       ref.afterClosed()
       .subscribe(
         result =>{
-          console.log("result",result)
+          // console.log("result",result)
+          this.singleNote=result
+          this.updateNote()
         }
       )
     }, 1000);
   }
 
-  archiveNote($event){
+  archiveNote($event, noteId:number){
     if($event){
-      setTimeout(() => {
-        this.singleNote["archives"]= $event
-        this.updateNote()
-      }, 1000);
-      
+      this.id = noteId
+      console.log("id",noteId, $event)
+        this._accountService.getSingleNote(noteId)
+        .subscribe(
+          response =>{
+            this.singleNote=response["data"]
+            this.singleNote["archives"]= $event
+            this.updateNote()
+          },
+          error =>{
+            console.log("error",error)
+          }
+        )
     }
   }
 
   pinNote($event){
-    setTimeout(() => {
       this.singleNote["pin"]= $event
       this.updateNote()
-    }, 1000);
   }
 
   ngOnInit() {
