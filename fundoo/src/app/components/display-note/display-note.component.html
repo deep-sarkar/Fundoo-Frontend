@@ -26,7 +26,7 @@
                 <app-icon-collaborator class="icon-component"></app-icon-collaborator>
                 <app-icon-palette class="icon-component" (click)="getId(note.id)" (color)="setColor($event)"></app-icon-palette>
                 <app-icon-insert-photo class="icon-component"></app-icon-insert-photo>
-                <app-icon-archive class="icon-component" (click)="getId(note.id)" (archive)="archiveNote($event)" ></app-icon-archive>
+                <app-icon-archive class="icon-component" (archive)="archiveNote($event, note.id)" ></app-icon-archive>
                 <app-icon-menu></app-icon-menu>
             </mat-card-footer>
 
