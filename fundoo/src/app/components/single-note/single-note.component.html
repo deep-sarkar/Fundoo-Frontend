@@ -1,9 +1,9 @@
 <div class="dialog-content">
-    <mat-card class="card">
+    <mat-card class="card" [ngStyle]="{'background-color':color}">
         <mat-card-title class="card-title">
-            <input type="text" [ngStyle]="{'background-color':color}" [formControl]="title" placeholder="Title"
+            <input type="text" [ngStyle]="{'background-color':color}" [formControl]="noteTitle" placeholder="Title"
                 id="title" autocomplete="off">
-                <app-icon-pin id="pin-icon" (pin)="setPin($event)"></app-icon-pin>
+                <app-icon-pin id="pin-icon"></app-icon-pin>
         </mat-card-title>
         <img *ngIf="imgUrl != undefined" [ngStyle]="{'background-color':color}" [src]="imgUrl" width="100%" alt="">
         <textarea [formControl]="noteBody" [ngStyle]="{'background-color':color}" cdkTextareaAutosize
@@ -23,7 +23,7 @@
             <app-icon-archive class="icon-component"></app-icon-archive>
             <app-icon-label class="icon-component"></app-icon-label>
             <app-icon-trash class="icon-component"></app-icon-trash>
-            <button [matDialogClose]>Close</button>
+            <button (click)="editDone()">Close</button>
         </mat-card-actions>
     </mat-card>
 </div>
