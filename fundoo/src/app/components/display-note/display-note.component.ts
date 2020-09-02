@@ -100,7 +100,7 @@ export class DisplayNoteComponent implements OnInit {
     console.log(id)
     this._dialogue.open(SingleNoteComponent,{
       width:'50%',
-      height:"80%",
+      height:"90%",
       panelClass: 'dialog-content'
     })
   }

@@ -8,7 +8,7 @@
                 <app-icon-pin id="pin-icon" *ngIf="note.pin?getPin(note.pin):getPin(note.pin)" [isPin]="isPin" 
                 (click)="getId(note.id)" (pin)="pinNote($event)"></app-icon-pin>
             </div>
-            <mat-card-content class="card-content">
+            <mat-card-content class="card-content" (click)="openDialogue(note.id)">
                 {{ note.note }}
             </mat-card-content>
             <mat-card-actions class="action">
