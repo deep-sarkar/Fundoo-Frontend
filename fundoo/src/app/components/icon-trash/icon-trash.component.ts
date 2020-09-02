@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-icon-trash',
@@ -8,6 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class IconTrashComponent implements OnInit {
 
   constructor() { }
+
+  @Output() trash = new EventEmitter<boolean>()
+
+  setTrash(){
+    this.trash.emit(true)
+  }
 
   ngOnInit() {
   }
