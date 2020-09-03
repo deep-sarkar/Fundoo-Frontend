@@ -19,4 +19,8 @@ export class GenericService {
   putService(url:string, data:any, header:object){
     return this._httpClint.put(url,data,header)
   }
+
+  deleteService(url:string, header:object){
+    return this._httpClint.delete(url, header)
+  }
 }
