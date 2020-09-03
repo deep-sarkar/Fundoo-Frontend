@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
+import { LabelComponent } from '../label/label.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +10,10 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private _router:Router) { }
+  constructor(
+      private _router:Router,
+      private _dialog:MatDialog
+    ) { }
 
   logout(){
     localStorage.removeItem('token')
@@ -19,6 +24,17 @@ export class DashboardComponent implements OnInit {
 
   createNote(){
     this._router.navigate(['create'])
+  }
+
+  openLabel(){
+    let labelRef = this._dialog.open(LabelComponent,{
+      position:{top:"10%"},
+      width:"25%",
+      disableClose:true,
+      height:'auto',
+      maxHeight:'90%',
+      panelClass:'label-dialog'
+    })
   }
 
   ngOnInit() {
