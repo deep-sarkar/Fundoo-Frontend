@@ -16,7 +16,9 @@ export class LabelComponent implements OnInit {
   ) { }
 
   newLabel = new FormControl('')
-  
+  allLabels:object[]
+
+
   createLabel(){
     let labelData ={
       label:this.newLabel.value
@@ -26,6 +28,9 @@ export class LabelComponent implements OnInit {
       response =>{
         if(response['code']==201){
           this._utility.snackBarMessage("New label created")
+          this.getAllLabel()
+          //after creating label form control will be empty
+          this.newLabel = new FormControl("")
         }else{
           this._utility.snackBarMessage(response["msg"])
         }
@@ -36,7 +41,22 @@ export class LabelComponent implements OnInit {
     )
   }
 
+  getAllLabel(){
+    this._dataService.getLabel()
+    .subscribe(
+      response =>{
+        if(response["code"]==200){
+           // console.log("label",response)
+           this.allLabels=response["data"]
+           console.log(this.allLabels)
+        }
+       
+      }
+    )
+  }
 
   ngOnInit() {
+    this.getAllLabel()
   }
+
 }
