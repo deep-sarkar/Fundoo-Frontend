@@ -57,4 +57,20 @@ export class DataService {
       "Authorization": "JWT "+this.token})
     return this._http.getService(this.noteUrl + "create/label/", {headers:headers})
   }
+
+  editLabel(id:number, labelData:object){
+    let headers = new HttpHeaders(
+      {"Content-Type": "application/json",
+      "Authorization": "JWT "+this.token})
+    return this._http.putService(this.noteUrl + "open/label/"+ id + "/", labelData, {headers:headers})
+  }
+
+  deleteLabel(id:number){
+    let headers = new HttpHeaders(
+      {"Content-Type": "application/json",
+      "Authorization": "JWT "+this.token})
+     let url = this.noteUrl + "open/label/"+ id + "/"
+     console.log(url)
+    return this._http.deleteService(url,{headers:headers})
+  }
 }
