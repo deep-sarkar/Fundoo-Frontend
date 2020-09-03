@@ -55,6 +55,7 @@ import { IconMenuComponent } from './components/icon-menu/icon-menu.component';
 import { LabelComponent } from './components/label/label.component';
 import { IconCheckComponent } from './components/icon-check/icon-check.component';
 import { DataService } from './services/dataService/data.service';
+import { IconWriteComponent } from './components/icon-write/icon-write.component';
 
 
 @NgModule({
@@ -83,6 +84,7 @@ import { DataService } from './services/dataService/data.service';
     IconMenuComponent,
     LabelComponent,
     IconCheckComponent,
+    IconWriteComponent,
   ],
   imports: [
     BrowserModule,
