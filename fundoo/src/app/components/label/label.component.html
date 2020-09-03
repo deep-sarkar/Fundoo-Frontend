@@ -4,4 +4,10 @@
         <input [formControl]="newLabel" placeholder="Create new label">
         <app-icon-check (click)="createLabel()"></app-icon-check>
     </div>
+    <div class="display-label" *ngFor="let singleLabel of allLabels">
+        <app-icon-trash></app-icon-trash>
+        <div class="label-div">{{ singleLabel.label }}</div>
+        <app-icon-write id="write"></app-icon-write>
+    </div>
+    
 </div>
