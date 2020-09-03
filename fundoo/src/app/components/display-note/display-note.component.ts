@@ -137,10 +137,11 @@ export class DisplayNoteComponent implements OnInit {
         .subscribe(
           response =>{
             let ref = this._dialogue.open(SingleNoteComponent,{
-              width:'50%',
+              minWidth:'50%',
               height:'auto',
               maxHeight:'90%',
               panelClass: 'dialog-content',
+              disableClose: true,
               position:{top:'3%'},
               data:{
                 "note":this.singleNote
