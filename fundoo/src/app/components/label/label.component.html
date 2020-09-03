@@ -5,7 +5,7 @@
         <app-icon-check (click)="createLabel()"></app-icon-check>
     </div>
     <div class="display-label" *ngFor="let singleLabel of allLabels">
-        <app-icon-trash></app-icon-trash>
+        <app-icon-trash (click)="deleteLabel(singleLabel.id)"></app-icon-trash>
         <div class="label-div">{{ singleLabel.label }}</div>
         <app-icon-write id="write"></app-icon-write>
     </div>

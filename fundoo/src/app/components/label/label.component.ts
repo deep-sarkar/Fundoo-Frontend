@@ -41,14 +41,31 @@ export class LabelComponent implements OnInit {
     )
   }
 
+  deleteLabel(id:number){
+    this._dataService.deleteLabel(id)
+    .subscribe(
+      response =>{
+        // console.log(response)
+        if(response["code"]==200){
+          this._utility.snackBarMessage("label deleted !!!")
+          this.getAllLabel()
+        }
+      },
+      error =>{
+        console.log("error",error)
+      }
+    )
+  }
+
   getAllLabel(){
     this._dataService.getLabel()
     .subscribe(
       response =>{
+        // console.log(response)
         if(response["code"]==200){
-           // console.log("label",response)
+           console.log("label",response)
            this.allLabels=response["data"]
-           console.log(this.allLabels)
+          //  console.log(this.allLabels)
         }
        
       }
