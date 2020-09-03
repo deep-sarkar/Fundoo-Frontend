@@ -52,6 +52,8 @@ import { NotesComponent } from './components/notes/notes.component';
 import { SingleNoteComponent } from './components/single-note/single-note.component';
 import { IconTrashComponent } from './components/icon-trash/icon-trash.component';
 import { IconMenuComponent } from './components/icon-menu/icon-menu.component';
+import { LabelComponent } from './components/label/label.component';
+import { IconCheckComponent } from './components/icon-check/icon-check.component';
 
 
 @NgModule({
@@ -78,6 +80,8 @@ import { IconMenuComponent } from './components/icon-menu/icon-menu.component';
     SingleNoteComponent,
     IconTrashComponent,
     IconMenuComponent,
+    LabelComponent,
+    IconCheckComponent,
   ],
   imports: [
     BrowserModule,
@@ -101,7 +105,8 @@ import { IconMenuComponent } from './components/icon-menu/icon-menu.component';
     MatChipsModule
   ],
   entryComponents:[
-    SingleNoteComponent
+    SingleNoteComponent,
+    LabelComponent
   ],
   providers: [
     AccountHttpService,
