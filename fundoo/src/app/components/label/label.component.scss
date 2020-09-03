@@ -26,4 +26,17 @@
             }
         }
     }
+    .display-label{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1em;
+        .label-div{
+            width: 70%;
+            margin: 0 auto;
+        }
+        &:hover{
+            background-color: rgb(236, 234, 234);
+        }
+    }
 }
