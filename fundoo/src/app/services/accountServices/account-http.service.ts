@@ -71,34 +71,5 @@ export class AccountHttpService {
     return this._http.postService(this.baseUrl+"reset_paassword/" , user_data, {headers:headers})
   }
   
-  getNotes(): Observable<any>{
-    let headers = new HttpHeaders(
-      {"Content-Type": "application/json",
-      "Authorization": "JWT "+this.token})
-    
-    return this._http.getService(this.noteUrl + "create/", {headers:headers})
-  }
-
-  createNotes(noteData:object): Observable<any>{
-    let headers = new HttpHeaders(
-      {"Content-Type": "application/json",
-      "Authorization": "JWT "+this.token})
-    
-    return this._http.postService(this.noteUrl + "create/", noteData,{headers:headers})
-  }
-
-  getSingleNote(id:number): Observable<any>{
-    let headers = new HttpHeaders(
-      {"Content-Type": "application/json",
-      "Authorization": "JWT "+this.token})
-      return this._http.getService(this.noteUrl+"open/"+id+"/",{headers:headers})
-  }
-  
-  updateSingleNote(id:number, noteData:object): Observable<any>{
-    let headers = new HttpHeaders(
-      {"Content-Type": "application/json",
-      "Authorization": "JWT "+this.token})
-      return this._http.putService(this.noteUrl+"open/"+id+"/",noteData,{headers:headers})
-  }
 }
 
