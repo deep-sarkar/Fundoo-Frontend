@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
+import { DataService } from 'src/app/services/dataService/data.service';
 import { UtilityService } from 'src/app/services/utilityService/utility.service';
 import { SingleNoteComponent } from '../single-note/single-note.component';
 
@@ -13,8 +13,8 @@ export class DisplayNoteComponent implements OnInit {
 
   constructor(
         private _dialogue:MatDialog,
-        private _accountService:AccountHttpService,
-        private _utility:UtilityService
+        private _utility:UtilityService,
+        private _dataService:DataService
      ) { }
 
   @Input() allNotes:object[];
@@ -31,7 +31,7 @@ export class DisplayNoteComponent implements OnInit {
   }
 
   getNote(id:number){
-    this._accountService.getSingleNote(id)
+    this._dataService.getSingleNote(id)
     .subscribe(
       response =>{
         this.singleNote=response["data"]
@@ -54,7 +54,7 @@ export class DisplayNoteComponent implements OnInit {
     if(this.reminder == null){
       delete this.singleNote["reminder"]
     }
-    this._accountService.updateSingleNote(this.id,this.singleNote)
+    this._dataService.updateSingleNote(this.id,this.singleNote)
       .subscribe(
         response =>{
           if(response['code']==202){
@@ -98,7 +98,7 @@ export class DisplayNoteComponent implements OnInit {
   archiveNote($event, noteId:number){
       this.id = noteId
       console.log("id",noteId, $event)
-        this._accountService.getSingleNote(noteId)
+        this._dataService.getSingleNote(noteId)
         .subscribe(
           response =>{
             this.singleNote=response["data"]
@@ -114,7 +114,7 @@ export class DisplayNoteComponent implements OnInit {
   pinNote($event,noteId){
       this.id = noteId
       console.log("id",noteId, $event)
-        this._accountService.getSingleNote(noteId)
+        this._dataService.getSingleNote(noteId)
         .subscribe(
           response =>{
             this.singleNote=response["data"]
@@ -133,7 +133,7 @@ export class DisplayNoteComponent implements OnInit {
     // console.log(this.singleNote)
     this.id = noteId
       console.log("id",noteId)
-        this._accountService.getSingleNote(noteId)
+        this._dataService.getSingleNote(noteId)
         .subscribe(
           response =>{
             let ref = this._dialogue.open(SingleNoteComponent,{

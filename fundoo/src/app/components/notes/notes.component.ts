@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
+import { DataService } from 'src/app/services/dataService/data.service';
 
 @Component({
   selector: 'app-notes',
@@ -8,14 +8,14 @@ import { AccountHttpService } from 'src/app/services/accountServices/account-htt
 })
 export class NotesComponent implements OnInit {
 
-  constructor(private _httpService:AccountHttpService) { }
+  constructor(private _dataService:DataService) { }
 
   allNotes:object;
   trigger:any;
   update:any;
 
   getAllNotes(){
-    this._httpService.getNotes()
+    this._dataService.getNotes()
     .subscribe(
       response =>{
         if (response['code']==200){

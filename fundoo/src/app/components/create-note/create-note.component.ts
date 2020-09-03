@@ -1,7 +1,6 @@
-import { JsonPipe } from '@angular/common';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
+import { DataService } from 'src/app/services/dataService/data.service';
 import { UtilityService } from 'src/app/services/utilityService/utility.service';
 
 @Component({
@@ -14,8 +13,8 @@ export class CreateNoteComponent implements OnInit {
   @Output() trigger = new EventEmitter();
 
   constructor(
-    private _httpService:AccountHttpService,
-    private _utility:UtilityService
+    private _utility:UtilityService,
+    private _dataService:DataService
   ) { }
 
   
@@ -53,7 +52,7 @@ export class CreateNoteComponent implements OnInit {
         }
       }
       // console.log('create fn',this.noteData)
-      this._httpService.createNotes(this.noteData)
+      this._dataService.createNotes(this.noteData)
       .subscribe(
         response => {
           if (response['code'] == 201){

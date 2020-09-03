@@ -54,6 +54,7 @@ import { IconTrashComponent } from './components/icon-trash/icon-trash.component
 import { IconMenuComponent } from './components/icon-menu/icon-menu.component';
 import { LabelComponent } from './components/label/label.component';
 import { IconCheckComponent } from './components/icon-check/icon-check.component';
+import { DataService } from './services/dataService/data.service';
 
 
 @NgModule({
@@ -112,7 +113,8 @@ import { IconCheckComponent } from './components/icon-check/icon-check.component
     AccountHttpService,
     ValidateFormFieldService,
     UtilityService,
-    GenericService
+    GenericService,
+    DataService
   ],
   bootstrap: [AppComponent]
 })
