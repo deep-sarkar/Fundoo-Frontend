@@ -28,11 +28,10 @@ export class DashboardComponent implements OnInit {
 
   openLabel(){
     let labelRef = this._dialog.open(LabelComponent,{
-      position:{top:"10%"},
-      width:"25%",
+      position:{top:"5%"},
+      minWidth:"20%",
+      maxHeight:"85vh",
       disableClose:true,
-      height:'auto',
-      maxHeight:'90%',
       panelClass:'label-dialog'
     })
   }
