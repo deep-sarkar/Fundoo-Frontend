@@ -1,0 +1,27 @@
+@mixin buttonStyle {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin iconStyle {
+    font-size: 1.3em;
+    color:gray;
+    margin: auto;
+}
+
+@mixin buttonSize {
+    width: 1.9em;
+    height: 1.9em;
+}
+
+@mixin buttonHover {
+    background-color: #e8eaed;
+}
+
+@mixin iconHover {
+    color: #202124;
+            opacity: .71;
+}
