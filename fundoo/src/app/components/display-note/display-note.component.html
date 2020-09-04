@@ -22,9 +22,9 @@
                 <span *ngFor="let labels of note.label">{{ labels }}</span> -->
             </mat-card-actions>
             <mat-card-footer class="card-footer">
-                <app-icon-reminder class="icon-component" (click)="getId(note.id)" (reminder)="setReminder($event)"></app-icon-reminder>
+                <app-icon-reminder class="icon-component" (reminder)="setReminder($event, note.id)"></app-icon-reminder>
                 <app-icon-collaborator class="icon-component"></app-icon-collaborator>
-                <app-icon-palette class="icon-component" (click)="getId(note.id)" (color)="setColor($event)"></app-icon-palette>
+                <app-icon-palette class="icon-component"  (color)="setColor($event, note.id)"></app-icon-palette>
                 <app-icon-insert-photo class="icon-component"></app-icon-insert-photo>
                 <app-icon-archive class="icon-component" (archive)="archiveNote($event, note.id)" ></app-icon-archive>
                 <app-icon-menu></app-icon-menu>

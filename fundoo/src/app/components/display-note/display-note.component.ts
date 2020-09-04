@@ -21,40 +21,19 @@ export class DisplayNoteComponent implements OnInit {
   @Output() update = new EventEmitter<boolean>()
   isPin:boolean=false;
   reminder:string=null;
-  id:number;
-  singleNote:object;
-
-
+ 
   getPin(pin:boolean){
     this.isPin=pin
     return true
   }
 
-  getNote(id:number){
-    this._dataService.getSingleNote(id)
-    .subscribe(
-      response =>{
-        this.singleNote=response["data"]
-        // console.log("get",this.singleNote)
-      },
-      error =>{
-        console.log("error",error)
-      }
-    )
-  }
 
-  getId(noteId:number){
-    // console.log(noteId)
-    this.id=noteId
-    this.getNote(this.id)
-  }
-
-  updateNote(){
-    // console.log(this.singleNote)
+  updateNote(id:number,noteData:object ){
+    console.log(noteData)
     if(this.reminder == null){
-      delete this.singleNote["reminder"]
+      delete noteData["reminder"]
     }
-    this._dataService.updateSingleNote(this.id,this.singleNote)
+    this._dataService.updateSingleNote(id, noteData)
       .subscribe(
         response =>{
           if(response['code']==202){
@@ -70,23 +49,24 @@ export class DisplayNoteComponent implements OnInit {
       )
   }
 
-  setReminder($event){
-    // console.log($event)
+  setReminder($event, noteId){
+    console.log($event)
     let validation=this._utility.validateReminder($event)
     if (validation){
-      this.singleNote['reminder']=$event
       this.reminder = $event
-      this.updateNote()
+      let note ={reminder:$event}
+      this.updateNote(noteId, note)
+      console.log("ok")
     }else{
       this._utility.snackBarMessage("Enter upcoming time to set reminder.")
     }
   }
 
-  setColor($event){
+  setColor($event,noteId){
     // console.log($event)
     if($event){
-      this.singleNote['color']=$event
-      this.updateNote()
+      let note = {color:$event}
+      this.updateNote(noteId, note)
     }
   }
 
@@ -96,78 +76,50 @@ export class DisplayNoteComponent implements OnInit {
   }
 
   archiveNote($event, noteId:number){
-      this.id = noteId
-      console.log("id",noteId, $event)
-        this._dataService.getSingleNote(noteId)
-        .subscribe(
-          response =>{
-            this.singleNote=response["data"]
-            this.singleNote["archives"]= $event
-            this.updateNote()
-          },
-          error =>{
-            console.log("error",error)
-          }
-        )
+    let note ={archives:$event}
+    this.updateNote(noteId, note)
   }
 
   pinNote($event,noteId){
-      this.id = noteId
-      console.log("id",noteId, $event)
-        this._dataService.getSingleNote(noteId)
-        .subscribe(
-          response =>{
-            this.singleNote=response["data"]
-            this.singleNote["pin"]= $event
-            this.updateNote()
-          },
-          error =>{
-            console.log("error",error)
-          }
-        )
+    let note = {pin:$event}
+    this.updateNote(noteId, note)
   }
 
   openDialogue(noteId:number){
-    this.getNote(noteId)
-    this.id=noteId
-    // console.log(this.singleNote)
-    this.id = noteId
-      console.log("id",noteId)
-        this._dataService.getSingleNote(noteId)
-        .subscribe(
-          response =>{
-            let ref = this._dialogue.open(SingleNoteComponent,{
-              minWidth:'50%',
-              height:'auto',
-              maxHeight:'90%',
-              panelClass: 'dialog-content',
-              disableClose: true,
-              position:{top:'3%'},
-              data:{
-                "note":this.singleNote
+    console.log("id",noteId)
+      this._dataService.getSingleNote(noteId)
+      .subscribe(
+        response =>{
+          let ref = this._dialogue.open(SingleNoteComponent,{
+            minWidth:'50%',
+            height:'auto',
+            maxHeight:'90%',
+            panelClass: 'dialog-content',
+            disableClose: true,
+            position:{top:'3%'},
+            data:{
+              "note":response['data']
+            }
+          });
+          ref.afterClosed()
+          .subscribe(
+            result =>{
+              // console.log("result",result)
+              let note = result
+              if(note['reminder']){
+                  let validation=this._utility.validateReminder(note['reminder'])
+                  if(validation){
+                  this.reminder=note['reminder']
               }
-            });
-            ref.afterClosed()
-            .subscribe(
-              result =>{
-                // console.log("result",result)
-                this.singleNote=result
-                if(this.singleNote['reminder']){
-                    let validation=this._utility.validateReminder(this.singleNote['reminder'])
-                    if(validation){
-                    this.reminder=this.singleNote['reminder']
-                }
-                }
-                this.updateNote()
               }
-            )
-          },
-          error =>{
-            console.log("error",error)
-          }
-        )
-   
-      
+              this.updateNote(noteId, note)
+            }
+          )
+        },
+        error =>{
+          console.log("error",error)
+        }
+      )
   }
 
 
