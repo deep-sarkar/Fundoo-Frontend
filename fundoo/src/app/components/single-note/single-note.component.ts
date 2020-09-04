@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Inject } from '@angular/core';
 import { UtilityService } from 'src/app/services/utilityService/utility.service';
+import { DataService } from 'src/app/services/dataService/data.service';
 
 @Component({
   selector: 'app-single-note',
@@ -14,24 +15,26 @@ export class SingleNoteComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data:any ,
     private _dialogRef:MatDialogRef<SingleNoteComponent>,
-    private _utility:UtilityService
+    private _utility:UtilityService,
+    private _dataService:DataService
     ) { }
   
   //to store single note
   singleNote:object={};
-    //on init save all property of note here
-    title:string;
-    note:string;
-    color:string;
-    reminder:string;
-    pin:boolean;
-    archives:boolean;
-    trash:boolean;
-    label:string[];
-    collaborator:any[];
-    image:File;
-    urls:string;
-    user:string
+  allLabel:string[];
+  //on init save all property of note here
+  title:string;
+  note:string;
+  color:string;
+  reminder:string;
+  pin:boolean;
+  archives:boolean;
+  trash:boolean;
+  label:string[];
+  collaborator:any[];
+  image:File;
+  urls:string;
+  user:string
 
   noteTitle = new FormControl()
   noteBody = new FormControl()
@@ -112,6 +115,20 @@ export class SingleNoteComponent implements OnInit {
     this.trash = $event
     this.editDone()   
   }
+
+  getAllLabels(){
+    this._dataService.getLabel()
+    .subscribe(
+      response =>{
+        // console.log(response['data'])
+        this.allLabel = response['data']
+      },
+      error =>{
+        console.log("error",error)
+      }
+    )
+  }
+
 
   removeLabel(singleLabel:string){
     for(var i=0; i<this.label.length;i++){

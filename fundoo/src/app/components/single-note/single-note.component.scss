@@ -92,6 +92,12 @@ $textColor :#202124;
            padding: 0 7px;
            #icon{
                margin-left: 4px;
+               display: none;
+           }
+           &:hover{
+               #icon{
+                   display: inline-block;
+               }
            }
         }
     }

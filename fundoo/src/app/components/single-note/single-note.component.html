@@ -27,9 +27,17 @@
             <app-icon-palette class="icon-component" (color)="setColor($event)"></app-icon-palette>
             <app-icon-insert-photo class="icon-component"></app-icon-insert-photo>
             <app-icon-archive class="icon-component" (archive)="archiveNote($event)"></app-icon-archive>
-            <app-icon-label class="icon-component"></app-icon-label>
+            <app-icon-label class="icon-component" (click)="getAllLabels()" [matMenuTriggerFor]="menu"></app-icon-label>
             <app-icon-trash class="icon-component" (trash)="trashNote($event)"></app-icon-trash>
             <button (click)="editDone()">Close</button>
         </mat-card-actions>
     </mat-card>
 </div>
+
+<mat-menu  #menu="matMenu" yPosition="below" class="menu">
+   <div *ngFor="let singleLabel of allLabel" class="label-div" (click)="$event.stopPropagation()">
+       <mat-checkbox color="primary" labelPosition="after" class="single-lable" checked>
+           {{ singleLabel.label }}
+        </mat-checkbox>
+   </div>
+ </mat-menu>
