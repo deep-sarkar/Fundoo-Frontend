@@ -53,9 +53,8 @@ export class SingleNoteComponent implements OnInit {
     }
     this._dialogRef.close(updatedNote)
   }
-  ngOnInit() {
-    this.singleNote = this.data.note
-    // console.log(this.singleNote)
+
+  mapAttributes(){
     this.title = this.singleNote["title"]
     this.note =  this.singleNote["note"]
     this.color =  this.singleNote["color"]
@@ -70,6 +69,12 @@ export class SingleNoteComponent implements OnInit {
     // console.log(this.note)
     this.noteTitle = new FormControl(this.title)
     this.noteBody = new FormControl(this.note)
+  }
+
+  ngOnInit() {
+    this.singleNote = this.data.note
+    // console.log(this.singleNote)
+    this.mapAttributes()
   }
 
   setReminder($event){
