@@ -13,7 +13,7 @@ export class IconTrashComponent implements OnInit {
 
   setTrash(){
     this.trash.emit(true)
-    console.log("trash")
+    // console.log("trash")
   }
 
   ngOnInit() {
