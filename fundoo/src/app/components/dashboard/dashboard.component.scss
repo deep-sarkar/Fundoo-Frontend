@@ -12,6 +12,8 @@ $textColor :#202124;
     display: flex;
     justify-content: space-between;
     border: 1px solid #e0dddd;
+    // position: sticky;
+    // top: 0;
     .mat-icon {
         color: $textColor;
         font-size: 1.7em;

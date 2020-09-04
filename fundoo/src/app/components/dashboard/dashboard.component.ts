@@ -18,8 +18,8 @@ export class DashboardComponent implements OnInit {
   logout(){
     localStorage.removeItem('token')
     let token=localStorage.getItem('token')
-    console.log('token',token)
-    console.log("success")
+    // console.log('token',token)
+    // console.log("success")
   }
 
   createNote(){
@@ -30,6 +30,8 @@ export class DashboardComponent implements OnInit {
     let labelRef = this._dialog.open(LabelComponent,{
       position:{top:"5%"},
       minWidth:"20%",
+      minHeight:"10vh",
+      height:"auto",
       maxHeight:"85vh",
       disableClose:true,
       panelClass:'label-dialog'
