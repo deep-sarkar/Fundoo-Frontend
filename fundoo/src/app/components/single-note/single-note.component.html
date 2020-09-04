@@ -9,9 +9,15 @@
         <textarea [formControl]="noteBody" [ngStyle]="{'background-color':color}" cdkTextareaAutosize
             cdkAutosizeMinRows="5" cdkAutosizeMaxRows="30" placeholder="Add note...."></textarea>
         <div class="additional-info">
-            <mat-chip-list class="chip-list" *ngIf="reminder != null">
-                <mat-chip class="chip">
+            <mat-chip-list class="chip-list">
+                <mat-chip class="chip" *ngIf="reminder">
                     {{ reminder }}
+                </mat-chip>
+            </mat-chip-list>
+            <mat-chip-list class="chip-list" *ngFor="let labels of label">
+                <mat-chip class="chip" >
+                    {{ labels }}
+                    <app-icon-cancel id="icon" (click)="removeLabel(labels)"></app-icon-cancel>
                 </mat-chip>
             </mat-chip-list>
         </div>

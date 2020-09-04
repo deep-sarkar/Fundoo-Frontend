@@ -113,4 +113,14 @@ export class SingleNoteComponent implements OnInit {
     this.editDone()   
   }
 
+  removeLabel(singleLabel:string){
+    for(var i=0; i<this.label.length;i++){
+      if(this.label[i]===singleLabel){
+        this._utility.snackBarMessage("label \'"+ singleLabel +"\' removed !!!")
+        this.label.splice(i,1)
+      }
+    }
+  }
+
+
 }

@@ -81,16 +81,21 @@ $textColor :#202124;
           background: #888;
         }
     .additional-info{
+        display: flex;
+        justify-content: flex-start;
         .chip-list{
             padding: 1%;
             font-size: 0.7em;
-        }
         .chip{
            min-height: 19px;
-           font-size: 1em;
+           font-size: 1.1em;
            padding: 0 7px;
+           #icon{
+               margin-left: 4px;
+           }
         }
     }
+}
     .action{
         margin: 0;
         display: flex;
