@@ -56,7 +56,7 @@ export class DisplayNoteComponent implements OnInit {
       this.reminder = $event
       let note ={reminder:$event}
       this.updateNote(noteId, note)
-      console.log("ok")
+      // console.log("ok")
     }else{
       this._utility.snackBarMessage("Enter upcoming time to set reminder.")
     }
@@ -82,6 +82,12 @@ export class DisplayNoteComponent implements OnInit {
 
   pinNote($event,noteId){
     let note = {pin:$event}
+    this.updateNote(noteId, note)
+  }
+
+  trashNote($event,noteId){
+    // console.log($event,noteId)
+    let note = {trash:$event}
     this.updateNote(noteId, note)
   }
 

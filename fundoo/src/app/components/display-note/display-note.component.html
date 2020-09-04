@@ -27,7 +27,7 @@
                 <app-icon-palette class="icon-component"  (color)="setColor($event, note.id)"></app-icon-palette>
                 <app-icon-insert-photo class="icon-component"></app-icon-insert-photo>
                 <app-icon-archive class="icon-component" (archive)="archiveNote($event, note.id)" ></app-icon-archive>
-                <app-icon-trash></app-icon-trash>
+                <app-icon-trash (trash)="trashNote($event,note.id)"></app-icon-trash>
             </mat-card-footer>
 
         </mat-card>
