@@ -1,25 +1,18 @@
+@import "src/app/components/icon";
+
 button{
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include buttonStyle();
     i {
-        font-size: 1.3em;
-        color:gray;
-        margin: auto;
+        @include iconStyle();
     }
     
 }
 .btn{
-    width: 1.9em;
-    height: 1.9em;
+    @include buttonSize();
 }
-
 button:hover{
-    background-color: #e8eaed;
+    @include buttonHover();
     i{
-        color: #202124;
-        opacity: .71;
+        @include iconHover()
     }
 }
