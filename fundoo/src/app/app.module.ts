@@ -51,11 +51,11 @@ import { DisplayNoteComponent } from './components/display-note/display-note.com
 import { NotesComponent } from './components/notes/notes.component';
 import { SingleNoteComponent } from './components/single-note/single-note.component';
 import { IconTrashComponent } from './components/icon-trash/icon-trash.component';
-import { IconMenuComponent } from './components/icon-menu/icon-menu.component';
 import { LabelComponent } from './components/label/label.component';
 import { IconCheckComponent } from './components/icon-check/icon-check.component';
 import { DataService } from './services/dataService/data.service';
 import { IconWriteComponent } from './components/icon-write/icon-write.component';
+import { IconCancelComponent } from './components/icon-cancel/icon-cancel.component';
 
 
 @NgModule({
@@ -81,10 +81,10 @@ import { IconWriteComponent } from './components/icon-write/icon-write.component
     NotesComponent,
     SingleNoteComponent,
     IconTrashComponent,
-    IconMenuComponent,
     LabelComponent,
     IconCheckComponent,
     IconWriteComponent,
+    IconCancelComponent,
   ],
   imports: [
     BrowserModule,
