@@ -20,6 +20,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 // services
 import { ValidateFormFieldService } from './services/validationService/validate-form-field.service';
@@ -105,7 +106,8 @@ import { IconCancelComponent } from './components/icon-cancel/icon-cancel.compon
     MatDialogModule,
     MatMenuModule,
     AmazingTimePickerModule,
-    MatChipsModule
+    MatChipsModule,
+    MatCheckboxModule
   ],
   entryComponents:[
     SingleNoteComponent,
