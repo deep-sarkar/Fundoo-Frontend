@@ -15,8 +15,8 @@
                 <mat-chip-list class="chip-list">
                     <mat-chip class="chip" *ngIf="note.reminder"> {{ note.reminder }} </mat-chip>
                 </mat-chip-list>
-                <mat-chip-list class="chip-list">
-                    <mat-chip class="chip" *ngFor="let labels of note.label">{{ labels }}</mat-chip>
+                <mat-chip-list class="chip-list" *ngFor="let labels of note.label">
+                    <mat-chip class="chip" >{{ labels }}</mat-chip>
                 </mat-chip-list>
                 <!-- <span *ngIf="note.reminder">{{ note.reminder }}</span>
                 <span *ngFor="let labels of note.label">{{ labels }}</span> -->
