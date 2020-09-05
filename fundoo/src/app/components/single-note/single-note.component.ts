@@ -48,10 +48,7 @@ export class SingleNoteComponent implements OnInit {
   }  
 
   updateNote(id:number,noteData:object ){
-    console.log(noteData)
-    if(this.reminder == null){
-      delete noteData["reminder"]
-    }
+    // console.log(noteData)
     this._dataService.updateSingleNote(id, noteData)
       .subscribe(
         response =>{
@@ -160,6 +157,17 @@ export class SingleNoteComponent implements OnInit {
     )
   }
 
+
+  updateLabel($event,singleLabel:string){
+    // console.log($event.checked,singleLabel)
+    if($event.checked){
+      this.label.push(singleLabel)
+      let note = {label:this.label}
+      this.updateNote(this.id,note)
+    }else{
+      this.removeLabel(singleLabel)
+    }
+  }
 
   removeLabel(singleLabel:string){
     for(var i=0; i<this.label.length;i++){
