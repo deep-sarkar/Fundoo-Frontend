@@ -8,20 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { AmazingTimePickerModule } from 'amazing-time-picker';
 
-// Material
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-
 // services
 import { ValidateFormFieldService } from './services/validationService/validate-form-field.service';
 import { AccountHttpService } from './services/accountServices/account-http.service';
@@ -57,6 +43,8 @@ import { IconCheckComponent } from './components/icon-check/icon-check.component
 import { DataService } from './services/dataService/data.service';
 import { IconWriteComponent } from './components/icon-write/icon-write.component';
 import { IconCancelComponent } from './components/icon-cancel/icon-cancel.component';
+import { Material } from './app.material.module';
+
 
 
 @NgModule({
@@ -91,23 +79,12 @@ import { IconCancelComponent } from './components/icon-cancel/icon-cancel.compon
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatInputModule,
-    MatFormFieldModule,
     ReactiveFormsModule,
     FormsModule,
-    MatButtonModule,
     HttpClientModule,
-    MatCardModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatSnackBarModule,
     TextFieldModule,
-    MatDialogModule,
-    MatMenuModule,
     AmazingTimePickerModule,
-    MatChipsModule,
-    MatCheckboxModule
+    Material
   ],
   entryComponents:[
     SingleNoteComponent,
