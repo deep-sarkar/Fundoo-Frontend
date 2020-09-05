@@ -96,8 +96,8 @@ export class DisplayNoteComponent implements OnInit {
       this._dataService.getSingleNote(noteId)
       .subscribe(
         response =>{
-          let note = response["data"]
-          note['id']=noteId
+          let note = response['data']
+          note["id"]=noteId
           let ref = this._dialogue.open(SingleNoteComponent,{
             minWidth:'50%',
             height:'auto',
@@ -109,6 +109,13 @@ export class DisplayNoteComponent implements OnInit {
               "note":note
             }
           });
+          ref.componentInstance.updateDone
+          .subscribe(
+            result =>{
+              // console.log("result",result)
+              this.updateTrigger()
+            }
+          )
         },
         error =>{
           console.log("error",error)
