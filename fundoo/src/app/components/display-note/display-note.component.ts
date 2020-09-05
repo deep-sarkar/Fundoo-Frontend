@@ -96,31 +96,19 @@ export class DisplayNoteComponent implements OnInit {
       this._dataService.getSingleNote(noteId)
       .subscribe(
         response =>{
+          let note = response["data"]
+          note['id']=noteId
           let ref = this._dialogue.open(SingleNoteComponent,{
             minWidth:'50%',
             height:'auto',
             maxHeight:'90%',
             panelClass: 'dialog-content',
-            disableClose: true,
+            // disableClose: true,
             position:{top:'3%'},
             data:{
-              "note":response['data']
+              "note":note
             }
           });
-          ref.afterClosed()
-          .subscribe(
-            result =>{
-              // console.log("result",result)
-              let note = result
-              if(note['reminder']){
-                  let validation=this._utility.validateReminder(note['reminder'])
-                  if(validation){
-                  this.reminder=note['reminder']
-              }
-              }
-              this.updateNote(noteId, note)
-            }
-          )
         },
         error =>{
           console.log("error",error)
