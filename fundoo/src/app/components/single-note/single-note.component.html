@@ -42,7 +42,7 @@
 <mat-menu #menu="matMenu" yPosition="below" class="menu">
     <div *ngFor="let singleLabel of allLabel" class="label-div" (click)="$event.stopPropagation()">
         <mat-checkbox color="primary" labelPosition="after" [checked]="isNoteLabel(singleLabel.label)"
-            class="single-lable" checked>
+            class="single-lable" (change)="updateLabel($event,singleLabel.label)">
             {{ singleLabel.label }}
         </mat-checkbox>
     </div>
