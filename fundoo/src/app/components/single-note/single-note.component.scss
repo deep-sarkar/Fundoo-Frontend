@@ -134,13 +134,10 @@ $textColor :#202124;
         }
     }
 }
-.single-lable{
-    margin-left: 20%;
+@media only screen and (max-width:500px){
+    .icon-component{
+        margin: 1% !important;
+    }
 }
-// @media only screen and (max-width:500px){
-//     .dialog-content{
-//         width: 100%;
-//     }
-// }
 
    
