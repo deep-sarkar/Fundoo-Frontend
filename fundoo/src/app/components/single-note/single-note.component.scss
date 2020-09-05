@@ -81,15 +81,16 @@ $textColor :#202124;
           background: #888;
         }
     .additional-info{
-        display: flex;
-        justify-content: flex-start;
         .chip-list{
-            padding: 1%;
+            padding: 0 1%;
             font-size: 0.7em;
         .chip{
-           min-height: 19px;
-           font-size: 1.1em;
+           min-height: 1.9em;
+           font-size: 1.2em;
            padding: 0 7px;
+           font-family: 'Google Sans',Roboto,Arial,sans-serif;
+           letter-spacing: .01785714em;
+           background-color: rgba(0,0,0,.1);
            #icon{
                margin-left: 4px;
                display: none;
@@ -100,6 +101,14 @@ $textColor :#202124;
                }
            }
         }
+    }
+    // #reminder{
+    //     margin-left: 1%;
+    // }
+    #all-labels{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
     }
 }
     .action{

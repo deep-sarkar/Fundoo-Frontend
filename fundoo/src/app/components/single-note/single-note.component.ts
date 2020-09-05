@@ -166,9 +166,9 @@ export class SingleNoteComponent implements OnInit {
       if(this.label[i]===singleLabel){
         this.label.splice(i,1)
       }
-      let note = {label:this.label}
-      this.updateNote(this.id,note)
     }
+    let note = {label:this.label}
+    this.updateNote(this.id,note)
   }
 
   isNoteLabel(singleLable:string){
