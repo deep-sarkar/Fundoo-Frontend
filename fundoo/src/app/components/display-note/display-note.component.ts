@@ -29,7 +29,7 @@ export class DisplayNoteComponent implements OnInit {
 
 
   updateNote(id:number,noteData:object ){
-    console.log(noteData)
+    // console.log(noteData)
     if(this.reminder == null){
       delete noteData["reminder"]
     }
@@ -92,7 +92,7 @@ export class DisplayNoteComponent implements OnInit {
   }
 
   openDialogue(noteId:number){
-    console.log("id",noteId)
+    // console.log("id",noteId)
       this._dataService.getSingleNote(noteId)
       .subscribe(
         response =>{
