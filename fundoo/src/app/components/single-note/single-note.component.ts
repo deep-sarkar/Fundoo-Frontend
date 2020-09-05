@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Inject } from '@angular/core';
 import { UtilityService } from 'src/app/services/utilityService/utility.service';
 import { DataService } from 'src/app/services/dataService/data.service';
+
 
 @Component({
   selector: 'app-single-note',
@@ -19,10 +20,12 @@ export class SingleNoteComponent implements OnInit {
     private _dataService:DataService
     ) { }
   
+  @Output() updateDone = new EventEmitter<boolean>()
   //to store single note
   singleNote:object={};
   allLabel:string[];
   //on init save all property of note here
+  id:number;
   title:string;
   note:string;
   color:string;
@@ -35,29 +38,38 @@ export class SingleNoteComponent implements OnInit {
   image:File;
   urls:string;
   user:string
-
   noteTitle = new FormControl()
   noteBody = new FormControl()
 
-  editDone(){
-    let updatedNote:object = {
-    title:this.noteTitle.value,
-    note:this.noteBody.value,
-    color:this.color,
-    reminder:this.reminder,
-    pin:this.pin,
-    archives:this.archives,
-    trash:this.trash,
-    label:this.label,
-    collaborator:this.collaborator,
-    image:this.image,
-    urls:this.urls,
-    user:this.user
+
+  updateTrigger(){
+    this.updateDone.emit(true)
+    // console.log("Emmitted")
+  }  
+
+  updateNote(id:number,noteData:object ){
+    console.log(noteData)
+    if(this.reminder == null){
+      delete noteData["reminder"]
     }
-    this._dialogRef.close(updatedNote)
+    this._dataService.updateSingleNote(id, noteData)
+      .subscribe(
+        response =>{
+          if(response['code']==202){
+          this.updateTrigger()
+          this._utility.snackBarMessage("Note updated !!")
+          }else{
+            this._utility.snackBarMessage(response['msg'])
+          }
+        },
+        error =>{
+            console.log("error",error)
+        }
+      )
   }
 
   mapAttributes(){
+    this.id = this.singleNote["id"]
     this.title = this.singleNote["title"]
     this.note =  this.singleNote["note"]
     this.color =  this.singleNote["color"]
@@ -69,6 +81,7 @@ export class SingleNoteComponent implements OnInit {
     this.image =  this.singleNote["image"]
     this.urls =  this.singleNote["urls"]
     this.user =  this.singleNote["user"]
+    this.reminder = this.singleNote["reminder"]
     // console.log(this.note)
     this.noteTitle = new FormControl(this.title)
     this.noteBody = new FormControl(this.note)
@@ -80,11 +93,23 @@ export class SingleNoteComponent implements OnInit {
     this.mapAttributes()
   }
 
+  editTitle(){
+    let note = {title:this.noteTitle.value}
+    this.updateNote(this.id,note)
+  }
+  
+  editBody(){
+    let note = {note:this.noteBody.value}
+    this.updateNote(this.id,note)
+  }
+
   setReminder($event){
     // console.log($event)
     let validation=this._utility.validateReminder($event)
     if (validation){
       this.reminder=$event
+      let note = {reminder:$event}
+      this.updateNote(this.id,note)
     }else{
       this._utility.snackBarMessage("Enter upcoming time to set reminder.")
     }
@@ -94,26 +119,32 @@ export class SingleNoteComponent implements OnInit {
     // console.log($event)
     if($event){
       this.color=$event
+      let note = {color:$event}
+      this.updateNote(this.id,note)
     }
   }
 
   archiveNote($event){
     // console.log($event)
     if($event){
-        this.archives= $event
-        this.editDone()      
+        this.archives= $event 
+        let note = {archives:$event}
+      this.updateNote(this.id,note)   
     }
   }
 
   pinNote($event){
     this.pin=$event
+    let note = {pin:$event}
+    this.updateNote(this.id,note)
     // console.log("pin",$event)
   }
 
   trashNote($event){
     // console.log("trash",$event)
     this.trash = $event
-    this.editDone()   
+    let note = {trash:$event}
+    this.updateNote(this.id,note)
   }
 
   getAllLabels(){
@@ -133,11 +164,15 @@ export class SingleNoteComponent implements OnInit {
   removeLabel(singleLabel:string){
     for(var i=0; i<this.label.length;i++){
       if(this.label[i]===singleLabel){
-        this._utility.snackBarMessage("label \'"+ singleLabel +"\' removed !!!")
         this.label.splice(i,1)
       }
+      let note = {label:this.label}
+      this.updateNote(this.id,note)
     }
   }
 
+  isNoteLabel(singleLable:string){
+    return this.label.includes(singleLable)
+  }
 
 }

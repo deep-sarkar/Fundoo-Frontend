@@ -2,12 +2,12 @@
     <mat-card class="card" [ngStyle]="{'background-color':color}">
         <mat-card-title class="card-title">
             <input type="text" [ngStyle]="{'background-color':color}" [formControl]="noteTitle" placeholder="Title"
-                id="title" autocomplete="off">
+                id="title" autocomplete="off" (change)="editTitle()">
                 <app-icon-pin id="pin-icon" (pin)="pinNote($event)" [isPin]="pin"></app-icon-pin>
         </mat-card-title>
         <img *ngIf="imgUrl != undefined" [ngStyle]="{'background-color':color}" [src]="imgUrl" width="100%" alt="">
         <textarea [formControl]="noteBody" [ngStyle]="{'background-color':color}" cdkTextareaAutosize
-            cdkAutosizeMinRows="5" cdkAutosizeMaxRows="30" placeholder="Add note...."></textarea>
+            cdkAutosizeMinRows="5" cdkAutosizeMaxRows="30" placeholder="Add note...." (change)="editBody()"></textarea>
         <div class="additional-info">
             <mat-chip-list class="chip-list">
                 <mat-chip class="chip" *ngIf="reminder">
@@ -29,14 +29,14 @@
             <app-icon-archive class="icon-component" (archive)="archiveNote($event)"></app-icon-archive>
             <app-icon-label class="icon-component" (click)="getAllLabels()" [matMenuTriggerFor]="menu"></app-icon-label>
             <app-icon-trash class="icon-component" (trash)="trashNote($event)"></app-icon-trash>
-            <button (click)="editDone()">Close</button>
+            <button mat-dialog-close>Close</button>
         </mat-card-actions>
     </mat-card>
 </div>
 
 <mat-menu  #menu="matMenu" yPosition="below" class="menu">
    <div *ngFor="let singleLabel of allLabel" class="label-div" (click)="$event.stopPropagation()">
-       <mat-checkbox color="primary" labelPosition="after" class="single-lable" checked>
+       <mat-checkbox color="primary" labelPosition="after" [checked]="isNoteLabel(singleLabel.label)" class="single-lable" checked>
            {{ singleLabel.label }}
         </mat-checkbox>
    </div>
