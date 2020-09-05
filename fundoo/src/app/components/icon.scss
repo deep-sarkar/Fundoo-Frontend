@@ -18,10 +18,10 @@
 }
 
 @mixin buttonHover {
-    background-color: #e8eaed;
+    background-color: rgba(0,0,0,0.1);
 }
 
 @mixin iconHover {
     color: #202124;
-            opacity: .71;
+    opacity: .71;
 }
