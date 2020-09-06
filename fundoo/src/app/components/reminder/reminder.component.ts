@@ -30,6 +30,13 @@ export class ReminderComponent implements OnInit {
     )
   }
 
+  getUpdate($event){
+    if($event){
+      this.allReminderNotes()
+      // console.log(this.allNotes)
+    }
+  }
+
   ngOnInit() {
     this.allReminderNotes()
   }

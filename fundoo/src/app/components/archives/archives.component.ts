@@ -31,6 +31,13 @@ export class ArchivesComponent implements OnInit {
     )
   }
 
+  getUpdate($event){
+    if($event){
+      this.getAllArchives()
+      // console.log(this.allNotes)
+    }
+  }
+
   ngOnInit() {
     this.getAllArchives()
   }

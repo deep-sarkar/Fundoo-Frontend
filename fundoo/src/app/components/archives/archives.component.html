@@ -1,2 +1,2 @@
 <app-create-note></app-create-note>
-<app-display-note [allNotes]="allNotes"></app-display-note>
+<app-display-note [allNotes]="allNotes" (update)="getUpdate($event)"></app-display-note>
