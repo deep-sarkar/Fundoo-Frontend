@@ -37,11 +37,15 @@ export class DashboardComponent implements OnInit {
       panelClass:'label-dialog'
     })
   }
-
+  
   reminderNote(){
     this._router.navigate(['reminder'])
   }
-
+ 
+  archivesNote(){
+    this._router.navigate(['archives'])
+  }
+  
   ngOnInit() {
     this.createNote()
   }
