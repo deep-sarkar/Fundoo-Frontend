@@ -11,12 +11,12 @@
     <mat-sidenav-container>
         <mat-sidenav 
         [(opened)]="opened"
-        mode="push" 
+        mode="side" 
         [fixedInViewport]="true"
         fixedTopGap="64.4">
             <button mat-button (click)="createNote()">Notes</button>
             <button mat-button (click)="openLabel()">Edit Label</button>
-            <button mat-button >Reminder</button>
+            <button mat-button (click)="reminderNote()">Reminder</button>
             <button mat-button >Pin</button>
             <button mat-button >Archives</button>
             <button mat-button >Trash</button>

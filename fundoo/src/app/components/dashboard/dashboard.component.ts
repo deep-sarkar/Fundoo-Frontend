@@ -38,6 +38,10 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  reminderNote(){
+    this._router.navigate(['reminder'])
+  }
+
   ngOnInit() {
     this.createNote()
   }
