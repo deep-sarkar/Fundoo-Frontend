@@ -94,4 +94,11 @@ export class DataService {
       "Authorization": "JWT "+this.token})
     return this._http.getService(this.noteUrl + "trash/", {headers:headers})
   }
+
+  deleteTrash(id:number): Observable<any>{
+    let headers = new HttpHeaders(
+      {"Content-Type": "application/json",
+      "Authorization": "JWT "+this.token})
+    return this._http.deleteService(this.noteUrl + "trash/" + id + "/", {headers:headers})
+  }
 }
