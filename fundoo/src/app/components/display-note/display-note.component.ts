@@ -31,7 +31,7 @@ export class DisplayNoteComponent implements OnInit {
         response =>{
           if(response['code']==202){
           this.updateTrigger()
-          this._utility.snackBarMessage("Note updated !!")
+          // this._utility.snackBarMessage("Note updated !!")
           }else{
             this._utility.snackBarMessage(response['msg'])
           }
@@ -49,6 +49,7 @@ export class DisplayNoteComponent implements OnInit {
       this.reminder = $event
       let note ={reminder:$event}
       this.updateNote(noteId, note)
+      this._utility.snackBarMessage("Reminder set for "+ $event)
       // console.log("ok")
     }else{
       this._utility.snackBarMessage("Enter upcoming time to set reminder.")
@@ -60,6 +61,7 @@ export class DisplayNoteComponent implements OnInit {
     if($event){
       let note = {color:$event}
       this.updateNote(noteId, note)
+      this._utility.snackBarMessage("Color updated !!")
     }
   }
 
@@ -71,6 +73,7 @@ export class DisplayNoteComponent implements OnInit {
   archiveNote($event, noteId:number){
     let note ={archives:$event}
     this.updateNote(noteId, note)
+    this._utility.snackBarMessage("Note archived !!")
   }
 
   pinNote($event,noteId){
@@ -82,6 +85,12 @@ export class DisplayNoteComponent implements OnInit {
     // console.log($event,noteId)
     let note = {trash:$event}
     this.updateNote(noteId, note)
+    if($event){
+      this._utility.snackBarMessage("Note trashed !!")
+    }else{
+      this._utility.snackBarMessage("Note untrashed !!")
+    }
+    
   }
 
   deletForever(id:number){

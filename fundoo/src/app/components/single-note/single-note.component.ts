@@ -54,7 +54,7 @@ export class SingleNoteComponent implements OnInit {
         response =>{
           if(response['code']==202){
           this.updateTrigger()
-          this._utility.snackBarMessage("Note updated !!")
+          // this._utility.snackBarMessage("Note updated !!")
           }else{
             this._utility.snackBarMessage(response['msg'])
           }
@@ -93,11 +93,13 @@ export class SingleNoteComponent implements OnInit {
   editTitle(){
     let note = {title:this.noteTitle.value}
     this.updateNote(this.id,note)
+    this._utility.snackBarMessage("Title updated !!")
   }
   
   editBody(){
     let note = {note:this.noteBody.value}
     this.updateNote(this.id,note)
+    this._utility.snackBarMessage("Note updated !!")
   }
 
   setReminder($event){
@@ -106,6 +108,7 @@ export class SingleNoteComponent implements OnInit {
     if (validation){
       this.reminder=$event
       let note = {reminder:$event}
+      this._utility.snackBarMessage("Added reminder for " + $event)
       this.updateNote(this.id,note)
     }else{
       this._utility.snackBarMessage("Enter upcoming time to set reminder.")
@@ -118,6 +121,7 @@ export class SingleNoteComponent implements OnInit {
       this.color=$event
       let note = {color:$event}
       this.updateNote(this.id,note)
+      this._utility.snackBarMessage("Color updated !!")
     }
   }
 
@@ -127,6 +131,7 @@ export class SingleNoteComponent implements OnInit {
         this.archives= $event 
         let note = {archives:$event}
       this.updateNote(this.id,note)   
+      this._utility.snackBarMessage("Note archived !!")
     }
   }
 
@@ -142,6 +147,12 @@ export class SingleNoteComponent implements OnInit {
     this.trash = $event
     let note = {trash:$event}
     this.updateNote(this.id,note)
+    if($event){
+      this._utility.snackBarMessage("Note trashed !!")
+    }else{
+      this._utility.snackBarMessage("Note untrashed !!")
+    }
+    
   }
 
   getAllLabels(){
@@ -164,8 +175,10 @@ export class SingleNoteComponent implements OnInit {
       this.label.push(singleLabel)
       let note = {label:this.label}
       this.updateNote(this.id,note)
+      this._utility.snackBarMessage("label \'"+singleLabel+"\' added !!")
     }else{
       this.removeLabel(singleLabel)
+      this._utility.snackBarMessage("label \'"+singleLabel+"\' removed !!")
     }
   }
 
@@ -173,6 +186,7 @@ export class SingleNoteComponent implements OnInit {
     for(var i=0; i<this.label.length;i++){
       if(this.label[i]===singleLabel){
         this.label.splice(i,1)
+        this._utility.snackBarMessage("label \'"+singleLabel+"\' removed !!")
       }
     }
     let note = {label:this.label}
