@@ -8,6 +8,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { AmazingTimePickerModule } from 'amazing-time-picker';
 
+// material
+import { Material } from './app.material.module';
+
 // services
 import { ValidateFormFieldService } from './services/validationService/validate-form-field.service';
 import { AccountHttpService } from './services/accountServices/account-http.service';
@@ -44,7 +47,7 @@ import { DataService } from './services/dataService/data.service';
 import { IconWriteComponent } from './components/icon-write/icon-write.component';
 import { IconCancelComponent } from './components/icon-cancel/icon-cancel.component';
 import { ReminderComponent } from './components/reminder/reminder.component';
-import { Material } from './app.material.module';
+import { ArchivesComponent } from './components/archives/archives.component';
 
 
 
@@ -75,7 +78,8 @@ import { Material } from './app.material.module';
     IconCheckComponent,
     IconWriteComponent,
     IconCancelComponent,
-    ReminderComponent
+    ReminderComponent,
+    ArchivesComponent
   ],
   imports: [
     BrowserModule,
