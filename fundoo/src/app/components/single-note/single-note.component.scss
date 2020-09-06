@@ -87,7 +87,7 @@ $textColor :#202124;
         .chip{
            min-height: 1.6em;
            font-size: 1.2em;
-           padding: 0 7px;
+           padding: 0 8px;
            font-family: 'Google Sans',Roboto,Arial,sans-serif;
            letter-spacing: .01785714em;
            font-weight: 400;
@@ -103,9 +103,9 @@ $textColor :#202124;
            }
         }
     }
-    // #reminder{
-    //     margin-left: 1%;
-    // }
+    #reminder{
+        margin-left: 1%;
+    }
     #all-labels{
         display: flex;
         align-items: center;
