@@ -11,6 +11,7 @@ import { NotesComponent } from './components/notes/notes.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ReminderComponent } from './components/reminder/reminder.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { TrashComponent } from './components/trash/trash.component';
 
 
 const routes: Routes = [
@@ -27,11 +28,11 @@ const routes: Routes = [
         path: "", component: NotesComponent,
         children: [
           { path: "create", component: CreateNoteComponent },
-          
         ]
       },
       { path: "reminder", component: ReminderComponent },
       { path: "archives", component: ArchivesComponent },
+      { path: "trash", component: TrashComponent },
     ]
   },
 ];
