@@ -46,6 +46,10 @@ export class DashboardComponent implements OnInit {
     this._router.navigate(['archives'])
   }
   
+  trashNotes(){
+    this._router.navigate(["trash"])
+  }
+  
   ngOnInit() {
     this.createNote()
   }
