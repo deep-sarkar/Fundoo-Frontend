@@ -30,6 +30,13 @@ export class TrashComponent implements OnInit {
     )
   }
 
+  getUpdate($event){
+    if($event){
+      this.getAllTrashNote()
+      // console.log(this.allNotes)
+    }
+  }
+
   ngOnInit() {
     this.getAllTrashNote()
   }
