@@ -1,3 +1,4 @@
 <button mat-icon-button (click)="onClick()" class="btn">
-    <i class="material-icons-outlined">archive</i>
+    <i class="material-icons-outlined" *ngIf="! isArchive">archive</i>
+    <i class="material-icons-outlined" *ngIf="isArchive">unarchive</i>
 </button>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-icon-archive',
@@ -9,11 +9,19 @@ export class IconArchiveComponent implements OnInit {
 
   constructor() { }
 
+  @Input() isArchive = false
   @Output() archive = new EventEmitter<boolean>()
 
+
   onClick(){
-    this.archive.emit(true)
-    console.log("Archive Emmited")
+    if(this.isArchive){
+      this.isArchive=false
+    }else{
+      this.isArchive=true
+    }
+    // console.log(this.isArchive)
+    this.archive.emit(this.isArchive)
+    // console.log("Archive Emmited")
   }
 
   ngOnInit() {
