@@ -80,4 +80,11 @@ export class DataService {
       "Authorization": "JWT "+this.token})
     return this._http.getService(this.noteUrl + "reminder/", {headers:headers})
   }
+
+  getArchives(): Observable<any>{
+    let headers = new HttpHeaders(
+      {"Content-Type": "application/json",
+      "Authorization": "JWT "+this.token})
+    return this._http.getService(this.noteUrl + "archives/", {headers:headers})
+  }
 }
