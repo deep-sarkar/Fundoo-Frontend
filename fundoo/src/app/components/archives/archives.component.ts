@@ -38,6 +38,11 @@ export class ArchivesComponent implements OnInit {
     }
   }
 
+  reciveTrigger($event){
+    console.log($event)
+    this.getAllArchives()
+  }
+
   ngOnInit() {
     this.getAllArchives()
   }

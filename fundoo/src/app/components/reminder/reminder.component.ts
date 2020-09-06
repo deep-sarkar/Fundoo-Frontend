@@ -37,6 +37,10 @@ export class ReminderComponent implements OnInit {
     }
   }
 
+  reciveTrigger($event){
+    this.allReminderNotes()
+  }
+
   ngOnInit() {
     this.allReminderNotes()
   }
