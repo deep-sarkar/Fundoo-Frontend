@@ -84,6 +84,19 @@ export class DisplayNoteComponent implements OnInit {
     this.updateNote(noteId, note)
   }
 
+  deletForever(id:number){
+    this._dataService.deleteTrash(id)
+    .subscribe(
+      response =>{
+        this.updateTrigger()
+        this._utility.snackBarMessage("Note deleted !!!")
+      },
+      error=>{
+        console.log("error",error)
+      }
+    )
+  }
+
   openDialogue(noteId:number){
     // console.log("id",noteId)
       this._dataService.getSingleNote(noteId)
