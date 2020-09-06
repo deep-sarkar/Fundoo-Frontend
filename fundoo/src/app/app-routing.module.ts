@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ActivateAccountComponent } from './components/activate-account/activate-account.component';
+import { ArchivesComponent } from './components/archives/archives.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { CreateNoteComponent } from './components/create-note/create-note.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -30,6 +31,7 @@ const routes: Routes = [
         ]
       },
       { path: "reminder", component: ReminderComponent },
+      { path: "archives", component: ArchivesComponent },
     ]
   },
 ];
