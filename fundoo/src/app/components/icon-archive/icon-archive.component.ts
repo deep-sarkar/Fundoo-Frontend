@@ -21,6 +21,7 @@ export class IconArchiveComponent implements OnInit {
     }
     // console.log(this.isArchive)
     this.archive.emit(this.isArchive)
+    this.isArchive=false
     // console.log("Archive Emmited")
   }
 
