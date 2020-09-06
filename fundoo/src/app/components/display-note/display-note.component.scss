@@ -83,6 +83,10 @@
         display: flex, ;
         justify-content: space-between;
         visibility: hidden;
+        #delete-icon{
+            position: relative;
+            right: 70%;
+        }
     }
 }
 }
