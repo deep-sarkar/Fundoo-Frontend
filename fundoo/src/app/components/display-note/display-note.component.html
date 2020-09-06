@@ -29,6 +29,7 @@
                 <app-icon-archive class="icon-component" *ngIf="!note.trash" (archive)="archiveNote($event, note.id)"
                  [isArchive]="note.archives?true:false"></app-icon-archive>
                 <app-icon-trash (trash)="trashNote($event,note.id)" [isTrash]="note.trash?true:false"></app-icon-trash>
+                <app-icon-delete *ngIf="note.trash" (click)="deletForever(note.id)" id="delete-icon"></app-icon-delete>
             </mat-card-footer>
 
         </mat-card>
