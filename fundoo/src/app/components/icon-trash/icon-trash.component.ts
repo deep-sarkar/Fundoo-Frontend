@@ -9,10 +9,18 @@ export class IconTrashComponent implements OnInit {
 
   constructor() { }
 
+  @Input() isTrash:boolean = false
+
+
   @Output() trash = new EventEmitter<boolean>()
 
   setTrash(){
-    this.trash.emit(true)
+    if(this.isTrash){
+      this.isTrash=false
+    }else{
+      this.isTrash=true
+    }
+    this.trash.emit(this.isTrash)
     // console.log("trash")
   }
 
