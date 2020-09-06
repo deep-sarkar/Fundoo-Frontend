@@ -16,12 +16,22 @@
         <textarea [formControl]="noteBody" [ngStyle]="{'background-color':color}" cdkTextareaAutosize
             cdkAutosizeMinRows="3" cdkAutosizeMaxRows="25" placeholder="Take a note..."></textarea>
         <div class="additional-info">
-            <mat-chip-list class="chip-list" *ngIf="reminder != null">
-                <mat-chip class="chip">
-                    {{ reminder }}
-                    <!-- <i class="material-icons">close</i> -->
-                </mat-chip>
-            </mat-chip-list>
+            <div id="reminder-div">
+                <mat-chip-list class="chip-list" *ngIf="reminder != null">
+                    <mat-chip class="chip">
+                        {{ reminder }}
+                        <!-- <i class="material-icons">close</i> -->
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
+            <div id="all-labels">
+                <mat-chip-list class="chip-list" *ngFor="let labels of label">
+                    <mat-chip class="chip">
+                        {{ labels }}
+                        <app-icon-cancel id="icon" (click)="removeLabel(labels)"></app-icon-cancel>
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
             <!-- <span *ngIf="reminder != null">{{ reminder }}</span> -->
         </div>
         <mat-card-actions class="action">
@@ -30,9 +40,18 @@
             <app-icon-palette class="icon-component" (color)="setColor($event)"></app-icon-palette>
             <app-icon-insert-photo class="icon-component" (sendImage)="setImage($event)"></app-icon-insert-photo>
             <app-icon-archive class="icon-component" (archive)="setArchive($event)"></app-icon-archive>
-            <app-icon-label class="icon-component"></app-icon-label>
+            <app-icon-label class="icon-component" [matMenuTriggerFor]="menu" (click)="getAllLabels()"></app-icon-label>
             <button (click)="cardOpenClose()">Close</button>
         </mat-card-actions>
     </mat-card>
 </div>
 <app-display-note></app-display-note>
+
+<mat-menu #menu="matMenu" yPosition="below" class="menu">
+    <div *ngFor="let singleLabel of allLabel" class="label-div" (click)="$event.stopPropagation()">
+        <mat-checkbox color="primary" labelPosition="after" [checked]="isNoteLabel(singleLabel.label)"
+            class="single-lable" (change)="updateLabel($event,singleLabel.label)">
+            {{ singleLabel.label }}
+        </mat-checkbox>
+    </div>
+</mat-menu>

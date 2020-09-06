@@ -105,7 +105,7 @@ $textColor :#202124;
                 outline: transparent;
             }
             button:hover{
-                background-color: #e8eaed;
+                background-color:rgba($color: #000000, $alpha: 0.1);
             }
             .icon-component{
                 margin: auto 2%;
@@ -115,8 +115,41 @@ $textColor :#202124;
             }
         }
     }
-        
 }
+
+.additional-info{
+    .chip-list{
+        padding: 0 1%;
+        font-size: 0.7em;
+    .chip{
+       min-height: 1.6em;
+       font-size: 1.2em;
+       padding: 0 8px;
+       font-family: 'Google Sans',Roboto,Arial,sans-serif;
+       letter-spacing: .01785714em;
+       font-weight: 400;
+       background-color: rgba(0,0,0,.1);
+       #icon{
+           margin-left: 4px;
+           display: none;
+       }
+       &:hover{
+           #icon{
+               display: inline-block;
+           }
+       }
+    }
+    }
+    #reminder-div{
+        margin-left: 1%;
+    }
+    #all-labels{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+}
+
 @media only screen and (max-width:500px){
     .outer-div{
         width: 90%;

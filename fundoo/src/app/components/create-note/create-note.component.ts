@@ -28,10 +28,10 @@ export class CreateNoteComponent implements OnInit {
   imgUrl:string;
   formData = new FormData()
   color:string='#ffffff';
-  label:string[];
+  label:string[]=[];
   pin:boolean = false;
   reminder:string = null;
-
+  allLabel:object[];
 
   create(){
     if(this.title.value && this.noteBody.value){
@@ -41,6 +41,7 @@ export class CreateNoteComponent implements OnInit {
         archives:this.archive,
         color:this.color,
         pin:this.pin,
+        label:this.label
       }
       if (this.reminder != null){
         if(this._utility.validateReminder(this.reminder)){
@@ -69,6 +70,7 @@ export class CreateNoteComponent implements OnInit {
             this.imgUrl= null;
             this.pin = false;
             this.reminder= null;
+            this.label=[]
             //trigger fired(event)
             this.newNoteTrigger()
           }else{
@@ -90,9 +92,6 @@ export class CreateNoteComponent implements OnInit {
     this.trigger.emit("New Note Created")
   }
 
-
-
-
   //card open close handeling function
   cardOpenClose(){
     if(this.cardOpen==false){
@@ -108,8 +107,6 @@ export class CreateNoteComponent implements OnInit {
     this.archive=$event;
     this.create()
   }
-
-
 
   //set image and display in note
   setImage($event){
@@ -137,15 +134,46 @@ export class CreateNoteComponent implements OnInit {
     this.pin = $event
   }
 
-
-
-
   setReminder($event){
     console.log('reminder',$event)
     this.reminder=$event
     // console.log(this.reminder)
   }
  
+  getAllLabels(){
+    this._dataService.getLabel()
+    .subscribe(
+      response =>{
+        // console.log(response['data'])
+        this.allLabel = response['data']
+      },
+      error =>{
+        console.log("error",error)
+      }
+    )
+  }
+
+  updateLabel($event,singleLabel:string){
+    // console.log($event.checked,singleLabel)
+    if($event.checked){
+      this.label.push(singleLabel)
+    }else{
+      this.removeLabel(singleLabel)
+    }
+  }
+
+  removeLabel(singleLabel:string){
+    for(var i=0; i<this.label.length;i++){
+      if(this.label[i]===singleLabel){
+        this.label.splice(i,1)
+      }
+    }
+  }
+
+  isNoteLabel(singleLable:string){
+    return this.label.includes(singleLable)
+  }
+
 
   ngOnInit() {
   }
