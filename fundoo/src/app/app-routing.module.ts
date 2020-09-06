@@ -8,6 +8,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { LoginComponent } from './components/login/login.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { ReminderComponent } from './components/reminder/reminder.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 
@@ -24,9 +25,11 @@ const routes: Routes = [
       {
         path: "", component: NotesComponent,
         children: [
-          { path: "create", component: CreateNoteComponent }
+          { path: "create", component: CreateNoteComponent },
+          
         ]
       },
+      { path: "reminder", component: ReminderComponent },
     ]
   },
 ];
