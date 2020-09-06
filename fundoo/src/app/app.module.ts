@@ -43,6 +43,7 @@ import { IconCheckComponent } from './components/icon-check/icon-check.component
 import { DataService } from './services/dataService/data.service';
 import { IconWriteComponent } from './components/icon-write/icon-write.component';
 import { IconCancelComponent } from './components/icon-cancel/icon-cancel.component';
+import { ReminderComponent } from './components/reminder/reminder.component';
 import { Material } from './app.material.module';
 
 
@@ -74,6 +75,7 @@ import { Material } from './app.material.module';
     IconCheckComponent,
     IconWriteComponent,
     IconCancelComponent,
+    ReminderComponent
   ],
   imports: [
     BrowserModule,
@@ -84,6 +86,7 @@ import { Material } from './app.material.module';
     HttpClientModule,
     TextFieldModule,
     AmazingTimePickerModule,
+    RouterModule,
     Material
   ],
   entryComponents:[
