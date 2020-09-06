@@ -134,7 +134,7 @@ $textColor :#202124;
             outline: transparent;
         }
         button:hover{
-            background-color: #e8eaed;
+            background-color:rgba($color: #000000, $alpha: 0.1);
         }
         .icon-component{
             margin: auto 2%;
