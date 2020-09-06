@@ -5,7 +5,7 @@
                 <mat-card-title class="card-title" (click)="openDialogue(note.id)">
                     {{ note.title }}
                 </mat-card-title> 
-                <app-icon-pin id="pin-icon" *ngIf="note.pin?getPin(note.pin):getPin(note.pin)" [isPin]="isPin" 
+                <app-icon-pin id="pin-icon" [isPin]="note.pin?true:false" 
                  (pin)="pinNote($event,note.id)"></app-icon-pin>
             </div>
             <mat-card-content class="card-content" (click)="openDialogue(note.id)">
@@ -26,7 +26,8 @@
                 <app-icon-collaborator class="icon-component"></app-icon-collaborator>
                 <app-icon-palette class="icon-component"  (color)="setColor($event, note.id)"></app-icon-palette>
                 <app-icon-insert-photo class="icon-component"></app-icon-insert-photo>
-                <app-icon-archive class="icon-component" (archive)="archiveNote($event, note.id)" ></app-icon-archive>
+                <app-icon-archive class="icon-component" (archive)="archiveNote($event, note.id)"
+                 [isArchive]="note.archives?true:false"></app-icon-archive>
                 <app-icon-trash (trash)="trashNote($event,note.id)"></app-icon-trash>
             </mat-card-footer>
 

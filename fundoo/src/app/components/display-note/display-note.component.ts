@@ -19,14 +19,7 @@ export class DisplayNoteComponent implements OnInit {
 
   @Input() allNotes:object[];
   @Output() update = new EventEmitter<boolean>()
-  isPin:boolean=false;
   reminder:string=null;
- 
-  getPin(pin:boolean){
-    this.isPin=pin
-    return true
-  }
-
 
   updateNote(id:number,noteData:object ){
     // console.log(noteData)
