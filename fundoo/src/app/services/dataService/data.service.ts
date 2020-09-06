@@ -73,4 +73,11 @@ export class DataService {
      console.log(url)
     return this._http.deleteService(url,{headers:headers})
   }
+
+  getReminder(): Observable<any>{
+    let headers = new HttpHeaders(
+      {"Content-Type": "application/json",
+      "Authorization": "JWT "+this.token})
+    return this._http.getService(this.noteUrl + "reminder/", {headers:headers})
+  }
 }
