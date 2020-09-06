@@ -48,6 +48,7 @@ import { IconWriteComponent } from './components/icon-write/icon-write.component
 import { IconCancelComponent } from './components/icon-cancel/icon-cancel.component';
 import { ReminderComponent } from './components/reminder/reminder.component';
 import { ArchivesComponent } from './components/archives/archives.component';
+import { TrashComponent } from './components/trash/trash.component';
 
 
 
@@ -79,7 +80,8 @@ import { ArchivesComponent } from './components/archives/archives.component';
     IconWriteComponent,
     IconCancelComponent,
     ReminderComponent,
-    ArchivesComponent
+    ArchivesComponent,
+    TrashComponent
   ],
   imports: [
     BrowserModule,
