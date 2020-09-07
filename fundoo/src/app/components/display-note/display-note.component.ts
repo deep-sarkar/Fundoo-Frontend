@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/dataService/data.service';
 import { UtilityService } from 'src/app/services/utilityService/utility.service';
 import { SingleNoteComponent } from '../single-note/single-note.component';
@@ -9,7 +10,7 @@ import { SingleNoteComponent } from '../single-note/single-note.component';
   templateUrl: './display-note.component.html',
   styleUrls: ['./display-note.component.scss']
 })
-export class DisplayNoteComponent implements OnInit {
+export class DisplayNoteComponent implements OnInit, OnDestroy {
 
   constructor(
         private _dialogue:MatDialog,
@@ -20,13 +21,14 @@ export class DisplayNoteComponent implements OnInit {
   @Input() allNotes:object[];
   @Output() update = new EventEmitter<boolean>()
   reminder:string=null;
+  subscription: Subscription;
 
   updateNote(id:number,noteData:object ){
     // console.log(noteData)
     if(this.reminder == null){
       delete noteData["reminder"]
     }
-    this._dataService.updateSingleNote(id, noteData)
+    this.subscription = this._dataService.updateSingleNote(id, noteData)
       .subscribe(
         response =>{
           if(response['code']==202){
@@ -142,4 +144,10 @@ export class DisplayNoteComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnDestroy(){
+    if(this.subscription){
+      this.subscription.unsubscribe()
+    }
+  }
+  
 }

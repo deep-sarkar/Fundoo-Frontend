@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/dataService/data.service';
 
 @Component({
@@ -6,17 +7,17 @@ import { DataService } from 'src/app/services/dataService/data.service';
   templateUrl: './trash.component.html',
   styleUrls: ['./trash.component.scss']
 })
-export class TrashComponent implements OnInit {
+export class TrashComponent implements OnInit, OnDestroy {
 
   constructor(
     private _dataService:DataService
   ) { }
   
   allNotes:object;
-
+  subscription : Subscription;
 
   getAllTrashNote(){
-    this._dataService.getTrash()
+    this.subscription = this._dataService.getTrash()
     .subscribe(
       respones =>{
         if(respones['code']===200){
@@ -41,4 +42,10 @@ export class TrashComponent implements OnInit {
     this.getAllTrashNote()
   }
 
+  ngOnDestroy(){
+    if(this.subscription){
+      this.subscription.unsubscribe()
+      // console.log("unsubscribed")
+    }
+  }
 }

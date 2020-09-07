@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/dataService/data.service';
 import { UtilityService } from 'src/app/services/utilityService/utility.service';
 
@@ -8,7 +9,7 @@ import { UtilityService } from 'src/app/services/utilityService/utility.service'
   templateUrl: './create-note.component.html',
   styleUrls: ['./create-note.component.scss']
 })
-export class CreateNoteComponent implements OnInit {
+export class CreateNoteComponent implements OnInit, OnDestroy {
 
   @Output() trigger = new EventEmitter();
 
@@ -18,7 +19,7 @@ export class CreateNoteComponent implements OnInit {
   ) { }
 
   
-
+  subscription: Subscription;
   cardOpen:boolean=false;
   noteData:object;
   title = new FormControl('');
@@ -53,7 +54,7 @@ export class CreateNoteComponent implements OnInit {
         }
       }
       // console.log('create fn',this.noteData)
-      this._dataService.createNotes(this.noteData)
+      this.subscription = this._dataService.createNotes(this.noteData)
       .subscribe(
         response => {
           if (response['code'] == 201){
@@ -178,4 +179,9 @@ export class CreateNoteComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnDestroy(){
+    if(this.subscription){
+      this.subscription.unsubscribe()
+    }
+  }
 }

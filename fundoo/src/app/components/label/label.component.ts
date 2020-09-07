@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/dataService/data.service';
 import { UtilityService } from 'src/app/services/utilityService/utility.service';
 
@@ -8,7 +9,7 @@ import { UtilityService } from 'src/app/services/utilityService/utility.service'
   templateUrl: './label.component.html',
   styleUrls: ['./label.component.scss']
 })
-export class LabelComponent implements OnInit {
+export class LabelComponent implements OnInit, OnDestroy {
 
   constructor(
     private _dataService:DataService,
@@ -17,13 +18,14 @@ export class LabelComponent implements OnInit {
 
   newLabel = new FormControl('')
   allLabels:object[]
+  subscription: Subscription;
 
 
   createLabel(){
     let labelData ={
       label:this.newLabel.value
     }
-    this._dataService.createLabel(labelData)
+    this.subscription = this._dataService.createLabel(labelData)
     .subscribe(
       response =>{
         if(response['code']==201){
@@ -63,7 +65,6 @@ export class LabelComponent implements OnInit {
       response =>{
         // console.log(response)
         if(response["code"]==200){
-           console.log("label",response)
            this.allLabels=response["data"]
           //  console.log(this.allLabels)
         }
@@ -76,4 +77,9 @@ export class LabelComponent implements OnInit {
     this.getAllLabel()
   }
 
+  ngOnDestroy(){
+    if(this.subscription){
+      this.subscription.unsubscribe()
+    }
+  }
 }

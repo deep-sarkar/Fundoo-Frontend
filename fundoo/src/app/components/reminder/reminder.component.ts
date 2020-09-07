@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/dataService/data.service';
 
 @Component({
@@ -6,16 +7,17 @@ import { DataService } from 'src/app/services/dataService/data.service';
   templateUrl: './reminder.component.html',
   styleUrls: ['./reminder.component.scss']
 })
-export class ReminderComponent implements OnInit {
+export class ReminderComponent implements OnInit, OnDestroy {
 
   constructor(
     private _dataService:DataService
     ) { }
 
   allNotes:object;
-  
+  subscription : Subscription;
+
   allReminderNotes(){
-    this._dataService.getReminder()
+    this.subscription = this._dataService.getReminder()
     .subscribe(
       result =>{
         if(result['code']==200){
@@ -43,6 +45,10 @@ export class ReminderComponent implements OnInit {
 
   ngOnInit() {
     this.allReminderNotes()
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe()
   }
 
 }

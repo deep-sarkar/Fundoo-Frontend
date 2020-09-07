@@ -1,9 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Inject } from '@angular/core';
 import { UtilityService } from 'src/app/services/utilityService/utility.service';
 import { DataService } from 'src/app/services/dataService/data.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { DataService } from 'src/app/services/dataService/data.service';
   templateUrl: './single-note.component.html',
   styleUrls: ['./single-note.component.scss']
 })
-export class SingleNoteComponent implements OnInit {
+export class SingleNoteComponent implements OnInit, OnDestroy {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data:any ,
@@ -40,7 +41,8 @@ export class SingleNoteComponent implements OnInit {
   user:string
   noteTitle = new FormControl()
   noteBody = new FormControl()
-
+  getLabelSubscription: Subscription;
+  updateNoteSubscription: Subscription;
 
   updateTrigger(){
     this.updateDone.emit(true)
@@ -49,7 +51,7 @@ export class SingleNoteComponent implements OnInit {
 
   updateNote(id:number,noteData:object ){
     // console.log(noteData)
-    this._dataService.updateSingleNote(id, noteData)
+    this.updateNoteSubscription = this._dataService.updateSingleNote(id, noteData)
       .subscribe(
         response =>{
           if(response['code']==202){
@@ -156,7 +158,7 @@ export class SingleNoteComponent implements OnInit {
   }
 
   getAllLabels(){
-    this._dataService.getLabel()
+    this.getLabelSubscription = this._dataService.getLabel()
     .subscribe(
       response =>{
         // console.log(response['data'])
@@ -197,4 +199,14 @@ export class SingleNoteComponent implements OnInit {
     return this.label.includes(singleLable)
   }
 
+  ngOnDestroy(){
+    if(this.getLabelSubscription){
+      this.getLabelSubscription.unsubscribe()
+    }
+    if(this.updateNoteSubscription){
+      console.log("ok")
+      this.updateNoteSubscription.unsubscribe()
+      
+    }
+  }
 }
