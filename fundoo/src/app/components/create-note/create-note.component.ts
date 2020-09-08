@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
 import { DataService } from 'src/app/services/dataService/data.service';
 import { UtilityService } from 'src/app/services/utilityService/utility.service';
 import { ValidateFormFieldService } from 'src/app/services/validationService/validate-form-field.service';
@@ -17,7 +18,8 @@ export class CreateNoteComponent implements OnInit, OnDestroy {
   constructor(
     private _utility:UtilityService,
     private _dataService:DataService,
-    private _validation:ValidateFormFieldService
+    private _validation:ValidateFormFieldService,
+    private _accountService:AccountHttpService
   ) { }
 
   
@@ -34,7 +36,10 @@ export class CreateNoteComponent implements OnInit, OnDestroy {
   label:string[]=[];
   pin:boolean = false;
   reminder:string = null;
+  collaborator:number[]=[];
   allLabel:object[];
+  allUsers:object[];
+
 
   create(){
     if(this.title.value && this.noteBody.value){
@@ -44,7 +49,8 @@ export class CreateNoteComponent implements OnInit, OnDestroy {
         archives:this.archive,
         color:this.color,
         pin:this.pin,
-        label:this.label
+        label:this.label,
+        collaborators:this.collaborator
       }
       if (this.reminder != null){
         if(this._validation.validateReminder(this.reminder)){
@@ -74,6 +80,7 @@ export class CreateNoteComponent implements OnInit, OnDestroy {
             this.pin = false;
             this.reminder= null;
             this.label=[]
+            this.collaborator = []
             //trigger fired(event)
             this.newNoteTrigger()
           }else{
@@ -155,6 +162,42 @@ export class CreateNoteComponent implements OnInit, OnDestroy {
       }
     )
   }
+
+  getAllUser(){
+    this._accountService.getAllUser()
+    .subscribe(
+      response =>{
+        
+        if(response["code"]===200){
+          this.allUsers = response["data"]
+        }
+        // console.log(this.allUsers)
+      }
+    )
+  }
+
+  isNoteCollaborator(id:number){
+    return this.collaborator.includes(id)
+  }
+
+  updateCollaborator($event, id:number){
+    if($event.checked){
+      this.collaborator.push(id)
+    }else{
+      this.removeCollaborator(id)
+    }
+    // console.log("collaborator",this.collaborator)
+  }
+
+  removeCollaborator(id:number){
+    for(var i=0; i<this.collaborator.length;i++){
+      if(this.collaborator[i]===id){
+        this.collaborator.splice(i,1)
+      }
+    }
+    // console.log("collaborator",this.collaborator)
+  }
+
 
   updateLabel($event,singleLabel:string){
     // console.log($event.checked,singleLabel)
