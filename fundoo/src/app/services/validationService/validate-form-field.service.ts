@@ -36,4 +36,19 @@ export class ValidateFormFieldService {
   confirm_passwordErrorMsg(confirm_password){
     return confirm_password.hasError('required')?"please confirm password":""
   }
+  
+  validateReminder(reminder:string){
+    //check and validation for reminder
+      let now = new Date()
+      let nowHr = now.getHours()
+      let nowMin = now.getMinutes()
+      let reminderTime = reminder.split(":")
+      if(parseInt(reminderTime[0])==nowHr 
+      && parseInt(reminderTime[1])>nowMin
+      || parseInt(reminderTime[0])>nowHr)
+      {
+        return true
+      }
+      return false
+  }
 }

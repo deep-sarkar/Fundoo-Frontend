@@ -12,18 +12,5 @@ export class UtilityService {
     return this._snackBar.open(message,"ok",{duration:5000})
   }
 
-  validateReminder(reminder:string){
-    //check and validation for reminder
-      let now = new Date()
-      let nowHr = now.getHours()
-      let nowMin = now.getMinutes()
-      let reminderTime = reminder.split(":")
-      if(parseInt(reminderTime[0])==nowHr 
-      && parseInt(reminderTime[1])>nowMin
-      || parseInt(reminderTime[0])>nowHr)
-      {
-        return true
-      }
-      return false
-  }
+  
 }
