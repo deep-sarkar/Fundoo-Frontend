@@ -24,11 +24,18 @@ export class DisplayNoteComponent implements OnInit, OnDestroy {
   @Output() update = new EventEmitter<boolean>()
   reminder:string=null;
   subscription: Subscription;
-  cardGrid:boolean=true;
-
-  public viewClass = {
-    "main-container-grid": this.cardGrid,
-    "main-container-list": !this.cardGrid
+  viewClassSubscription:Subscription;
+  viewClass:string = "main-container-grid"
+  
+  
+  changeTemplateClass(){
+    this.viewClassSubscription =  this._utility.viewClass
+    .subscribe(
+      result =>{
+        // console.log(result)
+        this.viewClass = result
+      }
+    )
   }
 
   updateNote(id:number,noteData:object ){
@@ -150,11 +157,13 @@ export class DisplayNoteComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
+    this.changeTemplateClass()
   }
 
   ngOnDestroy(){
     if(this.subscription){
       this.subscription.unsubscribe()
+      this.viewClassSubscription.unsubscribe()
     }
   }
   

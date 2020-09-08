@@ -1,4 +1,4 @@
-<div class="main-container">
+<div [ngClass]="viewClass">
     <div class="inner-container" *ngFor="let note of allNotes">
         <mat-card class="card" [ngStyle]="{'background': note.color}">
             <div id="pin-div">
@@ -28,8 +28,8 @@
                 <app-icon-insert-photo class="icon-component" *ngIf="!note.trash"></app-icon-insert-photo>
                 <app-icon-archive class="icon-component" *ngIf="!note.trash" (archive)="archiveNote($event, note.id)"
                  [isArchive]="note.archives?true:false"></app-icon-archive>
-                <app-icon-trash (trash)="trashNote($event,note.id)" [isTrash]="note.trash?true:false"></app-icon-trash>
-                <app-icon-delete *ngIf="note.trash" (click)="deletForever(note.id)" id="delete-icon"></app-icon-delete>
+                <app-icon-trash (trash)="trashNote($event,note.id)" class="icon-component" [isTrash]="note.trash?true:false"></app-icon-trash>
+                <app-icon-delete *ngIf="note.trash" (click)="deletForever(note.id)" class="icon-component" id="delete-icon"></app-icon-delete>
             </mat-card-footer>
 
         </mat-card>

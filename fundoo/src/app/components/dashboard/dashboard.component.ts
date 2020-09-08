@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
+import { UtilityService } from 'src/app/services/utilityService/utility.service';
 import { LabelComponent } from '../label/label.component';
 
 @Component({
@@ -12,8 +13,22 @@ export class DashboardComponent implements OnInit {
 
   constructor(
       private _router:Router,
-      private _dialog:MatDialog
+      private _dialog:MatDialog,
+      private _utility:UtilityService
     ) { }
+
+
+isGrid:boolean=true;
+
+gridView(){
+  this.isGrid = true
+  this._utility.viewClass.next("main-container-grid")
+}
+
+listView(){
+  this.isGrid = false
+  this._utility.viewClass.next("main-container-list")
+}
 
   logout(){
     localStorage.removeItem('token')
