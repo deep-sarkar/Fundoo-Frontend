@@ -64,6 +64,14 @@ export class AccountHttpService {
     return this._http.getService(this.baseUrl+"check_user/" + surl, {headers:headers})
   }
 
+  getAllUser(): Observable<any>{
+    let headers = new HttpHeaders(
+      {"Content-Type": "application/json",
+      "Authorization": "JWT "+this.token}
+      )
+    return this._http.getService(this.baseUrl+"all_users/", {headers:headers})
+  }
+
   resetPassword(user_data:object): Observable<any>{
     let headers = new HttpHeaders(
       {"Content-Type": "application/json"}
