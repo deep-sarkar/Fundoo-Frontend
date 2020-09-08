@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/dataService/data.service';
+import { UtilityService } from 'src/app/services/utilityService/utility.service';
 
 @Component({
   selector: 'app-trash',
@@ -10,8 +11,11 @@ import { DataService } from 'src/app/services/dataService/data.service';
 export class TrashComponent implements OnInit, OnDestroy {
 
   constructor(
-    private _dataService:DataService
-  ) { }
+    private _dataService:DataService,
+    private _utility:UtilityService
+  ) { 
+    _utility.viewClass.next("main-container-grid")
+  }
   
   allNotes:object;
   subscription : Subscription;

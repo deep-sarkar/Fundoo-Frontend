@@ -18,14 +18,16 @@ export class DisplayNoteComponent implements OnInit, OnDestroy {
         private _utility:UtilityService,
         private _dataService:DataService,
         private _validation: ValidateFormFieldService
-     ) { }
+     ) { 
+      _utility.viewClass.next(this.viewClass)
+     }
 
   @Input() allNotes:object[];
   @Output() update = new EventEmitter<boolean>()
   reminder:string=null;
   subscription: Subscription;
   viewClassSubscription:Subscription;
-  viewClass:string = "main-container-grid"
+  viewClass:string = "main-container-grid";
   
   
   changeTemplateClass(){
@@ -163,6 +165,9 @@ export class DisplayNoteComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     if(this.subscription){
       this.subscription.unsubscribe()
+    }
+    if(this.viewClassSubscription){
+      this._utility.viewClass.next(this.viewClass)
       this.viewClassSubscription.unsubscribe()
     }
   }

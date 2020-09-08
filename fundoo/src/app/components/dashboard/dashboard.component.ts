@@ -15,7 +15,18 @@ export class DashboardComponent implements OnInit {
       private _router:Router,
       private _dialog:MatDialog,
       private _utility:UtilityService
-    ) { }
+    ) {
+      _utility.viewClass
+      .subscribe(
+        result =>{
+          if(result==="main-container-grid"){
+            this.isGrid = true
+          }else{
+            this.isGrid = false
+          }
+        }
+      )
+     }
 
 
 isGrid:boolean=true;

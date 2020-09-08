@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/dataService/data.service';
+import { UtilityService } from 'src/app/services/utilityService/utility.service';
 
 @Component({
   selector: 'app-archives',
@@ -9,8 +10,11 @@ import { DataService } from 'src/app/services/dataService/data.service';
 export class ArchivesComponent implements OnInit {
 
   constructor(
-    private _dataService:DataService
-  ) { }
+    private _dataService:DataService,
+    private _utility:UtilityService
+  ) { 
+    _utility.viewClass.next("main-container-grid")
+  }
   
   
   allNotes:object;
