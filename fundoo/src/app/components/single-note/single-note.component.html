@@ -27,7 +27,7 @@
         </div>
         <mat-card-actions class="action">
             <app-icon-reminder class="icon-component" (reminder)="setReminder($event)"></app-icon-reminder>
-            <app-icon-collaborator class="icon-component"></app-icon-collaborator>
+            <app-icon-collaborator class="icon-component" (click)="getAllUser()" [matMenuTriggerFor]="colMenu"></app-icon-collaborator>
             <app-icon-palette class="icon-component" (color)="setColor($event)"></app-icon-palette>
             <app-icon-insert-photo class="icon-component"></app-icon-insert-photo>
             <app-icon-archive mat-dialog-close class="icon-component" (archive)="archiveNote($event)">
@@ -44,6 +44,16 @@
         <mat-checkbox color="primary" labelPosition="after" [checked]="isNoteLabel(singleLabel.label)"
             class="single-lable" (change)="updateLabel($event,singleLabel.label)">
             {{ singleLabel.label }}
+        </mat-checkbox>
+    </div>
+</mat-menu>
+
+<mat-menu class="collaborator-menu" #colMenu yPosition="below">
+    <div class="col-div" (click)="$event.stopPropagation()" *ngFor="let collaborator of allUsers">
+        <mat-checkbox color="primary" 
+        [checked]="isNoteCollaborator(collaborator.id)"
+        (change)="updateCollaborator($event,collaborator.id)">
+            {{ collaborator.username }}
         </mat-checkbox>
     </div>
 </mat-menu>

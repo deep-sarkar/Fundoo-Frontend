@@ -6,6 +6,7 @@ import { UtilityService } from 'src/app/services/utilityService/utility.service'
 import { DataService } from 'src/app/services/dataService/data.service';
 import { Subscription } from 'rxjs';
 import { ValidateFormFieldService } from 'src/app/services/validationService/validate-form-field.service';
+import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
 
 
 @Component({
@@ -19,13 +20,15 @@ export class SingleNoteComponent implements OnInit, OnDestroy {
     @Inject(MAT_DIALOG_DATA) public data:any,
     private _utility:UtilityService,
     private _dataService:DataService,
-    private _validation:ValidateFormFieldService
+    private _validation:ValidateFormFieldService,
+    private _accountService:AccountHttpService
     ) { }
   
   @Output() updateDone = new EventEmitter<boolean>()
   //to store single note
   singleNote:object={};
   allLabel:string[];
+  allUsers:object[];
   //on init save all property of note here
   id:number;
   title:string;
@@ -36,7 +39,7 @@ export class SingleNoteComponent implements OnInit, OnDestroy {
   archives:boolean;
   trash:boolean;
   label:string[];
-  collaborator:any[];
+  collaborator:number[];
   image:File;
   urls:string;
   user:string
@@ -77,7 +80,7 @@ export class SingleNoteComponent implements OnInit, OnDestroy {
     this.pin =  this.singleNote["pin"]
     this.archives =  this.singleNote["archives"]
     this.label =  this.singleNote["label"]
-    this.collaborator =  this.singleNote["collaborator"]
+    this.collaborator =  this.singleNote["collaborators"]
     this.image =  this.singleNote["image"]
     this.urls =  this.singleNote["urls"]
     this.user =  this.singleNote["user"]
@@ -200,12 +203,52 @@ export class SingleNoteComponent implements OnInit, OnDestroy {
     return this.label.includes(singleLable)
   }
 
+  getAllUser(){
+    this._accountService.getAllUser()
+    .subscribe(
+      response =>{
+        if(response["code"]===200){
+          this.allUsers = response["data"]
+        }
+        // console.log(this.allUsers)
+      }
+    )
+  }
+
+  isNoteCollaborator(id:number){
+    return this.collaborator.includes(id)
+  }
+
+  updateCollaborator($event, id:number){
+    if($event.checked){
+      this.collaborator.push(id)
+      let note = {collaborators:this.collaborator}
+      this.updateNote(this.id,note)
+      this._utility.snackBarMessage("collaborator added !!")
+    }else{
+      this.removeCollaborator(id)
+    }
+    // console.log("collaborator",this.collaborator)
+  }
+
+  removeCollaborator(id:number){
+    for(var i=0; i<this.collaborator.length;i++){
+      if(this.collaborator[i]===id){
+        this.collaborator.splice(i,1)
+      }
+    }
+    this._utility.snackBarMessage("Collaborator removed !")
+    let note = {collaborators:this.collaborator}
+    this.updateNote(this.id,note)
+    // console.log("collaborator",this.collaborator)
+  }
+
   ngOnDestroy(){
     if(this.getLabelSubscription){
       this.getLabelSubscription.unsubscribe()
     }
     if(this.updateNoteSubscription){
-      console.log("ok")
+      // console.log("ok")
       this.updateNoteSubscription.unsubscribe()
       
     }
