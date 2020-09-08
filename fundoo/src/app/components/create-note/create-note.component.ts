@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/dataService/data.service';
 import { UtilityService } from 'src/app/services/utilityService/utility.service';
+import { ValidateFormFieldService } from 'src/app/services/validationService/validate-form-field.service';
 
 @Component({
   selector: 'app-create-note',
@@ -15,7 +16,8 @@ export class CreateNoteComponent implements OnInit, OnDestroy {
 
   constructor(
     private _utility:UtilityService,
-    private _dataService:DataService
+    private _dataService:DataService,
+    private _validation:ValidateFormFieldService
   ) { }
 
   
@@ -45,7 +47,7 @@ export class CreateNoteComponent implements OnInit, OnDestroy {
         label:this.label
       }
       if (this.reminder != null){
-        if(this._utility.validateReminder(this.reminder)){
+        if(this._validation.validateReminder(this.reminder)){
           this.noteData['reminder'] = this.reminder
         }else{
           this._utility.snackBarMessage("Enter upcoming time for reminder !!!");

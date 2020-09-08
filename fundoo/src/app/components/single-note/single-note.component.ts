@@ -1,10 +1,11 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA } from '@angular/material';
 import { Inject } from '@angular/core';
 import { UtilityService } from 'src/app/services/utilityService/utility.service';
 import { DataService } from 'src/app/services/dataService/data.service';
 import { Subscription } from 'rxjs';
+import { ValidateFormFieldService } from 'src/app/services/validationService/validate-form-field.service';
 
 
 @Component({
@@ -15,10 +16,10 @@ import { Subscription } from 'rxjs';
 export class SingleNoteComponent implements OnInit, OnDestroy {
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data:any ,
-    private _dialogRef:MatDialogRef<SingleNoteComponent>,
+    @Inject(MAT_DIALOG_DATA) public data:any,
     private _utility:UtilityService,
-    private _dataService:DataService
+    private _dataService:DataService,
+    private _validation:ValidateFormFieldService
     ) { }
   
   @Output() updateDone = new EventEmitter<boolean>()
@@ -106,7 +107,7 @@ export class SingleNoteComponent implements OnInit, OnDestroy {
 
   setReminder($event){
     // console.log($event)
-    let validation=this._utility.validateReminder($event)
+    let validation=this._validation.validateReminder($event)
     if (validation){
       this.reminder=$event
       let note = {reminder:$event}

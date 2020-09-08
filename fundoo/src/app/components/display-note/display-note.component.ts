@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/dataService/data.service';
 import { UtilityService } from 'src/app/services/utilityService/utility.service';
+import { ValidateFormFieldService } from 'src/app/services/validationService/validate-form-field.service';
 import { SingleNoteComponent } from '../single-note/single-note.component';
 
 @Component({
@@ -15,13 +16,20 @@ export class DisplayNoteComponent implements OnInit, OnDestroy {
   constructor(
         private _dialogue:MatDialog,
         private _utility:UtilityService,
-        private _dataService:DataService
+        private _dataService:DataService,
+        private _validation: ValidateFormFieldService
      ) { }
 
   @Input() allNotes:object[];
   @Output() update = new EventEmitter<boolean>()
   reminder:string=null;
   subscription: Subscription;
+  cardGrid:boolean=true;
+
+  public viewClass = {
+    "main-container-grid": this.cardGrid,
+    "main-container-list": !this.cardGrid
+  }
 
   updateNote(id:number,noteData:object ){
     // console.log(noteData)
@@ -46,7 +54,7 @@ export class DisplayNoteComponent implements OnInit, OnDestroy {
 
   setReminder($event, noteId){
     console.log($event)
-    let validation=this._utility.validateReminder($event)
+    let validation=this._validation.validateReminder($event)
     if (validation){
       this.reminder = $event
       let note ={reminder:$event}
