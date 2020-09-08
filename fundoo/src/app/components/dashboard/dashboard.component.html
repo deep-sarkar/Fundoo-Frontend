@@ -16,30 +16,36 @@
 
     <mat-sidenav-container>
         <mat-sidenav [(opened)]="opened" mode="side" [fixedInViewport]="true" fixedTopGap="64.4">
-            <button mat-button (click)="createNote()">
-                <span class="material-icons-outlined">
-                    emoji_objects
-                </span>
-                <span>Notes</span>
-            </button>
-            <button mat-button (click)="openLabel()">
-                <span class="material-icons-outlined">
-                    label
-                </span>
-                <span>Edit Label</span> 
-            </button>
-            <button mat-button (click)="reminderNote()">
-                <span class="material-icons-outlined">add_alert</span>
-                <span>Reminder</span> 
-            </button>
-            <button mat-button (click)="archivesNote()">
-                <span class="material-icons-outlined">archive</span>
-                <span>Archives</span>
-            </button>
-            <button mat-button (click)="trashNotes()">
-                <span class="material-icons-outlined">delete_outline</span>
-                <span>Trash</span>
-            </button>
+            <div class="items" (click)="createNote()">
+                <div class="main-icon">
+                    <span class="material-icons-outlined">emoji_objects</span>
+                </div>
+                <div class="item-txt">Notes</div>
+            </div>
+            <div class="items" (click)="openLabel()">
+                <div class="main-icon">
+                    <span class="material-icons-outlined">label</span>
+                </div>
+                <div class="item-txt">Edit Label</div>
+            </div>
+            <div class="items" (click)="reminderNote()">
+                <div class="main-icon">
+                    <span class="material-icons-outlined">add_alert</span>
+                </div>
+                <div class="item-txt">Reminder</div>
+            </div>
+            <div class="items" (click)="archivesNote()">
+                <div class="main-icon">
+                    <span class="material-icons-outlined">archive</span>
+                </div>
+                <div class="item-txt">Archives</div>
+            </div>
+            <div class="items" (click)="trashNotes()">
+                <div class="main-icon">
+                    <span class="material-icons-outlined">delete_outline</span>
+                </div>
+                <div class="item-txt">Trash</div>
+            </div>
         </mat-sidenav>
     </mat-sidenav-container>
     <router-outlet></router-outlet>
