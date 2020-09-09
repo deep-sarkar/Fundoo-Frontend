@@ -18,12 +18,10 @@
                 <mat-chip-list class="chip-list" *ngFor="let labels of note.label">
                     <mat-chip class="chip" >{{ labels }}</mat-chip>
                 </mat-chip-list>
-                <!-- <span *ngIf="note.reminder">{{ note.reminder }}</span>
-                <span *ngFor="let labels of note.label">{{ labels }}</span> -->
             </mat-card-actions>
             <mat-card-footer class="card-footer">
                 <app-icon-reminder class="icon-component" *ngIf="!note.trash" (reminder)="setReminder($event, note.id)"></app-icon-reminder>
-                <app-icon-collaborator class="icon-component" *ngIf="!note.trash"></app-icon-collaborator>
+                <app-icon-collaborator class="icon-component" *ngIf="!note.trash" [matMenuTriggerFor]="colMenu" (click)="changeCollaborators(note.id,note.collaborators)"></app-icon-collaborator>
                 <app-icon-palette class="icon-component" *ngIf="!note.trash" (color)="setColor($event, note.id)"></app-icon-palette>
                 <app-icon-insert-photo class="icon-component" *ngIf="!note.trash"></app-icon-insert-photo>
                 <app-icon-archive class="icon-component" *ngIf="!note.trash" (archive)="archiveNote($event, note.id)"
@@ -36,3 +34,13 @@
 
     </div>
 </div>
+
+<mat-menu class="collaborator-menu" #colMenu yPosition="below">
+    <div class="col-div" (click)="$event.stopPropagation()" *ngFor="let collaborator of allUsers">
+        <mat-checkbox color="primary" 
+        [checked]="isNoteCollaborator(collaborator.id)"
+        (change)="updateCollaborator($event,collaborator.id)">
+            {{ collaborator.username }}
+        </mat-checkbox>
+    </div>
+</mat-menu>

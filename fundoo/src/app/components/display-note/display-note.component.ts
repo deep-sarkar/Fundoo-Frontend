@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Subscription } from 'rxjs';
+import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
 import { DataService } from 'src/app/services/dataService/data.service';
 import { UtilityService } from 'src/app/services/utilityService/utility.service';
 import { ValidateFormFieldService } from 'src/app/services/validationService/validate-form-field.service';
@@ -17,7 +18,8 @@ export class DisplayNoteComponent implements OnInit, OnDestroy {
         private _dialogue:MatDialog,
         private _utility:UtilityService,
         private _dataService:DataService,
-        private _validation: ValidateFormFieldService
+        private _validation: ValidateFormFieldService,
+        private _accountService:AccountHttpService
      ) { 
       _utility.viewClass.next(this.viewClass)
      }
@@ -28,8 +30,59 @@ export class DisplayNoteComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   viewClassSubscription:Subscription;
   viewClass:string = "main-container-grid";
+  collaborator:number[]=[];
+  allUsers:object[];
+  id:number;
+
+  changeCollaborators(id:number,noteCollaborators:number[]){
+    // console.log("colab",collaborators)
+    this.collaborator=noteCollaborators
+    this.id = id
+    // console.log(id,this.collaborator)
+  }
   
-  
+  getAllUser(){
+    this._accountService.getAllUser()
+    .subscribe(
+      response =>{
+        if(response["code"]===200){
+          this.allUsers = response["data"]
+        }
+        // console.log(this.allUsers)
+      }
+    )
+  }
+
+  isNoteCollaborator(colId:number){
+    return this.collaborator.includes(colId)
+  }
+
+  updateCollaborator($event, colId:number){
+    if($event.checked){
+      this.collaborator.push(colId)
+      let note = {collaborators:this.collaborator}
+      this.updateNote(this.id,note)
+      this._utility.snackBarMessage("collaborator added !!")
+    }else{
+      this.removeCollaborator(colId)
+    }
+    // console.log("collaborator",this.collaborator)
+  }
+
+  removeCollaborator(colId:number){
+    for(var i=0; i<this.collaborator.length;i++){
+      if(this.collaborator[i]===colId){
+        this.collaborator.splice(i,1)
+      }
+    }
+    this._utility.snackBarMessage("Collaborator removed !")
+    let note = {collaborators:this.collaborator}
+    this.updateNote(this.id,note)
+    // console.log("collaborator",this.collaborator)
+  }
+
+
+
   changeTemplateClass(){
     this.viewClassSubscription =  this._utility.viewClass
     .subscribe(
@@ -160,6 +213,7 @@ export class DisplayNoteComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.changeTemplateClass()
+    this.getAllUser()
   }
 
   ngOnDestroy(){
