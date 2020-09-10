@@ -11,6 +11,8 @@ export class UtilityService {
 
   viewClass = new Subject<string>()
 
+  searchItem = new Subject<string>()
+
   snackBarMessage(message:string){
     return this._snackBar.open(message,"ok",{duration:5000})
   }
