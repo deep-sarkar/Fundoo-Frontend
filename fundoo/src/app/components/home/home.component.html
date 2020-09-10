@@ -8,8 +8,13 @@
             <button mat-button (click)="register()">Register</button>
             <button mat-button (click)="login()">Login</button>
         </section>
-        <section id="user-portal">
+        <section id="user-portal"  *ngIf="token">
             <header>Hi, {{ username }}</header>
+            <div class="contents">
+                <button mat-button (click)="notes()">notes</button>
+                <button mat-button (click)="changePassword()">change password</button>
+                <button mat-button (click)="logout()">logout</button>
+            </div>
         </section>
     </mat-card>
 </div>
