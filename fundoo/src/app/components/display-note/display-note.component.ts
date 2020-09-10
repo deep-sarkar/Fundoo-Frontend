@@ -33,6 +33,17 @@ export class DisplayNoteComponent implements OnInit, OnDestroy {
   collaborator:number[]=[];
   allUsers:object[];
   id:number;
+  searchTerm:string='';
+
+  searchNote(){
+    this._utility.searchItem
+    .subscribe(
+      response =>{
+        this.searchTerm = response
+        console.log("display",response)
+      }
+    )
+  }
 
   changeCollaborators(id:number,noteCollaborators:number[]){
     // console.log("colab",collaborators)
@@ -214,6 +225,7 @@ export class DisplayNoteComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.changeTemplateClass()
     this.getAllUser()
+    this.searchNote()
   }
 
   ngOnDestroy(){
