@@ -50,6 +50,7 @@ import { ReminderComponent } from './components/reminder/reminder.component';
 import { ArchivesComponent } from './components/archives/archives.component';
 import { TrashComponent } from './components/trash/trash.component';
 import { IconDeleteComponent } from './components/icon-delete/icon-delete.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 
@@ -83,7 +84,8 @@ import { IconDeleteComponent } from './components/icon-delete/icon-delete.compon
     ReminderComponent,
     ArchivesComponent,
     TrashComponent,
-    IconDeleteComponent
+    IconDeleteComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
