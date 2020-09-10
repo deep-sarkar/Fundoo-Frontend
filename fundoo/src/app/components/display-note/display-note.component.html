@@ -1,5 +1,5 @@
 <div [ngClass]="viewClass">
-    <div class="inner-container" *ngFor="let note of allNotes">
+    <div class="inner-container" *ngFor="let note of allNotes | filterPipe:searchTerm">
         <mat-card class="card" [ngStyle]="{'background': note.color}">
             <div id="pin-div">
                 <mat-card-title class="card-title" (click)="note.trash?'':openDialogue(note.id)">
