@@ -79,5 +79,14 @@ export class AccountHttpService {
     return this._http.postService(this.baseUrl+"reset_paassword/" , user_data, {headers:headers})
   }
   
+  logout(){
+    let headers = new HttpHeaders(
+      {"Content-Type": "application/json",
+      "Authorization": "JWT "+this.token}
+      )
+      // console.log("logout",this.token)
+    return this._http.getService(this.baseUrl+"logout/", {headers:headers})
+  }
+
 }
 
