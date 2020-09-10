@@ -41,12 +41,9 @@ listView(){
   this._utility.viewClass.next("main-container-list")
 }
 
-  logout(){
-    localStorage.removeItem('token')
-    let token=localStorage.getItem('token')
-    // console.log('token',token)
-    // console.log("success")
-  }
+home(){
+  this._router.navigate(['home'])
+}
 
   createNote(){
     this._router.navigate(['create'])
