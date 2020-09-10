@@ -165,13 +165,20 @@ $listPadding:1% 0 1% 0.5%;
     }
 }
 }
+
 @media only screen and (max-width:500px){
-    .main-container{
+    .main-container-grid{
         display: grid;
-        grid-template-columns:100%;
+        grid-template-columns: 100%;
         grid-gap: .2%;
-        .inner-container{
-            margin: 2%;
-        }
+    }
+}
+
+@media screen and (max-width:500px){
+    .main-container-list{
+        width: 90%;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-gap: .2%;
     }
 }
