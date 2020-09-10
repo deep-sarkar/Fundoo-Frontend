@@ -29,23 +29,24 @@ export class DashboardComponent implements OnInit {
      }
 
 
-isGrid:boolean=true;
+  isGrid:boolean=true;
 
-gridView(){
-  this.isGrid = true
-  this._utility.viewClass.next("main-container-grid")
-}
+  gridView(){
+    this.isGrid = true
+    this._utility.viewClass.next("main-container-grid")
+  }
 
-listView(){
-  this.isGrid = false
-  this._utility.viewClass.next("main-container-list")
-}
+  listView(){
+    this.isGrid = false
+    this._utility.viewClass.next("main-container-list")
+  }
 
-home(){
-  this._router.navigate(['home'])
-}
+  home(){
+    this._router.navigate(['home'])
+  }
 
   createNote(){
+    this._utility.searchItem.next('')
     this._router.navigate(['create'])
   }
 
