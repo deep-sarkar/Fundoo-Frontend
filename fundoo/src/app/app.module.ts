@@ -51,6 +51,8 @@ import { ArchivesComponent } from './components/archives/archives.component';
 import { TrashComponent } from './components/trash/trash.component';
 import { IconDeleteComponent } from './components/icon-delete/icon-delete.component';
 import { HomeComponent } from './components/home/home.component';
+import { SearchComponent } from './components/search/search.component';
+import { FilterPipe } from './notePipe/filter.pipe';
 
 
 
@@ -85,7 +87,9 @@ import { HomeComponent } from './components/home/home.component';
     ArchivesComponent,
     TrashComponent,
     IconDeleteComponent,
-    HomeComponent
+    HomeComponent,
+    SearchComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
