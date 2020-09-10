@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AccountHttpService } from 'src/app/services/accountServices/account-http.service';
 import { UtilityService } from 'src/app/services/utilityService/utility.service';
 import { ValidateFormFieldService } from 'src/app/services/validationService/validate-form-field.service';
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private _httpService:AccountHttpService, 
     private _validationService:ValidateFormFieldService,
-    private _snackBar:UtilityService
+    private _snackBar:UtilityService,
+    private _route: Router
     ) { }
 
   username = new FormControl('',[
@@ -48,6 +50,7 @@ export class LoginComponent implements OnInit {
         if(response['code']===200){
           this._snackBar.snackBarMessage("Hello , "+this.username.value)
           localStorage.setItem('token',response['token'])
+          this._route.navigate([''])
         }else{
           this._snackBar.snackBarMessage(response['msg'])
         }  
