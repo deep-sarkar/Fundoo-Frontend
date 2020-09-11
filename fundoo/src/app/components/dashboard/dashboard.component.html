@@ -4,15 +4,19 @@
             <mat-icon matTooltip="menu" matTooltipPosition="below">menu</mat-icon>
         </button>
         <app-search class="search"></app-search>
-        <button matTooltip="grid view" matTooltipPosition="below" mat-icon-button (click)="gridView()" *ngIf="!isGrid">
-            <mat-icon>view_module</mat-icon>
-        </button>
-        <button mat-icon-button matTooltip="list view" matTooltipPosition="below" (click)="listView()" *ngIf="isGrid">
-            <mat-icon>view_stream</mat-icon>
-        </button>
-        <button mat-icon-button (click)="home()">
-            <mat-icon>home</mat-icon>
-        </button>
+        <div class="display-option">
+            <button matTooltip="grid view" matTooltipPosition="below" mat-icon-button (click)="gridView()"
+                *ngIf="!isGrid">
+                <mat-icon>view_module</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="list view" matTooltipPosition="below" (click)="listView()"
+                *ngIf="isGrid">
+                <mat-icon>view_stream</mat-icon>
+            </button>
+        </div>
+        <div (click)="home()" class="home">
+            {{ username }}
+        </div>
     </mat-toolbar>
 
     <mat-sidenav-container>
