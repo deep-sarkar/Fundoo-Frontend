@@ -13,6 +13,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { ReminderComponent } from './components/reminder/reminder.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { TrashComponent } from './components/trash/trash.component';
+import { AuthGuard } from './guard/auth.guard';
 
 
 const routes: Routes = [
@@ -20,21 +21,23 @@ const routes: Routes = [
   { path: "register", component: RegistrationComponent },
   { path: "login", component: LoginComponent },
   { path: "forgot", component: ForgotPasswordComponent },
-  { path: "changePassword", component: ChangePasswordComponent },
+  { path: "changePassword", component: ChangePasswordComponent, canActivate: [AuthGuard] },
   { path: "activate/:surl", component: ActivateAccountComponent },
   { path: "resetPassword/:surl", component: ResetPasswordComponent },
   {
     path: "", component: DashboardComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: "", component: NotesComponent,
         children: [
-          { path: "create", component: CreateNoteComponent },
-        ]
+          { path: "create", component: CreateNoteComponent, canActivate: [AuthGuard], },
+        ],
+        canActivate: [AuthGuard],
       },
-      { path: "reminder", component: ReminderComponent },
-      { path: "archives", component: ArchivesComponent },
-      { path: "trash", component: TrashComponent },
+      { path: "reminder", component: ReminderComponent, canActivate: [AuthGuard] },
+      { path: "archives", component: ArchivesComponent, canActivate: [AuthGuard] },
+      { path: "trash", component: TrashComponent, canActivate: [AuthGuard] },
     ]
   },
 ];
