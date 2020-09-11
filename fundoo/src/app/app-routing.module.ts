@@ -6,7 +6,6 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { CreateNoteComponent } from './components/create-note/create-note.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { RegistrationComponent } from './components/registration/registration.component';
@@ -17,7 +16,6 @@ import { AuthGuard } from './guard/auth.guard';
 
 
 const routes: Routes = [
-  { path: "home", component: HomeComponent },
   { path: "register", component: RegistrationComponent },
   { path: "login", component: LoginComponent },
   { path: "forgot", component: ForgotPasswordComponent },
