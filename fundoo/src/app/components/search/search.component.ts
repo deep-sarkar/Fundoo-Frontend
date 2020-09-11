@@ -15,7 +15,7 @@ export class SearchComponent implements OnInit {
   ) { }
 
   getInput(){
-    console.log("input",this.userInput)
+    // console.log("input",this.userInput)
     this._utility.searchItem.next(this.userInput)
   }
 
