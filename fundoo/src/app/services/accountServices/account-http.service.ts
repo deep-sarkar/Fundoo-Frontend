@@ -19,7 +19,7 @@ export class AccountHttpService {
 
 
   changePassword(data:object): Observable<any>{
-    console.log("token",this.token)
+    // console.log("token",this.token)
     let headers = new HttpHeaders(
       {"Content-Type": "application/json",
       "Authorization": "JWT "+this.token})
