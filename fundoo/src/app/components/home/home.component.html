@@ -1,20 +1,21 @@
-<div class="main-div">
-    <mat-card>
-        <mat-card-title>
-            Fundoo
-        </mat-card-title>
-        <div class="line-div"></div>
-        <section id="registration-portal" *ngIf="! isAuthenticated">
-            <button mat-button (click)="register()">Register</button>
-            <button mat-button (click)="login()">Login</button>
-        </section>
-        <section id="user-portal"  *ngIf="isAuthenticated">
-            <header>Hi, {{ username }}</header>
-            <div class="contents">
-                <button mat-button (click)="notes()">notes</button>
-                <button mat-button (click)="changePassword()">change password</button>
-                <button mat-button (click)="logout()">logout</button>
-            </div>
-        </section>
-    </mat-card>
+<div class="main">
+    <header>
+        <div>
+            {{ username.substr(0,2).toUpperCase() }}
+        </div>
+        <p>
+            {{ username }}
+        </p>
+        <p>
+            {{ email }}
+        </p>
+    </header>
+    <footer>
+        <button mat-icon-button matTooltip="change password" (click)="changePassword()" mat-dialog-close>
+            <mat-icon>vpn_key</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="logout" (click)="logout()" mat-dialog-close>
+            <mat-icon>logout</mat-icon>
+        </button>
+    </footer>
 </div>
