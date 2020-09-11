@@ -88,5 +88,10 @@ export class AccountHttpService {
     return this._http.getService(this.baseUrl+"logout/", {headers:headers})
   }
 
+  isLoggedIn(){
+    console.log(!!localStorage.getItem('token'))
+    return !!localStorage.getItem('token')
+  }
+
 }
 
