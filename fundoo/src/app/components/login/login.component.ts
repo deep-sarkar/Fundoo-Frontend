@@ -50,7 +50,9 @@ export class LoginComponent implements OnInit {
         if(response['code']===200){
           this._snackBar.snackBarMessage("Hello , "+this.username.value)
           localStorage.setItem('token',response['token'])
-          this._route.navigate([''])
+          if(this._httpService.isLoggedIn()){
+            this._route.navigate([''])
+          }
         }else{
           this._snackBar.snackBarMessage(response['msg'])
         }  
