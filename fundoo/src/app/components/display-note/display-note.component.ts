@@ -197,7 +197,8 @@ export class DisplayNoteComponent implements OnInit, OnDestroy {
           let note = response['data']
           note["id"]=noteId
           let ref = this._dialogue.open(SingleNoteComponent,{
-            minWidth:'50%',
+            minWidth:'60%',
+            maxWidth:'100%',
             height:'auto',
             maxHeight:'90%',
             panelClass: 'dialog-content',
@@ -223,9 +224,12 @@ export class DisplayNoteComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    this.changeTemplateClass()
-    this.getAllUser()
-    this.searchNote()
+    if(this._accountService.isLoggedIn())
+    {
+      this.changeTemplateClass()
+      this.getAllUser()
+      this.searchNote()
+    }
   }
 
   ngOnDestroy(){
