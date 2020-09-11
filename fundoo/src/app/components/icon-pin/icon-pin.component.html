@@ -1,4 +1,4 @@
 <button mat-icon-button (click)="setPin()" class="btn">
-    <i class="material-icons-outlined" *ngIf="! isPin">push_pin</i>
-    <i class="material-icons" *ngIf="isPin">push_pin</i>
+    <i class="material-icons-outlined" *ngIf="! isPin" matTooltip="pin" matTooltipPosition="above">push_pin</i>
+    <i class="material-icons" *ngIf="isPin" matTooltip="unpin" matTooltipPosition="above">push_pin</i>
 </button>

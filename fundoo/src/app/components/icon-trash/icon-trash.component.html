@@ -1,4 +1,4 @@
 <button mat-icon-button class="btn" (click)="setTrash()">
-    <i class="material-icons"  *ngIf="! isTrash">delete_outline</i>
-    <i class="material-icons" *ngIf="isTrash">restore_from_trash</i>
+    <i class="material-icons"  *ngIf="! isTrash" matTooltip="trash" matTooltipPosition="above">delete_outline</i>
+    <i class="material-icons" *ngIf="isTrash" matTooltip="restore" matTooltipPosition="above">restore_from_trash</i>
 </button>

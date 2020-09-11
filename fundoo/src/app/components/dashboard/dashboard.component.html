@@ -1,13 +1,13 @@
 <div class="main-container">
     <mat-toolbar>
         <button mat-icon-button (click)="opened=!opened">
-            <mat-icon>menu</mat-icon>
+            <mat-icon matTooltip="menu" matTooltipPosition="below">menu</mat-icon>
         </button>
         <app-search class="search"></app-search>
-        <button mat-icon-button (click)="gridView()" *ngIf="!isGrid">
+        <button matTooltip="grid view" matTooltipPosition="below" mat-icon-button (click)="gridView()" *ngIf="!isGrid">
             <mat-icon>view_module</mat-icon>
         </button>
-        <button mat-icon-button (click)="listView()" *ngIf="isGrid">
+        <button mat-icon-button matTooltip="list view" matTooltipPosition="below" (click)="listView()" *ngIf="isGrid">
             <mat-icon>view_stream</mat-icon>
         </button>
         <button mat-icon-button (click)="home()">
