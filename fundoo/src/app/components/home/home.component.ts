@@ -16,10 +16,11 @@ export class HomeComponent implements OnInit {
     private _route:Router,
     private _accountService:AccountHttpService,
     private _utility:UtilityService
-    ) { }
-    
-  token = localStorage.getItem("token")
-  
+    ) {
+      this.isAuthenticated = _accountService.isLoggedIn()
+     }
+
+  isAuthenticated:boolean = false;
   username:string;
   
 
@@ -44,12 +45,12 @@ export class HomeComponent implements OnInit {
     this._accountService.logout()
     .subscribe(
       response => {
-        console.log(response)
+        // console.log(response)
         if(response['code']===200){
           localStorage.removeItem("token")
+          // this._route.navigate(["login"])
+          this.isAuthenticated = this._accountService.isLoggedIn()
           this._utility.snackBarMessage("Logout successfull")
-          this._route.navigate(["home"])
-          console.log(this.token)
         }
       },
       error =>{
@@ -59,16 +60,16 @@ export class HomeComponent implements OnInit {
   }
 
   getUsername(){
-    if(this.token != null){
-      let decode = jwt_decode(this.token)
-      // console.log(decode)
+    if(this._accountService.isLoggedIn()){
+      let decode = jwt_decode(localStorage.getItem('token'))
       this.username = decode['username']
+      // console.log(decode)
     }
   }
 
   ngOnInit() {
     this.getUsername()
-    console.log(this.token)
+    // console.log(this.token)
   }
 
 }
