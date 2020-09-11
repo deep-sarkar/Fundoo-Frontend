@@ -44,7 +44,6 @@ import { IconTrashComponent } from './components/icon-trash/icon-trash.component
 import { LabelComponent } from './components/label/label.component';
 import { IconCheckComponent } from './components/icon-check/icon-check.component';
 import { DataService } from './services/dataService/data.service';
-import { IconWriteComponent } from './components/icon-write/icon-write.component';
 import { IconCancelComponent } from './components/icon-cancel/icon-cancel.component';
 import { ReminderComponent } from './components/reminder/reminder.component';
 import { ArchivesComponent } from './components/archives/archives.component';
@@ -82,7 +81,6 @@ import { AuthGuard } from './guard/auth.guard';
     IconTrashComponent,
     LabelComponent,
     IconCheckComponent,
-    IconWriteComponent,
     IconCancelComponent,
     ReminderComponent,
     ArchivesComponent,
