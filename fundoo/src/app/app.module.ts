@@ -104,7 +104,8 @@ import { AuthGuard } from './guard/auth.guard';
   ],
   entryComponents:[
     SingleNoteComponent,
-    LabelComponent
+    LabelComponent, 
+    HomeComponent
   ],
   providers: [
     AccountHttpService,
