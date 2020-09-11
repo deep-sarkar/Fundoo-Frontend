@@ -164,16 +164,18 @@ export class CreateNoteComponent implements OnInit, OnDestroy {
   }
 
   getAllUser(){
-    this._accountService.getAllUser()
-    .subscribe(
-      response =>{
-        
-        if(response["code"]===200){
-          this.allUsers = response["data"]
+    if(this._accountService.isLoggedIn()){
+      this._accountService.getAllUser()
+      .subscribe(
+        response =>{
+          
+          if(response["code"]===200){
+            this.allUsers = response["data"]
+          }
+          // console.log(this.allUsers)
         }
-        // console.log(this.allUsers)
-      }
-    )
+      )
+    }
   }
 
   isNoteCollaborator(id:number){
