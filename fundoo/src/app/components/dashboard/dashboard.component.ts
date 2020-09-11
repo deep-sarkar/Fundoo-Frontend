@@ -5,6 +5,7 @@ import { AccountHttpService } from 'src/app/services/accountServices/account-htt
 import { UtilityService } from 'src/app/services/utilityService/utility.service';
 import { LabelComponent } from '../label/label.component';
 import jwt_decode from 'jwt-decode'
+import { HomeComponent } from '../home/home.component';
 
 
 @Component({
@@ -56,7 +57,10 @@ export class DashboardComponent implements OnInit {
   }
 
   home() {
-    this._router.navigate(['home'])
+    this._dialog.open(HomeComponent,{
+      width:"240px",
+      position:{top:"63px", right:'5px'}
+    })
   }
 
   createNote() {
