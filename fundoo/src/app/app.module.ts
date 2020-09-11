@@ -53,6 +53,7 @@ import { IconDeleteComponent } from './components/icon-delete/icon-delete.compon
 import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
 import { FilterPipe } from './notePipe/filter.pipe';
+import { AuthGuard } from './guard/auth.guard';
 
 
 
@@ -112,7 +113,8 @@ import { FilterPipe } from './notePipe/filter.pipe';
     ValidateFormFieldService,
     UtilityService,
     GenericService,
-    DataService
+    DataService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
