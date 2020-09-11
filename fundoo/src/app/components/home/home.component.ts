@@ -16,25 +16,10 @@ export class HomeComponent implements OnInit {
     private _route:Router,
     private _accountService:AccountHttpService,
     private _utility:UtilityService
-    ) {
-      this.isAuthenticated = _accountService.isLoggedIn()
-     }
+    ) { }
 
-  isAuthenticated:boolean = false;
   username:string;
-  
-
-  register(){
-    this._route.navigate(['register'])
-  }
-
-  login(){
-    this._route.navigate(['login'])
-  }
- 
-  notes(){
-    this._route.navigate([''])
-  }
+  email:string;
 
   changePassword(){
     this._route.navigate(['changePassword'])
@@ -49,8 +34,9 @@ export class HomeComponent implements OnInit {
         if(response['code']===200){
           localStorage.removeItem("token")
           // this._route.navigate(["login"])
-          this.isAuthenticated = this._accountService.isLoggedIn()
+          this._route.navigate(['login'])
           this._utility.snackBarMessage("Logout successfull")
+          
         }
       },
       error =>{
@@ -59,16 +45,17 @@ export class HomeComponent implements OnInit {
     )
   }
 
-  getUsername(){
+  getUserDetail(){
     if(this._accountService.isLoggedIn()){
       let decode = jwt_decode(localStorage.getItem('token'))
       this.username = decode['username']
+      this.email = decode['email']
       // console.log(decode)
     }
   }
 
   ngOnInit() {
-    this.getUsername()
+    this.getUserDetail()
     // console.log(this.token)
   }
 
