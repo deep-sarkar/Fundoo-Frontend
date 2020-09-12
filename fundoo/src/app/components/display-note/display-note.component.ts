@@ -40,7 +40,7 @@ export class DisplayNoteComponent implements OnInit, OnDestroy {
     .subscribe(
       response =>{
         this.searchTerm = response
-        console.log("display",response)
+        // console.log("display",response)
       }
     )
   }
