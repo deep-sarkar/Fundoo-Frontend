@@ -148,6 +148,10 @@ $textColor :#202124;
     padding-left: 10px;
 }
 
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: gray;
+  }
+
 @media only screen and (max-width:500px){
     .icon-component{
         margin: 1% !important;

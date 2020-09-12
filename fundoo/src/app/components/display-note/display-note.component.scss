@@ -166,6 +166,10 @@ $listPadding:1% 0 1% 0.5%;
 }
 }
 
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: gray;
+  }
+
 @media only screen and (max-width:500px){
     .main-container-grid{
         display: grid;

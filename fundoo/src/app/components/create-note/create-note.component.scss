@@ -150,6 +150,10 @@ $textColor :#202124;
     }
 }
 
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: gray;
+  }
+
 .label-div,.col-div{
     padding-left: 10px;
 }
