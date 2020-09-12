@@ -37,7 +37,7 @@
 
 <mat-menu class="collaborator-menu" #colMenu yPosition="below">
     <div class="col-div" (click)="$event.stopPropagation()" *ngFor="let collaborator of allUsers">
-        <mat-checkbox color="primary" 
+        <mat-checkbox class="check-box"
         [checked]="isNoteCollaborator(collaborator.id)"
         (change)="updateCollaborator($event,collaborator.id)">
             {{ collaborator.username }}

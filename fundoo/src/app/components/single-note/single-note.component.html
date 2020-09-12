@@ -41,7 +41,7 @@
 
 <mat-menu #menu="matMenu" yPosition="below" class="menu">
     <div *ngFor="let singleLabel of allLabel" class="label-div" (click)="$event.stopPropagation()">
-        <mat-checkbox color="primary" labelPosition="after" [checked]="isNoteLabel(singleLabel.label)"
+        <mat-checkbox  labelPosition="after" [checked]="isNoteLabel(singleLabel.label)"
             class="single-lable" (change)="updateLabel($event,singleLabel.label)">
             {{ singleLabel.label }}
         </mat-checkbox>
@@ -50,7 +50,7 @@
 
 <mat-menu class="collaborator-menu" #colMenu yPosition="below">
     <div class="col-div" (click)="$event.stopPropagation()" *ngFor="let collaborator of allUsers">
-        <mat-checkbox color="primary" 
+        <mat-checkbox 
         [checked]="isNoteCollaborator(collaborator.id)"
         (change)="updateCollaborator($event,collaborator.id)">
             {{ collaborator.username }}
