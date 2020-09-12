@@ -15,14 +15,12 @@ export class AccountHttpService {
   baseUrl = environment.accountUrl
   noteUrl = environment.notesUrl
   // token
-  token = localStorage.getItem('token')
-
 
   changePassword(data:object): Observable<any>{
     // console.log("token",this.token)
     let headers = new HttpHeaders(
       {"Content-Type": "application/json",
-      "Authorization": "JWT "+this.token})
+      "Authorization": "JWT "+localStorage.getItem('token')})
     
     return this._http.postService(this.baseUrl + "change_password/", data, {headers:headers})
   }
@@ -67,7 +65,7 @@ export class AccountHttpService {
   getAllUser(): Observable<any>{
     let headers = new HttpHeaders(
       {"Content-Type": "application/json",
-      "Authorization": "JWT "+this.token}
+      "Authorization": "JWT "+localStorage.getItem('token')}
       )
     return this._http.getService(this.baseUrl+"all_users/", {headers:headers})
   }
@@ -82,7 +80,7 @@ export class AccountHttpService {
   logout(){
     let headers = new HttpHeaders(
       {"Content-Type": "application/json",
-      "Authorization": "JWT "+this.token}
+      "Authorization": "JWT "+localStorage.getItem('token')}
       )
       // console.log("logout",this.token)
     return this._http.getService(this.baseUrl+"logout/", {headers:headers})
