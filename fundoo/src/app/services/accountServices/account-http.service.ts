@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { GenericService } from '../genericService/generic.service';
+import jwt_decode from 'jwt-decode'
 
 @Injectable({
   providedIn: 'root'
@@ -90,6 +91,32 @@ export class AccountHttpService {
     // console.log(!!localStorage.getItem('token'))
     return !!localStorage.getItem('token')
   }
+
+  refreshToken(token){
+    let headers = new HttpHeaders(
+      {"Content-Type": "application/json"}
+      )
+    return this._http.postService(this.baseUrl+"token_refresh/", JSON.stringify({token:token}),{headers:headers})
+  }
+
+  isTokenExpired(){
+    let decode = jwt_decode(localStorage.getItem('token'))
+    let token_expires:any = new Date(decode.exp * 1000);
+    let now:any = new Date()
+    if((token_expires - now)/1000 < 60*60*1){
+      this.refreshToken(localStorage.getItem('token'))
+      .subscribe(
+        data =>{
+          console.log('token refresh data',data)
+          localStorage.setItem('token',data['token'])
+        },
+        error =>{
+          console.log('error',error)
+        }
+      )
+    }
+  }
+
 
 }
 

@@ -229,6 +229,7 @@ export class DisplayNoteComponent implements OnInit, OnDestroy {
       this.changeTemplateClass()
       this.getAllUser()
       this.searchNote()
+      this._accountService.isTokenExpired()
     }
   }
 
