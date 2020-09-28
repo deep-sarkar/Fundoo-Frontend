@@ -103,7 +103,7 @@ export class AccountHttpService {
     let decode = jwt_decode(localStorage.getItem('token'))
     let token_expires:any = new Date(decode.exp * 1000);
     let now:any = new Date()
-    if((token_expires - now)/1000 < 60*60*1){
+    if((token_expires - now)/1000 < 60*60*24){
       this.refreshToken(localStorage.getItem('token'))
       .subscribe(
         data =>{
