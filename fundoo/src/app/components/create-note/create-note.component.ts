@@ -61,8 +61,13 @@ export class CreateNoteComponent implements OnInit, OnDestroy {
           return
         }
       }
+      const fd = new FormData()
+      const note_data = JSON.stringify(this.noteData)
+      console.log(note_data)
+      fd.append('note_data', note_data)
+      console.log(fd['note_data'])
       // console.log('create fn',this.noteData)
-      this.subscription = this._dataService.createNotes(this.noteData)
+      this.subscription = this._dataService.createNotes(fd)
       .subscribe(
         response => {
           if (response['code'] == 201){
