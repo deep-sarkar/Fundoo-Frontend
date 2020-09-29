@@ -16,7 +16,7 @@ export class IconInsertPhotoComponent implements OnInit {
 
 
   uploadImage($event){
-    this.imageFile = <File>$event.target.files[0]
+    this.imageFile = $event.target.files[0]
    
     console.log("url",this.imageUrl)
     this.sendImage.emit(this.imageFile)
